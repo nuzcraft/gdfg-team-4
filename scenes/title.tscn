@@ -75,7 +75,7 @@ horizontal_alignment = 1
 
 [node name="ContributorLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "kanneblei, Klassy, nuzcraft, TammerTheHammer, elija, Tyler Frankenstein"
+text = "kanneblei, Klassy, nuzcraft, , Soulkeeper, TammerTheHammer, elija, Tyler Frankenstein"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="VBoxContainer"]
