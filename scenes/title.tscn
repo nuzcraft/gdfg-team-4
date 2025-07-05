@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://308rtes7svwa"]
+
+[ext_resource type="Script" uid="uid://clnos8pxbfevk" path="res://scenes/title.gd" id="1_4ignj"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ignj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.325441, 0.325441, 0.325441, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Spacer2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Title"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Subtitle"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Spacer3" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CreditsLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Game By:"
+horizontal_alignment = 1
+
+[node name="ContributorLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "kanneblei, Klassy, nuzcraft, TammerTheHammer, elija, Tyler Frankenstein"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GodotLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Godot v X.X.X"
+horizontal_alignment = 1
+
+[node name="GDFGLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Special Thanks to the Game Dev Field Guide Community"
+horizontal_alignment = 1
