@@ -60,6 +60,10 @@ alignment = 1
 layout_mode = 2
 text = "Play"
 
+[node name="SettingsButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
 [node name="ExitButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Exit"
@@ -75,7 +79,7 @@ horizontal_alignment = 1
 
 [node name="ContributorLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "kanneblei, Klassy, nuzcraft, , Soulkeeper, TammerTheHammer, elija, Tyler Frankenstein"
+text = "kanneblei, Klassy, nuzcraft, Soulkeeper, TammerTheHammer, elija, Tyler Frankenstein"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="VBoxContainer"]
@@ -93,3 +97,4 @@ text = "Special Thanks to the Game Dev Field Guide Community"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
