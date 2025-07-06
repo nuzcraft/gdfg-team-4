@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://br30g2mugrs33"]
+[gd_scene load_steps=8 format=3 uid="uid://br30g2mugrs33"]
 
-[ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/proto_player.gd" id="1_ecofb"]
+[ext_resource type="Script" path="res://scenes/proto_player.gd" id="1_ecofb"]
 [ext_resource type="Script" uid="uid://dr7n2hwpha2r" path="res://scenes/prototype_01.gd" id="1_yv8a0"]
 [ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/prototype_lava_ant.tscn" id="3_2lahl"]
 [ext_resource type="Texture2D" uid="uid://cx521ax71sjdh" path="res://assets/Player.png" id="3_yv8a0"]
 [ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/lava_aoe.tscn" id="4_1abal"]
+[ext_resource type="PackedScene" uid="uid://bm0lj8ouj5bwk" path="res://scenes/health_bar.tscn" id="4_d365v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1abal"]
 radius = 28.1603
@@ -34,6 +35,10 @@ offset_right = 52.0
 offset_bottom = 57.0
 text = "Player"
 horizontal_alignment = 1
+
+[node name="HealthBar" parent="ProtoPlayer" instance=ExtResource("4_d365v")]
+offset_top = 68.0
+offset_bottom = 68.0
 
 [node name="ProtoLavaAnt" parent="." instance=ExtResource("3_2lahl")]
 position = Vector2(1092, 586)
