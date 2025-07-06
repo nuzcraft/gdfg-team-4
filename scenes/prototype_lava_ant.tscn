@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1mr1jwoop6vc"]
+[gd_scene load_steps=6 format=3 uid="uid://d1mr1jwoop6vc"]
 
 [ext_resource type="Script" uid="uid://d13keqcgktvc4" path="res://scenes/prototype_lava_ant.gd" id="1_1ih35"]
 [ext_resource type="Texture2D" uid="uid://d2d6cw5cwmqnm" path="res://PlaceholderAssets/KlassySketchLavaAnt.png" id="1_k3mtl"]
+[ext_resource type="PackedScene" uid="uid://bm0lj8ouj5bwk" path="res://scenes/health_bar.tscn" id="3_54yyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ih35"]
 size = Vector2(104, 117)
@@ -30,6 +31,10 @@ shape = SubResource("CircleShape2D_54yyh")
 [node name="ExplodeTimer" type="Timer" parent="."]
 
 [node name="HitTimer" type="Timer" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("3_54yyh")]
+offset_top = 64.0
+offset_bottom = 64.0
 
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
