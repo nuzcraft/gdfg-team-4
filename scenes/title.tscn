@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://308rtes7svwa"]
+[gd_scene load_steps=3 format=3 uid="uid://308rtes7svwa"]
 
 [ext_resource type="Script" uid="uid://clnos8pxbfevk" path="res://scenes/title.gd" id="1_4ignj"]
+[ext_resource type="Theme" uid="uid://c8kkdp01b836k" path="res://swarmed_theme.tres" id="2_wosw1"]
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -18,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.325441, 0.325441, 0.325441, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -42,14 +43,15 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_wosw1")
 theme_override_font_sizes/font_size = 48
-text = "Swarmed"
+text = "Swarmed!"
 horizontal_alignment = 1
 
 [node name="SubtitleLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Subtitle"
+text = "\"Space is Messy\""
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer/VBoxContainer"]
@@ -58,14 +60,17 @@ alignment = 1
 
 [node name="PlayButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_wosw1")
 text = "Play"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_wosw1")
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_wosw1")
 text = "Exit"
 
 [node name="Spacer3" type="Control" parent="VBoxContainer"]
@@ -74,11 +79,13 @@ size_flags_vertical = 3
 
 [node name="CreditsLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_wosw1")
 text = "Game By:"
 horizontal_alignment = 1
 
 [node name="ContributorLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.509804, 0.733333, 0.741176, 1)
 text = "kanneblei, Klassy, nuzcraft, Soulkeeper, TammerTheHammer, elija, Tyler Frankenstein"
 horizontal_alignment = 1
 
