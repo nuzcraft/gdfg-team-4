@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://c8kkdp01b836k"]
+
+[resource]
+Button/colors/font_color = Color(0.803922, 0.329412, 0.2, 1)
+Button/colors/font_hover_color = Color(0.752941, 0.266667, 0.145098, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 20
+Label/colors/font_color = Color(0.392157, 0.72549, 0.286275, 1)
