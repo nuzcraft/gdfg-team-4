@@ -4,9 +4,16 @@ var speed: int = 300
 var vulnerable: bool = true
 var player_near: bool = false
 
-var health = 20
+var max_health: int = 20
+var health: int = max_health
+
+@onready var health_bar = $HealthBar
 
 signal lava_aoe
+
+func _ready():
+	health_bar.max_health = max_health
+	health_bar.health = health
 
 func hit():
 	if vulnerable:

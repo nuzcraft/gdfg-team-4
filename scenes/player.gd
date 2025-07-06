@@ -7,6 +7,18 @@ var can_melee: bool = true
 @export var max_speed: int =500
 var speed: int = max_speed
 
+@export var max_health: int = 100
+var health: int = max_speed
+
+@onready var health_bar: Control = $HealthBar
+
+signal lava_aoe
+
+func _ready() -> void:
+	health_bar.max_health = max_health
+	health_bar.health = health
+	health_bar.is_player = true
+
 func _process(_delta):
 	#input
 	var direction = Input.get_vector("left", "right", "up", "down")
