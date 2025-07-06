@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://br30g2mugrs33"]
+
+[ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/proto_player.gd" id="1_ecofb"]
+[ext_resource type="Script" uid="uid://dr7n2hwpha2r" path="res://scenes/prototype_01.gd" id="1_yv8a0"]
+[ext_resource type="Texture2D" uid="uid://bx4camf6v7d5j" path="res://PlaceholderAssets/ManaSpiritLayersHead.png" id="2_2lahl"]
+[ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/prototype_lava_ant.tscn" id="3_2lahl"]
+[ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/lava_aoe.tscn" id="4_1abal"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1abal"]
+radius = 28.1603
+
+[node name="Prototype01" type="Node2D"]
+script = ExtResource("1_yv8a0")
+
+[node name="ProtoPlayer" type="CharacterBody2D" parent="."]
+position = Vector2(106, 85)
+script = ExtResource("1_ecofb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProtoPlayer"]
+shape = SubResource("CircleShape2D_1abal")
+
+[node name="ShootTimer" type="Timer" parent="ProtoPlayer"]
+
+[node name="MeleeAttackTimer" type="Timer" parent="ProtoPlayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ProtoPlayer"]
+position = Vector2(-5.96046e-07, 0.5)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_2lahl")
+
+[node name="Label" type="Label" parent="ProtoPlayer"]
+offset_left = -53.0
+offset_top = 22.0
+offset_right = 52.0
+offset_bottom = 57.0
+text = "Player"
+horizontal_alignment = 1
+
+[node name="ProtoLavaAnt" parent="." instance=ExtResource("3_2lahl")]
+position = Vector2(1092, 586)
+
+[node name="LavaAOE" parent="." instance=ExtResource("4_1abal")]
+position = Vector2(501, -439)
+
+[node name="ProtoLavaAnt2" parent="." instance=ExtResource("3_2lahl")]
+position = Vector2(1950, -249)
+
+[node name="ProtoLavaAnt3" parent="." instance=ExtResource("3_2lahl")]
+position = Vector2(2780, 841)
+
+[node name="ProtoLavaAnt4" parent="." instance=ExtResource("3_2lahl")]
+position = Vector2(2539, 2168)
+
+[node name="AOEs" type="Node2D" parent="."]
+
+[connection signal="lava_aoe" from="ProtoLavaAnt" to="." method="_on_proto_lava_ant_lava_aoe"]
+[connection signal="lava_aoe" from="ProtoLavaAnt2" to="." method="_on_proto_lava_ant_lava_aoe"]
+[connection signal="lava_aoe" from="ProtoLavaAnt3" to="." method="_on_proto_lava_ant_lava_aoe"]
+[connection signal="lava_aoe" from="ProtoLavaAnt4" to="." method="_on_proto_lava_ant_lava_aoe"]

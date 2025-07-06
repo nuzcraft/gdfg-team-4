@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1mr1jwoop6vc"]
+
+[ext_resource type="Script" uid="uid://d13keqcgktvc4" path="res://scenes/prototype_lava_ant.gd" id="1_1ih35"]
+[ext_resource type="Texture2D" uid="uid://d2d6cw5cwmqnm" path="res://PlaceholderAssets/KlassySketchLavaAnt.png" id="1_k3mtl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ih35"]
+size = Vector2(104, 117)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54yyh"]
+radius = 200.212
+
+[node name="ProtoLavaAnt" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_1ih35")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_k3mtl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_1ih35")
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
+shape = SubResource("CircleShape2D_54yyh")
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+
+[node name="HitTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]
