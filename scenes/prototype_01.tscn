@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/proto_player.gd" id="1_ecofb"]
 [ext_resource type="Script" uid="uid://dr7n2hwpha2r" path="res://scenes/prototype_01.gd" id="1_yv8a0"]
-[ext_resource type="Texture2D" uid="uid://bx4camf6v7d5j" path="res://PlaceholderAssets/ManaSpiritLayersHead.png" id="2_2lahl"]
 [ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/prototype_lava_ant.tscn" id="3_2lahl"]
+[ext_resource type="Texture2D" uid="uid://cx521ax71sjdh" path="res://assets/Player.png" id="3_yv8a0"]
 [ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/lava_aoe.tscn" id="4_1abal"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1abal"]
@@ -25,8 +25,7 @@ shape = SubResource("CircleShape2D_1abal")
 
 [node name="Sprite2D" type="Sprite2D" parent="ProtoPlayer"]
 position = Vector2(-5.96046e-07, 0.5)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_2lahl")
+texture = ExtResource("3_yv8a0")
 
 [node name="Label" type="Label" parent="ProtoPlayer"]
 offset_left = -53.0
