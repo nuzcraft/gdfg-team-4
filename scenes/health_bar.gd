@@ -3,9 +3,15 @@ extends Control
 
 const RED = Color(1,0,0)
 const BLUE = Color(0,0,1)
-@export var is_enemy: bool = false
+@export var is_player: bool = false:
+	set(value):
+		if value:
+			sb.bg_color = BLUE
+		else:
+			sb.bg_color = RED
 
 @onready var bar: ProgressBar = $Bar
+var sb = StyleBoxFlat.new()
 
 @export var max_health: int = 100:
 	set(value):
@@ -21,11 +27,5 @@ var _health: int = max_health
 func _ready() -> void:
 	bar.show_percentage = false
 	bar.min_value = 0
-	bar.max_value = max_health
-	var sb = StyleBoxFlat.new()
-	if is_enemy:
-		sb.bg_color = RED
-	else:
-		sb.bg_color = BLUE
+	sb.bg_color = RED
 	bar.add_theme_stylebox_override('fill', sb)
-	bar.value = _health
