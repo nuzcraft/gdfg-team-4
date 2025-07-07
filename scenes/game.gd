@@ -9,5 +9,3 @@ func create_lava_aoe(pos):
 
 func _on_proto_lava_ant_lava_aoe(pos):
 	create_lava_aoe(pos)
-	
-	

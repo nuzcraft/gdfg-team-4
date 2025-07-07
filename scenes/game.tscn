@@ -24,6 +24,8 @@ tile_set = ExtResource("2_gee14")
 [node name="LavaAOE" parent="AOEs" instance=ExtResource("6_kvpfn")]
 z_index = 10
 position = Vector2(501, -439)
+collision_layer = 8
+collision_mask = 3
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -45,6 +47,7 @@ position = Vector2(2539, 2168)
 
 [node name="Hero" parent="." instance=ExtResource("3_iywne")]
 position = Vector2(-42, 96)
+collision_mask = 14
 
 [connection signal="lava_aoe" from="Enemies/ProtoLavaAnt" to="." method="_on_proto_lava_ant_lava_aoe"]
 [connection signal="lava_aoe" from="Enemies/ProtoLavaAnt2" to="." method="_on_proto_lava_ant_lava_aoe"]
