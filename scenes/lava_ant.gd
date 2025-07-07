@@ -15,11 +15,11 @@ func _ready():
 	health_bar.max_health = max_health
 	health_bar.health = health
 
-func hit():
+func hit(damage):
 	if vulnerable:
 		vulnerable = false
 		$HitTimer.start()
-		health -= 10
+		health -= damage
 	if health <= 0:
 		summon_lava_aoe()
 		await  get_tree().create_timer(0.4).timeout
@@ -57,3 +57,7 @@ func _on_explode_timer_timeout():
 func summon_lava_aoe():
 	lava_aoe.emit(position)
 	print("sent lava signal")
+
+
+func _on_hit_timer_timeout():
+	vulnerable = true
