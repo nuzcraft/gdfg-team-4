@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcyj8ess4gt2j"]
+
+[ext_resource type="PackedScene" uid="uid://bm0lj8ouj5bwk" path="res://scenes/utility/health_bar.tscn" id="1_kyygc"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="HealthBar" parent="." instance=ExtResource("1_kyygc")]
+offset_left = 1027.0
+offset_top = 523.0
+offset_right = 1027.0
+offset_bottom = 523.0

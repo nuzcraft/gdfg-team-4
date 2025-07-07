@@ -6,6 +6,7 @@
 [node name="HealthBar" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(0.5, 0.5)
 
 [node name="Under" type="TextureRect" parent="."]
 layout_mode = 0
