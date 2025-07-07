@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://br30g2mugrs33"]
+[gd_scene load_steps=12 format=4 uid="uid://br30g2mugrs33"]
 
 [ext_resource type="Script" uid="uid://dr7n2hwpha2r" path="res://scenes/game.gd" id="1_p57ef"]
 [ext_resource type="TileSet" uid="uid://d25t2rrj02qel" path="res://resources/dark_rock_tile_set.res" id="2_gee14"]
@@ -7,9 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://bm0lj8ouj5bwk" path="res://scenes/health_bar.tscn" id="4_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/lava_ant.tscn" id="5_vtaks"]
 [ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/lava_aoe.tscn" id="6_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://cuani15l8gpnx" path="res://assets/shot.png" id="7_0tnpc"]
+[ext_resource type="Script" uid="uid://n5hl0c088sp6" path="res://scenes/weapon.gd" id="8_gee14"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1abal"]
 radius = 28.1603
+
+[sub_resource type="Curve" id="Curve_gee14"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
 
 [node name="Prototype01" type="Node2D"]
 script = ExtResource("1_p57ef")
@@ -22,14 +28,13 @@ tile_set = ExtResource("2_gee14")
 tile_map_data = PackedByteArray("AAD+/wIAAAABAAAAAAAIAAQAAAABAAAAAAAIAAUAAAABAAAAAAD8//7/AAABAAAAAAD8/wIAAAABAAAAAAD8/wMAAAABAAAAAAD+/wEAAAABAAAAAAD+/wYAAAABAAAAAAD//wUAAAAAAAAAAAAAAP7/AAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAYAAAABAAAAAAABAPz/AAABAAAAAAADAAUAAAABAAAAAAAEAP3/AAABAAAAAAAEAP7/AAABAAAAAAAFAAAAAAABAAAAAAAFAAMAAAABAAAAAAAGAAUAAAABAAAAAAAIAP7/AAABAAAAAAAIAAMAAAABAAAAAAAKAAAAAAABAAAAAAALAP7/AAAAAAAAAAALAAEAAAABAAAAAAD8//3/AAAAAAAAAAD8/wQAAAAAAAAAAAD9/wIAAAAAAAAAAAD+//3/AAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAMAAAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAJAPz/AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAAKAAMAAAAAAAAAAAALAPz/AAAAAAAAAAALAAAAAAAAAAAAAAALAAQAAAAAAAAAAAA=")
 tile_set = ExtResource("2_gee14")
 
-[node name="ProtoPlayer" type="CharacterBody2D" parent="."]
+[node name="ProtoPlayer" type="CharacterBody2D" parent="." node_paths=PackedStringArray("primary_weapon")]
 position = Vector2(106, 85)
 script = ExtResource("2_u5sy4")
+primary_weapon = NodePath("PrimaryWeapon")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProtoPlayer"]
 shape = SubResource("CircleShape2D_1abal")
-
-[node name="ShootTimer" type="Timer" parent="ProtoPlayer"]
 
 [node name="MeleeAttackTimer" type="Timer" parent="ProtoPlayer"]
 
@@ -51,6 +56,13 @@ offset_bottom = 68.0
 [node name="Camera2D" type="Camera2D" parent="ProtoPlayer"]
 offset = Vector2(45, 35)
 zoom = Vector2(0.8, 0.8)
+
+[node name="PrimaryWeapon" type="Node" parent="ProtoPlayer"]
+script = ExtResource("8_gee14")
+speed_curve = SubResource("Curve_gee14")
+projectile = ExtResource("7_0tnpc")
+offset = Vector2(40, -25)
+metadata/_custom_type_script = "uid://n5hl0c088sp6"
 
 [node name="ProtoLavaAnt" parent="." instance=ExtResource("5_vtaks")]
 position = Vector2(1092, 586)

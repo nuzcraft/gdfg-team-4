@@ -10,6 +10,8 @@ var speed: int = max_speed
 @export var max_health: int = 100
 var health: int = max_speed
 
+@export var primary_weapon: Weapon
+
 @onready var health_bar: Control = $HealthBar
 
 signal lava_aoe
@@ -30,8 +32,8 @@ func _process(_delta):
 	var playerDirection = (get_global_mouse_position() - position).normalized()
 	
 	#Range attack input
-	#if Input.is_action_pressed("primaryAction") and can_shoot:
-	#	pass
+	if Input.is_action_pressed("primaryAction") and can_shoot:
+		primary_weapon.fire(global_position, playerDirection)
 	
 	#Melee attack input
 	#if Input.is_action_pressed("secondaryAction") and can_melee:
