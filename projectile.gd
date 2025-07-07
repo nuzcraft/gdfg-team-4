@@ -6,11 +6,11 @@ var ttl := 0.0
 var direction: Vector2
 
 func _ready():
-	#TODO: This rotation is wrong
-	look_at(direction)
+	rotate(direction.angle())
 	
 	ttl = weapon.total_ttl
 	$Sprite.texture = weapon.projectile
+	$CollisionShape.shape = weapon.collision_shape
 	
 func _physics_process(delta):
 	ttl = ttl - delta
@@ -23,4 +23,4 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body.has_method("hit"):
 		body.hit(weapon.damage)
-		queue_free()
+	queue_free()

@@ -36,10 +36,9 @@ func _process(delta):
 
 
 func _on_attack_area_2d_body_entered(body):
-	player_near = true
-	$ExplodeTimer.start()
-	print(body)
-
+	if body.name == "Hero":
+		player_near = true
+		$ExplodeTimer.start()
 
 func _on_attack_area_2d_body_exited(_body):
 	player_near =  false
@@ -49,7 +48,6 @@ func explode():
 	await  get_tree().create_timer(0.4).timeout
 	queue_free()
 
-
 func _on_explode_timer_timeout():
 	if player_near:
 		explode()
@@ -57,7 +55,6 @@ func _on_explode_timer_timeout():
 func summon_lava_aoe():
 	lava_aoe.emit(position)
 	print("sent lava signal")
-
 
 func _on_hit_timer_timeout():
 	vulnerable = true

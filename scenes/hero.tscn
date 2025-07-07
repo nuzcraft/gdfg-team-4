@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://qxbajo21gg4j"]
+[gd_scene load_steps=9 format=3 uid="uid://qxbajo21gg4j"]
 
 [ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/hero.gd" id="1_w7pyx"]
 [ext_resource type="Texture2D" uid="uid://cx521ax71sjdh" path="res://assets/Player.png" id="2_y2sko"]
@@ -14,8 +14,12 @@ height = 116.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
 point_count = 1
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7pyx"]
+size = Vector2(30, 13)
+
 [node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("primary_weapon")]
 z_index = 10
+collision_mask = 9
 script = ExtResource("1_w7pyx")
 primary_weapon = NodePath("PrimaryWeapon")
 
@@ -32,6 +36,7 @@ shape = SubResource("CapsuleShape2D_0tnpc")
 script = ExtResource("4_n40cg")
 speed_curve = SubResource("Curve_gee14")
 projectile = ExtResource("5_txblw")
+collision_shape = SubResource("RectangleShape2D_w7pyx")
 offset = Vector2(40, -25)
 metadata/_custom_type_script = "uid://n5hl0c088sp6"
 
