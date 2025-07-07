@@ -17,11 +17,38 @@ script = ExtResource("1_4ignj")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_pyl7j")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="NearStars" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(256, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/NearStars"]
 texture_repeat = 2
 position = Vector2(556, 308)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_b3w7a")
+region_enabled = true
+region_rect = Rect2(0, 0, 1920, 1080)
+
+[node name="MidStars" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(256, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MidStars"]
+modulate = Color(1, 1, 1, 0.666667)
+texture_repeat = 2
+position = Vector2(556, 308)
+texture = ExtResource("3_b3w7a")
+region_enabled = true
+region_rect = Rect2(0, 0, 1920, 1080)
+
+[node name="FarStars" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(256, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/FarStars"]
+modulate = Color(1, 1, 1, 0.333333)
+texture_repeat = 2
+position = Vector2(556, 308)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_b3w7a")
 region_enabled = true
 region_rect = Rect2(0, 0, 1920, 1080)
