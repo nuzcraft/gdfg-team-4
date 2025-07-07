@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://qxbajo21gg4j"]
+
+[ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/hero.gd" id="1_w7pyx"]
+[ext_resource type="Texture2D" uid="uid://cx521ax71sjdh" path="res://assets/Player.png" id="2_y2sko"]
+[ext_resource type="PackedScene" uid="uid://bm0lj8ouj5bwk" path="res://scenes/utility/health_bar.tscn" id="3_mo806"]
+[ext_resource type="Script" uid="uid://n5hl0c088sp6" path="res://scripts/weapon.gd" id="4_n40cg"]
+[ext_resource type="Texture2D" uid="uid://cuani15l8gpnx" path="res://assets/shot.png" id="5_txblw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tnpc"]
+radius = 42.0
+height = 116.0
+
+[sub_resource type="Curve" id="Curve_gee14"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("primary_weapon")]
+z_index = 10
+script = ExtResource("1_w7pyx")
+primary_weapon = NodePath("PrimaryWeapon")
+
+[node name="MeleeAttackTimer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_y2sko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.705, 5.07)
+shape = SubResource("CapsuleShape2D_0tnpc")
+
+[node name="PrimaryWeapon" type="Node" parent="."]
+script = ExtResource("4_n40cg")
+speed_curve = SubResource("Curve_gee14")
+projectile = ExtResource("5_txblw")
+offset = Vector2(40, -25)
+metadata/_custom_type_script = "uid://n5hl0c088sp6"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -53.0
+offset_top = 22.0
+offset_right = 52.0
+offset_bottom = 57.0
+text = "Player"
+horizontal_alignment = 1
+
+[node name="HealthBar" parent="." instance=ExtResource("3_mo806")]
+offset_top = 68.0
+offset_bottom = 68.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(45, 35)
+zoom = Vector2(0.8, 0.8)

@@ -1,6 +1,6 @@
 extends Node2D
 
-var lava_aoe_scene = preload("res://scenes/lava_aoe.tscn")
+var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 
 func create_lava_aoe(pos):
 	var aoe = lava_aoe_scene.instantiate() as Area2D
