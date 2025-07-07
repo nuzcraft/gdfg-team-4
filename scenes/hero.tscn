@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://qxbajo21gg4j"]
+[gd_scene load_steps=8 format=3 uid="uid://qxbajo21gg4j"]
 
 [ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/hero.gd" id="1_w7pyx"]
 [ext_resource type="Texture2D" uid="uid://cx521ax71sjdh" path="res://assets/Player.png" id="2_y2sko"]
-[ext_resource type="PackedScene" uid="uid://bm0lj8ouj5bwk" path="res://scenes/utility/health_bar.tscn" id="3_mo806"]
 [ext_resource type="Script" uid="uid://n5hl0c088sp6" path="res://scripts/weapon.gd" id="4_n40cg"]
 [ext_resource type="Texture2D" uid="uid://cuani15l8gpnx" path="res://assets/shot.png" id="5_txblw"]
 
@@ -47,10 +46,6 @@ offset_right = 52.0
 offset_bottom = 57.0
 text = "Player"
 horizontal_alignment = 1
-
-[node name="HealthBar" parent="." instance=ExtResource("3_mo806")]
-offset_top = 68.0
-offset_bottom = 68.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(45, 35)
