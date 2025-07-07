@@ -1,22 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://br30g2mugrs33"]
+[gd_scene load_steps=6 format=4 uid="uid://br30g2mugrs33"]
 
 [ext_resource type="Script" uid="uid://dr7n2hwpha2r" path="res://scenes/game.gd" id="1_p57ef"]
 [ext_resource type="TileSet" uid="uid://d25t2rrj02qel" path="res://resources/dark_rock_tile_set.res" id="2_gee14"]
-[ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/player.gd" id="2_u5sy4"]
-[ext_resource type="Texture2D" uid="uid://cx521ax71sjdh" path="res://assets/Player.png" id="3_gee14"]
-[ext_resource type="PackedScene" uid="uid://bm0lj8ouj5bwk" path="res://scenes/health_bar.tscn" id="4_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/lava_ant.tscn" id="5_vtaks"]
-[ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/lava_aoe.tscn" id="6_kvpfn"]
-[ext_resource type="Texture2D" uid="uid://cuani15l8gpnx" path="res://assets/shot.png" id="7_0tnpc"]
-[ext_resource type="Script" uid="uid://n5hl0c088sp6" path="res://scenes/weapon.gd" id="8_gee14"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tnpc"]
-radius = 42.0
-height = 116.0
-
-[sub_resource type="Curve" id="Curve_gee14"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
+[ext_resource type="PackedScene" uid="uid://qxbajo21gg4j" path="res://scenes/hero.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/enemies/lava_ant.tscn" id="5_vtaks"]
+[ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/aoes/lava_aoe.tscn" id="6_kvpfn"]
 
 [node name="Prototype01" type="Node2D"]
 script = ExtResource("1_p57ef")
@@ -31,68 +19,34 @@ tile_set = ExtResource("2_gee14")
 tile_map_data = PackedByteArray("AAD+/wIAAAABAAAAAAAIAAQAAAABAAAAAAAIAAUAAAABAAAAAAD8//7/AAABAAAAAAD8/wIAAAABAAAAAAD8/wMAAAABAAAAAAD+/wEAAAABAAAAAAD+/wYAAAABAAAAAAD//wUAAAAAAAAAAAAAAP7/AAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAYAAAABAAAAAAABAPz/AAABAAAAAAADAAUAAAABAAAAAAAEAP3/AAABAAAAAAAEAP7/AAABAAAAAAAFAAMAAAABAAAAAAAGAAUAAAABAAAAAAAIAP7/AAABAAAAAAAIAAMAAAABAAAAAAAKAAAAAAABAAAAAAALAP7/AAAAAAAAAAALAAEAAAABAAAAAAD8//3/AAAAAAAAAAD8/wQAAAAAAAAAAAD9/wIAAAAAAAAAAAD+//3/AAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAMAAAABAAMAAAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAJAPz/AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAAKAAMAAAAAAAAAAAALAPz/AAAAAAAAAAALAAAAAAAAAAAAAAALAAQAAAAAAAAAAAD7//z/AAAAAAMAAAD7//3/AAAAAAMAAAD7//7/AAAAAAMAAAD7////AAAAAAMAAAD7/wAAAAAAAAMAAAD7/wEAAAAAAAMAAAD7/wIAAAAAAAMAAAD7/wMAAAAAAAMAAAD7/wQAAAAAAAMAAAD7/wUAAAAAAAMAAAD7/wYAAAAAAAMAAAD7/wcAAAAAAAMAAAD8/wcAAAAAAAMAAAD9/wcAAAAAAAMAAAD+/wcAAAAAAAMAAAD//wcAAAAAAAMAAAAAAAcAAAAAAAMAAAABAAcAAAAAAAMAAAACAAcAAAAAAAMAAAADAAcAAAAAAAMAAAAEAAcAAAAAAAMAAAAFAAcAAAAAAAMAAAAGAAcAAAAAAAMAAAAHAAcAAAAAAAMAAAAIAAcAAAAAAAMAAAAJAAcAAAAAAAMAAAAKAAcAAAAAAAMAAAALAAcAAAAAAAMAAAAMAAcAAAAAAAMAAAANAAcAAAAAAAMAAAAOAAcAAAAAAAMAAAAPAAcAAAAAAAMAAAAQAAcAAAAAAAMAAAARAAcAAAAAAAMAAAASAAcAAAAAAAMAAAATAAcAAAAAAAMAAAAUAAcAAAAAAAMAAAAUAAYAAAAAAAMAAAAUAAUAAAAAAAMAAAAUAAQAAAAAAAMAAAAUAAMAAAAAAAMAAAAUAAIAAAAAAAMAAAAUAAEAAAAAAAMAAAAUAAAAAAAAAAMAAAAUAP//AAAAAAMAAAAUAP7/AAAAAAMAAAAUAP3/AAAAAAMAAAAUAPz/AAAAAAMAAAAUAPv/AAAAAAMAAAATAPv/AAAAAAMAAAASAPv/AAAAAAMAAAARAPv/AAAAAAMAAAAQAPv/AAAAAAMAAAAPAPv/AAAAAAMAAAAOAPv/AAAAAAMAAAANAPv/AAAAAAMAAAAMAPv/AAAAAAMAAAALAPv/AAAAAAMAAAAKAPv/AAAAAAMAAAAJAPv/AAAAAAMAAAAIAPv/AAAAAAMAAAAHAPv/AAAAAAMAAAAGAPv/AAAAAAMAAAAFAPv/AAAAAAMAAAAEAPv/AAAAAAMAAAADAPv/AAAAAAMAAAACAPv/AAAAAAMAAAABAPv/AAAAAAMAAAAAAPv/AAAAAAMAAAD///v/AAAAAAMAAAD+//v/AAAAAAMAAAD9//v/AAAAAAMAAAD8//v/AAAAAAMAAAD7//v/AAAAAAMAAAAPAAUAAAAAAAMAAAAPAAQAAAAAAAMAAAAPAAMAAAAAAAMAAAACAAAAAAAAAAMAAAACAAEAAAAAAAMAAAACAAIAAAAAAAMAAAD+/wQAAAAAAAMAAAACAP7/AAAAAAMAAAA=")
 tile_set = ExtResource("2_gee14")
 
-[node name="ProtoPlayer" type="CharacterBody2D" parent="." node_paths=PackedStringArray("primary_weapon")]
-z_index = 10
-position = Vector2(106, 85)
-script = ExtResource("2_u5sy4")
-primary_weapon = NodePath("PrimaryWeapon")
+[node name="AOEs" type="Node" parent="."]
 
-[node name="MeleeAttackTimer" type="Timer" parent="ProtoPlayer"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ProtoPlayer"]
-texture = ExtResource("3_gee14")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProtoPlayer"]
-position = Vector2(-6.705, 5.07)
-shape = SubResource("CapsuleShape2D_0tnpc")
-
-[node name="Label" type="Label" parent="ProtoPlayer"]
-offset_left = -53.0
-offset_top = 22.0
-offset_right = 52.0
-offset_bottom = 57.0
-text = "Player"
-horizontal_alignment = 1
-
-[node name="HealthBar" parent="ProtoPlayer" instance=ExtResource("4_0tnpc")]
-offset_top = 68.0
-offset_bottom = 68.0
-
-[node name="Camera2D" type="Camera2D" parent="ProtoPlayer"]
-offset = Vector2(45, 35)
-zoom = Vector2(0.8, 0.8)
-
-[node name="PrimaryWeapon" type="Node" parent="ProtoPlayer"]
-script = ExtResource("8_gee14")
-speed_curve = SubResource("Curve_gee14")
-projectile = ExtResource("7_0tnpc")
-offset = Vector2(40, -25)
-metadata/_custom_type_script = "uid://n5hl0c088sp6"
-
-[node name="ProtoLavaAnt" parent="." instance=ExtResource("5_vtaks")]
-z_index = 10
-position = Vector2(1092, 586)
-
-[node name="LavaAOE" parent="." instance=ExtResource("6_kvpfn")]
+[node name="LavaAOE" parent="AOEs" instance=ExtResource("6_kvpfn")]
 z_index = 10
 position = Vector2(501, -439)
 
-[node name="ProtoLavaAnt2" parent="." instance=ExtResource("5_vtaks")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="ProtoLavaAnt" parent="Enemies" instance=ExtResource("5_vtaks")]
+z_index = 10
+position = Vector2(1092, 586)
+
+[node name="ProtoLavaAnt2" parent="Enemies" instance=ExtResource("5_vtaks")]
 z_index = 10
 position = Vector2(1950, -249)
 
-[node name="ProtoLavaAnt3" parent="." instance=ExtResource("5_vtaks")]
+[node name="ProtoLavaAnt3" parent="Enemies" instance=ExtResource("5_vtaks")]
 z_index = 10
 position = Vector2(2780, 841)
 
-[node name="ProtoLavaAnt4" parent="." instance=ExtResource("5_vtaks")]
+[node name="ProtoLavaAnt4" parent="Enemies" instance=ExtResource("5_vtaks")]
 z_index = 10
 position = Vector2(2539, 2168)
 
-[node name="AOEs" type="Node2D" parent="."]
-z_index = 10
+[node name="Hero" parent="." instance=ExtResource("3_iywne")]
+position = Vector2(-42, 96)
 
-[connection signal="lava_aoe" from="ProtoLavaAnt" to="." method="_on_proto_lava_ant_lava_aoe"]
-[connection signal="lava_aoe" from="ProtoLavaAnt2" to="." method="_on_proto_lava_ant_lava_aoe"]
-[connection signal="lava_aoe" from="ProtoLavaAnt3" to="." method="_on_proto_lava_ant_lava_aoe"]
-[connection signal="lava_aoe" from="ProtoLavaAnt4" to="." method="_on_proto_lava_ant_lava_aoe"]
+[connection signal="lava_aoe" from="Enemies/ProtoLavaAnt" to="." method="_on_proto_lava_ant_lava_aoe"]
+[connection signal="lava_aoe" from="Enemies/ProtoLavaAnt2" to="." method="_on_proto_lava_ant_lava_aoe"]
+[connection signal="lava_aoe" from="Enemies/ProtoLavaAnt3" to="." method="_on_proto_lava_ant_lava_aoe"]
+[connection signal="lava_aoe" from="Enemies/ProtoLavaAnt4" to="." method="_on_proto_lava_ant_lava_aoe"]
