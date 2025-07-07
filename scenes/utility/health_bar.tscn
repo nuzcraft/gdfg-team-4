@@ -1,14 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm0lj8ouj5bwk"]
-
-[ext_resource type="Script" uid="uid://ckslj0s3u7jml" path="res://scenes/utility/health_bar.gd" id="1_1bvlm"]
+[gd_scene format=3 uid="uid://bm0lj8ouj5bwk"]
 
 [node name="HealthBar" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_1bvlm")
-
-[node name="Bar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_left = -75.0
-offset_right = 75.0
-offset_bottom = 27.0

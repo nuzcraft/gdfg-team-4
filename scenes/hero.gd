@@ -8,18 +8,13 @@ var can_melee: bool = true
 var speed: int = max_speed
 
 @export var max_health: int = 100
-var health: int = max_speed
+var health: int = max_health
 
 @export var primary_weapon: Weapon
 
-@onready var health_bar: Control = $HealthBar
 
 signal lava_aoe
 
-func _ready() -> void:
-	health_bar.max_health = max_health
-	health_bar.health = health
-	health_bar.is_player = true
 
 func _process(_delta):
 	#input
