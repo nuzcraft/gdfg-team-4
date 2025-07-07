@@ -32,6 +32,7 @@ tile_map_data = PackedByteArray("AAD+/wIAAAABAAAAAAAIAAQAAAABAAAAAAAIAAUAAAABAAA
 tile_set = ExtResource("2_gee14")
 
 [node name="ProtoPlayer" type="CharacterBody2D" parent="." node_paths=PackedStringArray("primary_weapon")]
+z_index = 10
 position = Vector2(106, 85)
 script = ExtResource("2_u5sy4")
 primary_weapon = NodePath("PrimaryWeapon")
@@ -69,21 +70,27 @@ offset = Vector2(40, -25)
 metadata/_custom_type_script = "uid://n5hl0c088sp6"
 
 [node name="ProtoLavaAnt" parent="." instance=ExtResource("5_vtaks")]
+z_index = 10
 position = Vector2(1092, 586)
 
 [node name="LavaAOE" parent="." instance=ExtResource("6_kvpfn")]
+z_index = 10
 position = Vector2(501, -439)
 
 [node name="ProtoLavaAnt2" parent="." instance=ExtResource("5_vtaks")]
+z_index = 10
 position = Vector2(1950, -249)
 
 [node name="ProtoLavaAnt3" parent="." instance=ExtResource("5_vtaks")]
+z_index = 10
 position = Vector2(2780, 841)
 
 [node name="ProtoLavaAnt4" parent="." instance=ExtResource("5_vtaks")]
+z_index = 10
 position = Vector2(2539, 2168)
 
 [node name="AOEs" type="Node2D" parent="."]
+z_index = 10
 
 [connection signal="lava_aoe" from="ProtoLavaAnt" to="." method="_on_proto_lava_ant_lava_aoe"]
 [connection signal="lava_aoe" from="ProtoLavaAnt2" to="." method="_on_proto_lava_ant_lava_aoe"]
