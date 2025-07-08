@@ -1,3 +1,3 @@
 extends Node
 
-var enable_music := true
+var enable_music := false
