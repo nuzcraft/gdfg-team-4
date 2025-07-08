@@ -23,36 +23,20 @@ tile_set = ExtResource("2_gee14")
 [node name="AOEs" type="Node" parent="."]
 
 [node name="LavaAOE" parent="AOEs" instance=ExtResource("6_kvpfn")]
-z_index = 10
 position = Vector2(501, -439)
 collision_layer = 8
 collision_mask = 3
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="ProtoLavaAnt" parent="Enemies" instance=ExtResource("5_vtaks")]
-z_index = 10
-position = Vector2(1092, 586)
+[node name="LavaAnt" parent="Enemies" instance=ExtResource("5_vtaks")]
+position = Vector2(1035, -234)
 
-[node name="ProtoLavaAnt2" parent="Enemies" instance=ExtResource("5_vtaks")]
-z_index = 10
-position = Vector2(1950, -249)
-
-[node name="ProtoLavaAnt3" parent="Enemies" instance=ExtResource("5_vtaks")]
-z_index = 10
-position = Vector2(2780, 841)
-
-[node name="ProtoLavaAnt4" parent="Enemies" instance=ExtResource("5_vtaks")]
-z_index = 10
-position = Vector2(2539, 2168)
+[node name="LavaAnt2" parent="Enemies" instance=ExtResource("5_vtaks")]
+position = Vector2(-138, -401)
 
 [node name="Hero" parent="." instance=ExtResource("3_iywne")]
 position = Vector2(-42, 96)
 collision_mask = 14
 
 [node name="Hud" parent="." instance=ExtResource("6_p57ef")]
-
-[connection signal="lava_aoe" from="Enemies/ProtoLavaAnt" to="." method="_on_proto_lava_ant_lava_aoe"]
-[connection signal="lava_aoe" from="Enemies/ProtoLavaAnt2" to="." method="_on_proto_lava_ant_lava_aoe"]
-[connection signal="lava_aoe" from="Enemies/ProtoLavaAnt3" to="." method="_on_proto_lava_ant_lava_aoe"]
-[connection signal="lava_aoe" from="Enemies/ProtoLavaAnt4" to="." method="_on_proto_lava_ant_lava_aoe"]

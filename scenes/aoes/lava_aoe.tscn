@@ -6,6 +6,7 @@
 radius = 198.0
 
 [node name="LavaAOE" type="Area2D"]
+z_index = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

@@ -28,9 +28,14 @@ func _process(delta):
 		speed = 200
 	else :
 		speed = 300
-	if health <= 0 or (animation_player.current_animation == 'primed' and animation_player.is_playing()):
+	if health <= 0 or (animation_player.current_animation == 'primed' and animation_player.is_playing()) \
+		or animated_sprite_2d.animation == 'explode':
 		speed = 0
 	var direction = (Globals.player_pos - position).normalized()
+	if direction.x > 0:
+		animated_sprite_2d.flip_h = true
+	else:
+		animated_sprite_2d.flip_h = false
 	velocity = direction * speed
 	move_and_slide()
 
@@ -51,6 +56,8 @@ func explode():
 func _on_explode_timer_timeout():
 	if player_near:
 		explode()
+	else:
+		animation_player.play("RESET")
 
 func summon_lava_aoe():
 	lava_aoe.emit(position)
