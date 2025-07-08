@@ -61,7 +61,6 @@ func _on_explode_timer_timeout():
 
 func summon_lava_aoe():
 	lava_aoe.emit(position)
-	print("sent lava signal")
 
 func _on_hit_timer_timeout():
 	vulnerable = true
