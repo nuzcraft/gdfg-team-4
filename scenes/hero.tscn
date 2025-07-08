@@ -18,7 +18,7 @@ size = Vector2(30, 13)
 
 [node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("primary_weapon")]
 z_index = 10
-collision_mask = 9
+collision_mask = 25
 script = ExtResource("1_w7pyx")
 primary_weapon = NodePath("PrimaryWeapon")
 
@@ -34,7 +34,7 @@ shape = SubResource("CapsuleShape2D_0tnpc")
 [node name="PrimaryWeapon" type="Node" parent="."]
 script = ExtResource("4_n40cg")
 speed_curve = SubResource("Curve_gee14")
-projectile = ExtResource("5_txblw")
+projectile_image = ExtResource("5_txblw")
 collision_shape = SubResource("RectangleShape2D_w7pyx")
 offset = Vector2(40, -25)
 metadata/_custom_type_script = "uid://n5hl0c088sp6"

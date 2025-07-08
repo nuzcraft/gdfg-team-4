@@ -1,8 +1,12 @@
 extends Control
 
 @onready var godot_label: Label = $VBoxContainer/GodotLabel
+@onready var exit_btn:     Button   = $VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/ExitButton
 
 func _ready() -> void:
+
+	# connect the exit btn
+	exit_btn.pressed.connect(_on_exit_button_pressed)
 
 	# show the godot version
 	var version = Engine.get_version_info()
@@ -27,3 +31,9 @@ func _on_settings_button_pressed():
 
 	# change to the settings scene
 	get_tree().change_scene_to_file("res://scenes/settings.tscn")
+
+
+func _on_exit_button_pressed() -> void:
+
+	# exit the game
+	get_tree().quit()

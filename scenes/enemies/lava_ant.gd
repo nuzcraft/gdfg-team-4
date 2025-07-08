@@ -23,7 +23,7 @@ func hit(damage):
 	if health <= 0:
 		explode()
 
-func _process(delta):
+func _process(_delta):
 	if player_near:
 		speed = 200
 	else :

@@ -25,7 +25,6 @@ tile_set = ExtResource("2_gee14")
 [node name="LavaAOE" parent="AOEs" instance=ExtResource("6_kvpfn")]
 position = Vector2(501, -439)
 collision_layer = 8
-collision_mask = 3
 
 [node name="Enemies" type="Node" parent="."]
 

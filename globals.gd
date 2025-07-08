@@ -3,7 +3,7 @@ extends Node
 
 var player_pos: Vector2
 var player_vulnerable: bool = true
-
+var player_health: int
 
 
 func player_invulnerable_timer():

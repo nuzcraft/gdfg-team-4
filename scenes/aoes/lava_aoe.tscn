@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0obualjs4wyq"]
+[gd_scene load_steps=4 format=3 uid="uid://c0obualjs4wyq"]
 
 [ext_resource type="Texture2D" uid="uid://bx4camf6v7d5j" path="res://PlaceholderAssets/ManaSpiritLayersHead.png" id="1_32bv6"]
+[ext_resource type="Script" uid="uid://cra7pe4sqos0l" path="res://scenes/aoes/lava_aoe.gd" id="1_wpkc3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqv5b"]
 radius = 198.0
 
-[node name="LavaAOE" type="Area2D"]
+[node name="LavaAOE" type="Area2D" groups=["FireArea"]]
+collision_layer = 16
+collision_mask = 3
 z_index = 5
+script = ExtResource("1_wpkc3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -17,3 +21,5 @@ modulate = Color(1, 0.266667, 0.176471, 1)
 position = Vector2(-0.500008, 3.5)
 scale = Vector2(1.37667, 1.49)
 texture = ExtResource("1_32bv6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
