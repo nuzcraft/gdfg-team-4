@@ -1,13 +1,17 @@
 extends CharacterBody2D
+class_name LavaAnt
+
+signal lava_aoe
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var speed: int = 300
 var vulnerable: bool = true
 var player_near: bool = false
-
 var health: int = 20
 
-
-signal lava_aoe
+func _ready() -> void:
+	animated_sprite_2d.play("default")
 
 func hit(damage):
 	if vulnerable:
@@ -38,9 +42,7 @@ func _on_attack_area_2d_body_exited(_body):
 	player_near =  false
 
 func explode():
-	summon_lava_aoe()
-	await  get_tree().create_timer(0.4).timeout
-	queue_free()
+	animated_sprite_2d.play("explode")
 
 func _on_explode_timer_timeout():
 	if player_near:
@@ -52,3 +54,9 @@ func summon_lava_aoe():
 
 func _on_hit_timer_timeout():
 	vulnerable = true
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite_2d.animation == "explode":
+		summon_lava_aoe()
+		queue_free()
