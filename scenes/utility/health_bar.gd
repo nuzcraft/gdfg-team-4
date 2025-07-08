@@ -17,10 +17,10 @@ func _process(delta: float) -> void:
 	var curr_armor = Globals.player_armor
 	
 	if last_health != curr_health:
-		health_bar.material.set_shader_parameter('health', curr_health / 100)
+		health_bar.material.set_shader_parameter('health', float(curr_health / 100.0))
 		last_health = curr_health
 	if last_armor != curr_armor:
-		armor_bar.material.set_shader_parameter('armor', curr_armor / 100)
+		armor_bar.material.set_shader_parameter('armor', float(curr_health / 100.0))
 		last_armor = curr_armor
 		
 	# add code to handle rendering extra health bars
