@@ -8,8 +8,6 @@ var currently_in_lava: bool = false
 @export var max_speed: int =500
 var speed: int = max_speed
 
-@export var max_health: int = 100
-var health: int = max_health
 
 @export var primary_weapon: Weapon
 

@@ -7,6 +7,9 @@ func _ready() -> void:
 		if enemy is LavaAnt:
 			enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 	Globals.player_health = 100
+	Globals.player_max_health = 100
+	Globals.player_armor = 0
+	Globals.player_max_armor = 100
 
 func create_lava_aoe(pos):
 	var aoe = lava_aoe_scene.instantiate() as Area2D
