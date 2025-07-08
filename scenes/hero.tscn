@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://qxbajo21gg4j"]
+[gd_scene load_steps=7 format=3 uid="uid://qxbajo21gg4j"]
 
 [ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/hero.gd" id="1_w7pyx"]
 [ext_resource type="Texture2D" uid="uid://cx521ax71sjdh" path="res://assets/Player.png" id="2_y2sko"]
 [ext_resource type="Script" uid="uid://n5hl0c088sp6" path="res://scripts/weapon.gd" id="4_n40cg"]
-[ext_resource type="Texture2D" uid="uid://cuani15l8gpnx" path="res://assets/shot.png" id="5_txblw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tnpc"]
 radius = 42.0
@@ -18,7 +17,7 @@ size = Vector2(30, 13)
 
 [node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("primary_weapon")]
 z_index = 10
-collision_mask = 9
+collision_mask = 25
 script = ExtResource("1_w7pyx")
 primary_weapon = NodePath("PrimaryWeapon")
 
@@ -34,7 +33,6 @@ shape = SubResource("CapsuleShape2D_0tnpc")
 [node name="PrimaryWeapon" type="Node" parent="."]
 script = ExtResource("4_n40cg")
 speed_curve = SubResource("Curve_gee14")
-projectile = ExtResource("5_txblw")
 collision_shape = SubResource("RectangleShape2D_w7pyx")
 offset = Vector2(40, -25)
 metadata/_custom_type_script = "uid://n5hl0c088sp6"

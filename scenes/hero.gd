@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var can_shoot: bool = true
 var can_melee: bool = true
+var currently_in_lava: bool = false
 
 
 @export var max_speed: int =500
@@ -12,8 +13,6 @@ var health: int = max_health
 
 @export var primary_weapon: Weapon
 
-
-signal lava_aoe
 
 
 func _process(_delta):
@@ -33,3 +32,9 @@ func _process(_delta):
 	#Melee attack input
 	#if Input.is_action_pressed("secondaryAction") and can_melee:
 	#	pass
+
+func burn():
+	Globals.player_health -= 5
+	currently_in_lava = true
+	$Label.text = "Burning"
+	

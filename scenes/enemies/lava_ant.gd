@@ -19,7 +19,7 @@ func hit(damage):
 		await  get_tree().create_timer(0.4).timeout
 		queue_free()
 
-func _process(delta):
+func _process(_delta):
 	if player_near:
 		speed = 200
 	else :
@@ -48,7 +48,7 @@ func _on_explode_timer_timeout():
 
 func summon_lava_aoe():
 	lava_aoe.emit(position)
-	print("sent lava signal")
+
 
 func _on_hit_timer_timeout():
 	vulnerable = true
