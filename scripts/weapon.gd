@@ -5,7 +5,7 @@ class_name Weapon
 @export var speed := 1000.0
 @export var total_ttl := 2.0
 @export var cooldown := 0.5
-@export var projectile: Texture2D
+@export var projectile_image: Texture2D
 @export var collision_shape: Shape2D
 @export var offset: Vector2
 @export var damage:= 10
