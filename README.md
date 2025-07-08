@@ -30,3 +30,7 @@ Check out this [Cheat Sheet](https://education.github.com/git-cheat-sheet-educat
     - the `main` branch is our good code
 9. back on your machine, `git switch main` or `git checkout main` to switch back to the `main` branch
     - `git pull` to make sure you have the most recent changes, then repeat the cycle
+
+## Credits
+
+Some Placeholder Art by [Kenney](https://kenney.nl)

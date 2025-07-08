@@ -9,6 +9,7 @@ radius = 198.0
 [node name="LavaAOE" type="Area2D" groups=["FireArea"]]
 collision_layer = 16
 collision_mask = 3
+z_index = 5
 script = ExtResource("1_wpkc3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
