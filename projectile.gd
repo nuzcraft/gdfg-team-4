@@ -9,7 +9,7 @@ func _ready():
 	rotate(direction.angle())
 	
 	ttl = weapon.total_ttl
-	$Sprite.texture = weapon.projectile
+	$Sprite.texture = weapon.projectile_image
 	$CollisionShape.shape = weapon.collision_shape
 	
 func _physics_process(delta):
