@@ -13,12 +13,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        
       - name: Install GUT plugin
         run: |
-          wget -q https://github.com/bitwes/Gut/archive/refs/tags/v9.4.0.zip -O gut.zip
-          unzip -q gut.zip
-          cp -R Gut-9.4.0/addons/gut addons/gut
-          rm -rf gut.zip Gut-9.4.0
+          rm -rf addons/gut
+          git init
+          git remote add origin https://github.com/bitwes/Gut.git
+          git config core.sparseCheckout true
+          echo "addons/gut/*" >> .git/info/sparse-checkout
+          git pull --depth=1 origin v9.4.0
+
       - name: Run GUT smoke tests
         run: |
           godot --headless \
