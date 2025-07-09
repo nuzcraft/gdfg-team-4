@@ -6,6 +6,7 @@ on:
   push:
 
 jobs:
+  test:
     runs-on: ubuntu-22.04
     container:
       image: barichello/godot-ci:4.4.1
