@@ -6,18 +6,16 @@ on:
   push:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+    container:
+      image: barichello/godot-ci:4.4.1
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Godot 4.4
-        uses: paulloz/godot-action@v1.2.2
-        with:
-          version: 4.4    # major.minor (will install latest 4.4.x)
-          mono: false    # or true if you need the Mono build
-          export-templates: true
-
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
+          mv -v /root/.local/share/godot/export_templates/* ~/.local/share/godot/export_templates/
       - name: Run GUT smoke tests
         run: |
           godot --headless \
