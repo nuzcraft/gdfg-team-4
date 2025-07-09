@@ -14,7 +14,7 @@ jobs:
 
       # 2) install Godot 4.4 CLI
       - name: Set up Godot
-        uses: firebelley/godot-setup@v1
+        uses: chickensoft-games/setup-godot-action@v2
         with:
           godot-version: "4.4"
 
