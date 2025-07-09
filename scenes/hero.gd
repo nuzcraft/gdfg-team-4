@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 var can_shoot: bool = true
 var can_melee: bool = true
-var currently_in_lava: bool = false
 
 
 @export var max_speed: int =500
@@ -35,9 +34,29 @@ func _process(_delta):
 	#Melee attack input
 	#if Input.is_action_pressed("secondaryAction") and can_melee:
 	#	pass
-
-func burn():
-	Globals.player_health -= 5
-	currently_in_lava = true
-	$Label.text = "Burning"
-	
+var is_in_lava: bool = false
+var burn_count: int = 0
+enum burn_state{
+	Start,
+	Hold,
+	End
+}
+func burn(input:burn_state):
+	if(burn_state.Start&&!self.is_in_lava):
+		$Label.text = "Burning"
+		self.burn_count=0
+		self.is_in_lava=true
+		await get_tree().create_timer(0.1)
+		self.burn(burn_state.Hold)
+	if(burn_state.Hold&&self.is_in_lava):
+		Globals.player_health -= 1
+		await get_tree().create_timer(0.1)
+		self.burn(burn_state.Hold)
+	if(burn_state.Hold&&!self.is_in_lava&&self.burn_count>0):
+		Globals.player_health -= 1
+		self.burn_count -=1
+		await get_tree().create_timer(0.1)
+		self.burn(burn_state.Hold)
+	if(burn_state.End):
+		self.is_in_lava=false
+		self.burn_count=10
