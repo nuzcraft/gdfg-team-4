@@ -3,7 +3,7 @@ class_name Weapon
 
 @export var speed_curve : Curve
 @export var speed := 1000.0
-@export var total_ttl := 2.0
+@export var total_ttl := 1.0
 @export var cooldown := 0.5
 @export var projectile_image: Texture2D
 @export var collision_shape: Shape2D

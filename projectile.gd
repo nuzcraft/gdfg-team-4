@@ -19,6 +19,7 @@ func _physics_process(delta):
 	else:
 		var speed_factor := weapon.speed_curve.sample_baked(ttl/weapon.total_ttl) * weapon.speed
 		position = position + speed_factor * delta * direction
+		$Sprite.modulate = Color(1,1,1,sqrt(ttl/weapon.total_ttl))
 
 func _on_body_entered(body):
 	if body.has_method("hit"):

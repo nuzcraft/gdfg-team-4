@@ -10,8 +10,8 @@ radius = 42.0
 height = 116.0
 
 [sub_resource type="Curve" id="Curve_gee14"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
+_data = [Vector2(0, 0), 0.0, 10.6467, 0, 0, Vector2(0.129808, 0.865169), 0.849847, 0.849847, 0, 0, Vector2(0.875, 0.820225), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7pyx"]
 size = Vector2(30, 13)
@@ -36,7 +36,7 @@ script = ExtResource("4_n40cg")
 speed_curve = SubResource("Curve_gee14")
 projectile_image = ExtResource("5_txblw")
 collision_shape = SubResource("RectangleShape2D_w7pyx")
-offset = Vector2(40, -25)
+offset = Vector2(50, -25)
 metadata/_custom_type_script = "uid://n5hl0c088sp6"
 
 [node name="Label" type="Label" parent="."]
