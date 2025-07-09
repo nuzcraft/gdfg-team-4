@@ -13,15 +13,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
-      - name: Install GUT plugin
-        run: |
-          rm -rf addons/gut
-          git init
-          git remote add origin https://github.com/bitwes/Gut.git
-          git config core.sparseCheckout true
-          echo "addons/gut/*" >> .git/info/sparse-checkout
-          git pull --depth=1 origin v9.4.0
 
       - name: Run GUT smoke tests
         run: |
