@@ -1,0 +1,26 @@
+name: Godot GUT Tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: 
+      - develop
+      - main
+  
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    container:
+      image: barichello/godot-ci:4.4.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Import resources and class_names
+        run: |
+          godot --headless --editor --quit --path "$PWD"
+
+      - name: Run GUT smoke tests
+        run: |
+          godot --headless --path "$PWD" -s addons/gut/gut_cmdln.gd -gdir=res://test/smoke -gexit

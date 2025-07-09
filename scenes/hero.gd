@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Hero
 
 var can_shoot: bool = true
 var can_melee: bool = true
