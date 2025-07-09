@@ -9,17 +9,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      # 1) checkout your code
       - uses: actions/checkout@v3
 
-      # 2) install Godot 4.4 CLI
-      - name: Set up Godot
-        uses: chickensoft-games/setup-godot-action@v2
+      - name: Set up Godot 4.4
+        uses: paulloz/godot-action@v1.2.2
         with:
-          godot-version: "4.4"
+          version: 4.4    # major.minor (will install latest 4.4.x)
+          mono: false    # or true if you need the Mono build
+          export-templates: true
 
-      # 3) run your GUT test suite headless
-      - name: Run GUT unit tests
+      - name: Run GUT smoke tests
         run: |
           godot --headless \
             --path . \
