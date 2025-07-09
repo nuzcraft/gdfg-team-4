@@ -16,5 +16,5 @@ jobs:
 
       - name: Run GUT smoke tests
         run: |
-          godot -d -s --path "$PWD" addons/gut/gut_cmdln.gd -gdir=res://test/smoke
+          godot --headless -d --path "$PWD" -s addons/gut/gut_cmdln.gd -gdir=res://test/smoke -gexit
 
