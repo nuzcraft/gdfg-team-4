@@ -25,3 +25,4 @@ func test_title_scene_loads():
 	assert_true(play_button is Button, 'Play button failed to load')
 	assert_true(settings_button is Button, 'Play button failed to load')
 	assert_true(exit_button is Button, 'Play button failed to load')
+	assert_eq(1,0,'fail test')
