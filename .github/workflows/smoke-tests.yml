@@ -1,0 +1,26 @@
+name: Godot GUT Tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # 1) checkout your code
+      - uses: actions/checkout@v3
+
+      # 2) install Godot 4.4 CLI
+      - name: Set up Godot
+        uses: firebelley/godot-setup@v1
+        with:
+          godot-version: "4.4"
+
+      # 3) run your GUT test suite headless
+      - name: Run GUT unit tests
+        run: |
+          godot --headless \
+            --path . \
+            --script addons/gut/gut_cmdline.gd \
+            -- -d res://test/smoke -r tap
