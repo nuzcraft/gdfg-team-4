@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/aoes/lava_aoe.tscn" id="6_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dcyj8ess4gt2j" path="res://scenes/utility/hud.tscn" id="6_p57ef"]
 
-[node name="Prototype01" type="Node2D"]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_p57ef")
 
 [node name="TileMapLayers" type="Node" parent="."]
