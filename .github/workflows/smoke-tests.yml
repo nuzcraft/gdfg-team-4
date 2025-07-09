@@ -13,10 +13,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup
+      - name: Install GUT plugin
         run: |
-          mkdir -v -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
-          mv -v /root/.local/share/godot/export_templates/* ~/.local/share/godot/export_templates/
+          rm -rf addons/gut
+          git clone --depth=1 https://github.com/bitwes/Gut.git addons/gut
       - name: Run GUT smoke tests
         run: |
           godot --headless \
