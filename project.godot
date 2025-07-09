@@ -22,6 +22,10 @@ SettingsStore="*res://SettingsStore.gd"
 Music="*res://scenes/music_player.gd"
 MouseController="*res://MouseController.gd"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [global_group]
 
 FireArea="Any area that can cause burning"
