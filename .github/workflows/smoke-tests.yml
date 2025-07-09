@@ -15,8 +15,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Install GUT plugin
         run: |
-          rm -rf addons/gut
-          git clone --depth=1 https://github.com/bitwes/Gut.git addons/gut
+          wget -q https://github.com/bitwes/Gut/archive/refs/tags/v9.4.0.zip -O gut.zip
+          unzip -q gut.zip
+          cp -R Gut-9.4.0/addons/gut addons/gut
+          rm -rf gut.zip Gut-9.4.0
       - name: Run GUT smoke tests
         run: |
           godot --headless \
