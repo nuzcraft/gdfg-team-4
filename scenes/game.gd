@@ -5,6 +5,7 @@ var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 func _ready() -> void:
 	for enemy in $Enemies.get_children():
 		if enemy is LavaAnt:
+			enemy.target = $Hero
 			enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 	Globals.player_health = 100
 	Globals.player_max_health = 100
