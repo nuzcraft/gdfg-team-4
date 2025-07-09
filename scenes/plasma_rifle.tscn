@@ -35,6 +35,5 @@ visible = false
 position = Vector2(56, -24)
 
 [node name="NozzlePositionDebug" type="Sprite2D" parent="NozzleOffset"]
-visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_13a4g")
