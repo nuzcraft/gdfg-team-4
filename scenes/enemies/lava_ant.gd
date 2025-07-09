@@ -5,14 +5,32 @@ signal lava_aoe
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
-var speed: int = 300
+@export var target: Node2D
+
+var idle_speed: int = 100
+var pursuit_speed: int = 300
+var speed: int = 0
 var vulnerable: bool = true
 var player_near: bool = false
 var health: int = 20
+var target_pos: Vector2
+var home_pos: Vector2
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
+enum {
+	IDLE,
+	PURSUIT,
+	PRIMED,
+	DEAD
+}
+var state = IDLE
 
 func _ready() -> void:
+	rng.randomize()
 	animated_sprite_2d.play("default")
+	switch_state(IDLE)
 
 func hit(damage):
 	if vulnerable:
@@ -20,31 +38,32 @@ func hit(damage):
 		vulnerable = false
 		$HitTimer.start()
 		health -= damage
+		switch_state(PURSUIT)
 	if health <= 0:
-		explode()
+		switch_state(DEAD)
 
 func _process(_delta):
-	if player_near:
-		speed = 200
-	else :
-		speed = 300
-	if health <= 0 or (animation_player.current_animation == 'primed' and animation_player.is_playing()) \
-		or animated_sprite_2d.animation == 'explode':
-		speed = 0
-	var direction = (Globals.player_pos - position).normalized()
-	if direction.x > 0:
+	match state:
+		PURSUIT:
+			target_pos = target.position
+	
+func _physics_process(delta: float) -> void:
+	if target_pos:
+		navigation_agent_2d.target_position = target_pos
+	var next_path_position = navigation_agent_2d.get_next_path_position()
+	var direction = position.direction_to(next_path_position)
+	if direction.x >= 0.25:
 		animated_sprite_2d.flip_h = true
-	else:
+	elif direction.x <= -0.25:
 		animated_sprite_2d.flip_h = false
+	
 	velocity = direction * speed
 	move_and_slide()
-
-
+	
 func _on_attack_area_2d_body_entered(body):
 	if body.name == "Hero":
+		switch_state(PRIMED)
 		player_near = true
-		$ExplodeTimer.start()
-		animation_player.play("primed")
 
 func _on_attack_area_2d_body_exited(_body):
 	player_near =  false
@@ -55,9 +74,9 @@ func explode():
 
 func _on_explode_timer_timeout():
 	if player_near:
-		explode()
+		switch_state(DEAD)
 	else:
-		animation_player.play("RESET")
+		switch_state(PURSUIT)
 
 func summon_lava_aoe():
 	lava_aoe.emit(position)
@@ -65,8 +84,34 @@ func summon_lava_aoe():
 func _on_hit_timer_timeout():
 	vulnerable = true
 
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "explode":
 		summon_lava_aoe()
 		queue_free()
+		
+func switch_state(state_enum) -> void:
+	match state_enum:
+		IDLE:
+			state = IDLE
+			animation_player.play("RESET")
+			home_pos = position
+			target_pos = Vector2(rng.randf() * 500, rng.randf() * 500) + home_pos
+			speed = idle_speed
+		PURSUIT:
+			state = PURSUIT
+			speed = pursuit_speed
+			animation_player.play("RESET")
+		PRIMED:
+			state = PRIMED
+			speed = 0
+			$ExplodeTimer.start()
+			animation_player.play("primed")
+		DEAD:
+			state = DEAD
+			speed = 0
+			explode()
+			
+func _on_navigation_agent_2d_target_reached() -> void:
+	match state:
+		IDLE:
+			target_pos = Vector2(rng.randf() * 500, rng.randf() * 500) + home_pos
