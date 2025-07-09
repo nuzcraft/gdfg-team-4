@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://308rtes7svwa"]
+[gd_scene load_steps=6 format=3 uid="uid://308rtes7svwa"]
 
 [ext_resource type="Script" uid="uid://clnos8pxbfevk" path="res://scenes/title.gd" id="1_4ignj"]
 [ext_resource type="Script" uid="uid://bitrr7u3puege" path="res://scripts/parallax_background.gd" id="2_pyl7j"]
 [ext_resource type="Theme" uid="uid://c8kkdp01b836k" path="res://swarmed_theme.tres" id="2_wosw1"]
 [ext_resource type="Texture2D" uid="uid://btldtrm2irmyd" path="res://assets/title-screen-stars-bg.png" id="3_b3w7a"]
+[ext_resource type="AudioStream" uid="uid://8nsw2kirdag" path="res://assets/sfx/button-hover-2.mp3" id="5_b3w7a"]
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -100,17 +101,17 @@ horizontal_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="PlayButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer" groups=["TitleSceneButtons"]]
 layout_mode = 2
 theme = ExtResource("2_wosw1")
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="SettingsButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer" groups=["TitleSceneButtons"]]
 layout_mode = 2
 theme = ExtResource("2_wosw1")
 text = "Settings"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="ExitButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer" groups=["TitleSceneButtons"]]
 layout_mode = 2
 theme = ExtResource("2_wosw1")
 text = "Exit"
@@ -144,6 +145,9 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Special Thanks to the Game Dev Field Guide Community"
 horizontal_alignment = 1
+
+[node name="ButtonHoverPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_b3w7a")
 
 [connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

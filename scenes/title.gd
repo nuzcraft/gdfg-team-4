@@ -2,6 +2,7 @@ extends Control
 
 @onready var godot_label: Label = $VBoxContainer/GodotLabel
 @onready var exit_btn:     Button   = $VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/ExitButton
+@onready var hover_player: AudioStreamPlayer = $ButtonHoverPlayer
 
 func _ready() -> void:
 
@@ -16,6 +17,9 @@ func _ready() -> void:
 	if SettingsStore.enable_music && !Music.playing:
 		Music.stream = preload("res://assets/music/title--fade-out--2025-07-07.ogg")
 		Music.play()
+	
+	for btn in get_tree().get_nodes_in_group("TitleSceneButtons"):
+		btn.mouse_entered.connect(_on_button_mouse_entered)
 
 func _on_play_button_pressed():
 
@@ -37,3 +41,10 @@ func _on_exit_button_pressed() -> void:
 
 	# exit the game
 	get_tree().quit()
+
+
+func _on_button_mouse_entered() -> void:
+	# Restart the clip if it was still playing
+	if hover_player.playing:
+		hover_player.stop()
+	hover_player.play()
