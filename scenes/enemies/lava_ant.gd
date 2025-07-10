@@ -47,7 +47,7 @@ func _process(_delta):
 		PURSUIT:
 			target_pos = target.position
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if target_pos:
 		navigation_agent_2d.target_position = target_pos
 	var next_path_position = navigation_agent_2d.get_next_path_position()

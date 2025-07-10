@@ -19,7 +19,7 @@ func aim_at(direction):
 
 	z_index = -1 if (direction.y < 0.0) else 0
 
-func fire(position, direction):
+func fire(direction):
 	if in_cooldown:
 		return
 
