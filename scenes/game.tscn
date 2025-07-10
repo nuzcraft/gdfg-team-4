@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://br30g2mugrs33"]
+[gd_scene load_steps=6 format=4 uid="uid://br30g2mugrs33"]
 
 [ext_resource type="Script" uid="uid://dr7n2hwpha2r" path="res://scenes/game.gd" id="1_p57ef"]
 [ext_resource type="TileSet" uid="uid://d25t2rrj02qel" path="res://resources/dark_rock_tile_set.res" id="2_gee14"]
 [ext_resource type="PackedScene" uid="uid://qxbajo21gg4j" path="res://scenes/hero.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/enemies/lava_ant.tscn" id="5_vtaks"]
 [ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/aoes/lava_aoe.tscn" id="6_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://dcyj8ess4gt2j" path="res://scenes/utility/hud.tscn" id="6_p57ef"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_p57ef")
@@ -39,5 +38,3 @@ target = NodePath("../../Hero")
 [node name="Hero" parent="." instance=ExtResource("3_iywne")]
 position = Vector2(-42, 96)
 collision_mask = 14
-
-[node name="Hud" parent="." instance=ExtResource("6_p57ef")]
