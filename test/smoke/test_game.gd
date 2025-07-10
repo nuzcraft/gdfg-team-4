@@ -5,7 +5,7 @@ var game
 
 func before_each():
 	game = game_scene.instantiate()
-	add_child_autoqfree(game)
+	add_child_autofree(game)
 	await get_tree().process_frame
 
 func test_game_scene_loads():
