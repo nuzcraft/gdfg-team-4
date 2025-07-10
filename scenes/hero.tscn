@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://qxbajo21gg4j"]
+[gd_scene load_steps=6 format=3 uid="uid://qxbajo21gg4j"]
 
 [ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/hero.gd" id="1_w7pyx"]
 [ext_resource type="Texture2D" uid="uid://hck1dqeicbyn" path="res://PlaceholderAssets/hero.png" id="2_mv13s"]
 [ext_resource type="PackedScene" uid="uid://c4jn5ceehyndd" path="res://scenes/plasma_rifle.tscn" id="3_06baw"]
+[ext_resource type="PackedScene" uid="uid://dcyj8ess4gt2j" path="res://scenes/utility/hud.tscn" id="4_mv13s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tnpc"]
 radius = 42.0
@@ -36,3 +37,5 @@ offset = Vector2(45, 35)
 zoom = Vector2(0.8, 0.8)
 
 [node name="PlasmaRifle" parent="." instance=ExtResource("3_06baw")]
+
+[node name="Hud" parent="." instance=ExtResource("4_mv13s")]
