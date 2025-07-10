@@ -27,6 +27,7 @@ jobs:
           if grep -q "SCRIPT ERROR:" output.log; then
             echo "❌ Script errors detected in log!"
             exit 1
+          fi
           if grep -q "Debugger Break" output.log; then
             echo "❌ Debugger errors detected in log!"
             exit 1
