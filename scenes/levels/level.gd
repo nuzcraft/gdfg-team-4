@@ -1,6 +1,8 @@
 extends Node2D
 class_name Level
 
+const MAX_LEVELS = 3
+
 var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 
 func _ready() -> void:
@@ -44,12 +46,16 @@ func _next_level():
 	var file_result = regex.search(scene_file)
 	if name_result and file_result:
 		var num := int(name_result.get_string(1))
-		var file_num := int(file_result.get_string(1))
-		if num == file_num:
-			var next_level := "res://scenes/levels/level" + str(num + 1) + ".tscn"
-			print("Switching to: ", next_level)
-			get_tree().change_scene_to_file(next_level)
+		if num < MAX_LEVELS:
+			var file_num := int(file_result.get_string(1))
+			if num == file_num:
+				var next_level := "res://scenes/levels/level" + str(num + 1) + ".tscn"
+				print("Switching to: ", next_level)
+				get_tree().change_scene_to_file(next_level)
+			else:
+				push_error("Level name does not match file name")
 		else:
-			push_error("Level name does not match file name")
+			print("Game over")
+			get_tree().change_scene_to_file('res://scenes/title.tscn')
 	else:
 		push_error("Level name didn't match expected pattern.")
