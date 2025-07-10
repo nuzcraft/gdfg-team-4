@@ -5,11 +5,8 @@ var title
 
 func before_each():
 	title = title_scene.instantiate()
-	add_child(title)
+	add_child_autoqfree(title)
 	await get_tree().process_frame
-
-func after_each():
-	title.queue_free()
 
 func test_title_scene_loads():
 	# has title

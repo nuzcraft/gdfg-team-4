@@ -31,7 +31,7 @@ func _process(_delta):
 	
 	#Range attack input
 	if Input.is_action_pressed("primaryAction") and can_shoot:
-		primary_weapon.fire(global_position, mouse_direction)
+		primary_weapon.fire(mouse_direction)
 	
 	#Melee attack input
 	#if Input.is_action_pressed("secondaryAction") and can_melee:

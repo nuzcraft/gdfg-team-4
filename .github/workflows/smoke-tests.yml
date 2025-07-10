@@ -23,4 +23,8 @@ jobs:
 
       - name: Run GUT smoke tests
         run: |
-          godot --headless --path "$PWD" -s addons/gut/gut_cmdln.gd -gdir=res://test/smoke -gexit
+          godot -d --headless --path "$PWD" -s addons/gut/gut_cmdln.gd -gdir=res://test/smoke -gexit 2>&1 | tee output.log
+          if grep -q "SCRIPT ERROR:" output.log; then
+            echo "❌ Godot errors detected in log!"
+            exit 1
+          fi
