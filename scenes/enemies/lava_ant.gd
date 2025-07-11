@@ -35,6 +35,12 @@ func _ready() -> void:
 	scale = Vector2(scaling, scaling)
 	idle_speed += ((1 - scaling) * 2) * idle_speed
 	pursuit_speed += ((1 - scaling) * 1.5) * pursuit_speed
+	if scaling > 0.75:
+		health = 30
+	elif scaling > 0.5:
+		health = 20
+	else:
+		health = 10
 	switch_state(IDLE)
 
 func hit(damage):
