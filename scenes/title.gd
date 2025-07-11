@@ -3,8 +3,9 @@ extends Control
 @onready var godot_label: Label = $VBoxContainer/GodotLabel
 @onready var exit_btn:     Button   = $VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer/ExitButton
 
-func _ready() -> void:
+const HAND_SMALL_POINT = preload("res://PlaceholderAssets/hand_small_point.svg")
 
+func _ready() -> void:
 	# connect the exit btn
 	exit_btn.pressed.connect(_on_exit_button_pressed)
 
@@ -16,6 +17,8 @@ func _ready() -> void:
 	if SettingsStore.enable_music && !Music.playing:
 		Music.stream = preload("res://assets/music/title--fade-out--2025-07-07.ogg")
 		Music.play()
+		
+	Input.set_custom_mouse_cursor(HAND_SMALL_POINT, 0, Vector2(10, 10))	
 
 func _on_play_button_pressed():
 

@@ -34,6 +34,7 @@ func _ready() -> void:
 
 func hit(damage):
 	if vulnerable:
+		animation_player.play("RESET")
 		animation_player.play("hit")
 		vulnerable = false
 		$HitTimer.start()
@@ -81,6 +82,7 @@ func _on_explode_timer_timeout():
 	if player_near:
 		switch_state(DEAD)
 	else:
+		animation_player.play("RESET")
 		switch_state(PURSUIT)
 
 func summon_lava_aoe():
@@ -105,7 +107,7 @@ func switch_state(state_enum) -> void:
 		PURSUIT:
 			state = PURSUIT
 			speed = pursuit_speed
-			animation_player.play("RESET")
+			#animation_player.play("RESET")
 		PRIMED:
 			state = PRIMED
 			speed = 0

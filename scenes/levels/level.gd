@@ -1,11 +1,13 @@
 extends Node2D
 class_name Level
 
+const TARGET_ROUND_B = preload("res://PlaceholderAssets/target_round_b.svg")
 const MAX_LEVELS = 3
 
 var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 
 func _ready() -> void:
+	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
 	for enemy in $Enemies.get_children():
 		if enemy is LavaAnt:
 			enemy.target = $Hero
