@@ -35,6 +35,26 @@ target = NodePath("../../Hero")
 position = Vector2(-138, -401)
 target = NodePath("../../Hero")
 
+[node name="LavaAnt3" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_bbk5w")]
+position = Vector2(605, 303)
+target = NodePath("../../Hero")
+scaling = 0.5
+
+[node name="LavaAnt4" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_bbk5w")]
+position = Vector2(437, 346)
+target = NodePath("../../Hero")
+scaling = 0.5
+
+[node name="LavaAnt5" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_bbk5w")]
+position = Vector2(559, 460)
+target = NodePath("../../Hero")
+scaling = 0.5
+
+[node name="LavaAnt6" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_bbk5w")]
+position = Vector2(722, 409)
+target = NodePath("../../Hero")
+scaling = 0.75
+
 [node name="Hero" parent="." instance=ExtResource("5_conm7")]
 position = Vector2(-42, 96)
 collision_mask = 14

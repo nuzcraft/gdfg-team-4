@@ -8,6 +8,7 @@ signal lava_aoe
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 @export var target: Node2D
+@export var scaling: float = 1
 
 var idle_speed: int = 100
 var pursuit_speed: int = 300
@@ -30,6 +31,16 @@ var state = IDLE
 func _ready() -> void:
 	rng.randomize()
 	animated_sprite_2d.play("default")
+	# scaling
+	scale = Vector2(scaling, scaling)
+	idle_speed += ((1 - scaling) * 2) * idle_speed
+	pursuit_speed += ((1 - scaling) * 1.5) * pursuit_speed
+	if scaling > 0.75:
+		health = 30
+	elif scaling > 0.5:
+		health = 20
+	else:
+		health = 10
 	switch_state(IDLE)
 
 func hit(damage):
@@ -58,7 +69,7 @@ func _physics_process(_delta: float) -> void:
 	elif direction.x <= -0.25:
 		animated_sprite_2d.flip_h = false
 	if animated_sprite_2d.animation != "explode":
-		if direction.y >= 0.25:
+		if direction.y >= 0.1:
 			animated_sprite_2d.frame = 0
 		elif direction.y <= -0.25:
 			animated_sprite_2d.frame = 1
