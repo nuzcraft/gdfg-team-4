@@ -56,6 +56,11 @@ func _physics_process(_delta: float) -> void:
 		animated_sprite_2d.flip_h = true
 	elif direction.x <= -0.25:
 		animated_sprite_2d.flip_h = false
+	if animated_sprite_2d.animation != "explode":
+		if direction.y >= 0.25:
+			animated_sprite_2d.frame = 0
+		elif direction.y <= -0.25:
+			animated_sprite_2d.frame = 1
 	
 	velocity = direction * speed
 	move_and_slide()
