@@ -12,10 +12,11 @@ func _ready() -> void:
 		if enemy is LavaAnt:
 			enemy.target = $Hero
 			enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
-	for enemy in $SplittingEnemy.get_children():
-		if enemy is LavaAnt:
-			enemy.target = $Hero
-			enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
+		if enemy is Splitting:
+			for splitting_enemy in enemy.get_children():
+				splitting_enemy.target = $Hero
+				if splitting_enemy is LavaAnt:
+					splitting_enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 	Globals.player_health = 100
 	Globals.player_max_health = 100
 	Globals.player_armor = 0
@@ -57,11 +58,14 @@ func _next_level():
 			if num == file_num:
 				var next_level := "res://scenes/levels/level" + str(num + 1) + ".tscn"
 				print("Switching to: ", next_level)
-				get_tree().change_scene_to_file(next_level)
+				call_deferred('_change_scene_safe', next_level)
 			else:
 				push_error("Level name does not match file name")
 		else:
 			print("Game over")
-			get_tree().change_scene_to_file('res://scenes/title.tscn')
+			call_deferred('_change_scene_safe', 'res://scenes/title.tscn')
 	else:
 		push_error("Level name didn't match expected pattern.")
+
+func _change_scene_safe(scene_path: String):
+	get_tree().change_scene_to_file(scene_path)

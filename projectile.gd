@@ -17,7 +17,7 @@ func _ready():
 	
 func _physics_process(delta):
 	ttl = ttl - delta
-	if ttl <= 0.0 or !is_inside_tree():
+	if ttl <= 0.0 or !is_inside_tree() or !weapon.is_inside_tree():
 		queue_free()
 	else:
 		var speed_factor := weapon.speed_curve.sample_baked(ttl/weapon.total_ttl) * weapon.speed
