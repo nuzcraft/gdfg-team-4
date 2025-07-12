@@ -41,7 +41,7 @@ target = NodePath("../../Hero")
 scaling = 0.5
 
 [node name="LavaAnt4" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_bbk5w")]
-position = Vector2(437, 346)
+position = Vector2(457, 360)
 target = NodePath("../../Hero")
 scaling = 0.5
 
