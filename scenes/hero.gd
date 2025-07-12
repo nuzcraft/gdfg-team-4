@@ -54,7 +54,6 @@ func burn():
 	
 func _on_screenshake(amount: float) -> void:
 	shake = min(shake + amount, 1.0)
-	print("shaking: ", shake)
 	
 func screenshake() -> void:
 	var max_offset := Vector2(50, 50)
