@@ -12,6 +12,10 @@ func _ready() -> void:
 		if enemy is LavaAnt:
 			enemy.target = $Hero
 			enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
+	for enemy in $SplittingEnemy.get_children():
+		if enemy is LavaAnt:
+			enemy.target = $Hero
+			enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 	Globals.player_health = 100
 	Globals.player_max_health = 100
 	Globals.player_armor = 0

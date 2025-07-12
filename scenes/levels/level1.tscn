@@ -56,12 +56,13 @@ position = Vector2(722, 409)
 target = NodePath("../../Hero")
 scaling = 0.75
 
-[node name="SplittingEnemy" parent="Enemies" instance=ExtResource("5_1seuy")]
-
-[node name="LavaAnt" parent="Enemies/SplittingEnemy" node_paths=PackedStringArray("target") instance=ExtResource("4_bbk5w")]
-position = Vector2(500, -500)
-target = NodePath("../../../Hero")
-
 [node name="Hero" parent="." instance=ExtResource("5_conm7")]
 position = Vector2(-42, 96)
 collision_mask = 14
+
+[node name="SplittingEnemy" parent="." instance=ExtResource("5_1seuy")]
+
+[node name="LavaAnt" parent="SplittingEnemy" node_paths=PackedStringArray("target") instance=ExtResource("4_bbk5w")]
+position = Vector2(500, -500)
+target = NodePath("../../Hero")
+scaling = 2.0
