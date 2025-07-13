@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6ts2hfff11hw"]
+
+[ext_resource type="PackedScene" uid="uid://wdam72ei55cg" path="res://scenes/enemies/enemy.tscn" id="1_dllgd"]
+[ext_resource type="Script" uid="uid://bt7sawey3gmmn" path="res://scenes/enemies/acid_slug.gd" id="2_0y44s"]
+[ext_resource type="Shader" uid="uid://che53ctbfdnlm" path="res://shaders/flash.gdshader" id="2_a4v6q"]
+[ext_resource type="Texture2D" uid="uid://cp3c5yyknnbqh" path="res://assets/acid_slug/Slug_Front.png" id="3_0y44s"]
+[ext_resource type="Texture2D" uid="uid://wik0tun4aqtu" path="res://assets/acid_slug/Slug_Back.png" id="4_uoxxn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2k3yi"]
+resource_local_to_scene = true
+shader = ExtResource("2_a4v6q")
+shader_parameter/active = false
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b66rh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0y44s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uoxxn")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AcidSlug" instance=ExtResource("1_dllgd")]
+script = ExtResource("2_0y44s")
+idle_speed = 75
+pursuit_speed = 100
+health = 15
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_2k3yi")
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_b66rh")
+
+[node name="AcidTimer" type="Timer" parent="." index="6"]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="AcidTimer" to="." method="_on_acid_timer_timeout"]

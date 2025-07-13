@@ -2,6 +2,7 @@ extends Node
 
 signal screenshake (amount)
 signal collected (type)
+signal acid_aoe (position, scaling)
 
 var player_pos: Vector2
 var player_vulnerable: bool = true
@@ -20,3 +21,6 @@ func add_screenshake(amount: float):
 	
 func collectable_collected(type: String) -> void:
 	collected.emit(type)
+	
+func place_acid_aoe(position: Vector2, scaling: float) -> void:
+	acid_aoe.emit(position, scaling)
