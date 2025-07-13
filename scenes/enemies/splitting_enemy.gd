@@ -48,5 +48,4 @@ func _spawn_smaller_enemies(old_enemy: CharacterBody2D) -> void:
 			tracked_enemies.append(new_enemy)
 			#connect aoe signals
 			if new_enemy.has_signal("lava_aoe"):
-				level_node.connect("lava_aoe", Callable(level_node, "_on_lava_ant_lava_aoe"))
 				new_enemy.connect("lava_aoe", Callable(level_node, "_on_lava_ant_lava_aoe"))
