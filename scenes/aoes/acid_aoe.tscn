@@ -1,19 +1,23 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1cgjd14n8se2"]
 
-[ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/aoes/lava_aoe.tscn" id="1_ti5bu"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ti5bu"]
-radius = 50.0
+[ext_resource type="PackedScene" uid="uid://db64upblp8wnf" path="res://scenes/aoes/base_aoe.tscn" id="1_ti5bu"]
+[ext_resource type="Script" uid="uid://0r0x82wrp3o0" path="res://scenes/aoes/acid_aoe.gd" id="2_bbd2x"]
 
 [node name="AcidAOE" instance=ExtResource("1_ti5bu")]
+collision_layer = 32
+script = ExtResource("2_bbd2x")
+aoe_ability = "acidify"
 
 [node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_ti5bu")
+scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" parent="." index="1"]
-modulate = Color(0.18, 1, 0.385, 1)
-position = Vector2(0, 0)
-scale = Vector2(0.35, 0.4)
+modulate = Color(1.8771e-06, 0.69465, 0.188, 1)
+scale = Vector2(0.275, 0.298)
 
 [node name="DespawnTimer" parent="." index="2"]
-wait_time = 5.0
+wait_time = 3.0
+
+[node name="NavigationObstacle2D" parent="." index="3"]
+vertices = PackedVector2Array(-1, -37, 18, -32, 33, -16, 38, 5, 32, 23, 18, 36, 0, 41, -18, 36, -29, 28, -38, 10, -36, -12, -24, -28)
+avoidance_layers = 32

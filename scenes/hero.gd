@@ -66,31 +66,31 @@ func take_damage(n: int):
 
 var lava_pools: int = 0
 var burn_count: int = 0
-enum burn_state{
+enum call_state{
 	Start,
 	Hold,
 	End
 }
 func burn(input:int):
-	if(input==burn_state.Start&&self.lava_pools<=0):
+	if(input==call_state.Start&&self.lava_pools<=0):
 		$Label.text = "Burning"
 		self.burn_count=0
 		self.lava_pools+=1
 		print("player is in "+str(self.lava_pools)+" lava pools")
-		self.burn(burn_state.Hold)
-	elif(input==burn_state.Start&&self.lava_pools>=1):
+		self.burn(call_state.Hold)
+	elif(input==call_state.Start&&self.lava_pools>=1):
 		self.lava_pools+=1
 		print("player is in "+str(self.lava_pools)+" lava pools")
-	elif (input==burn_state.Hold&&self.lava_pools>=1):
+	elif (input==call_state.Hold&&self.lava_pools>=1):
 		self.take_damage(1)
 		await get_tree().create_timer(0.25).timeout
-		self.burn(burn_state.Hold)
-	elif (input==burn_state.Hold&&self.lava_pools<=0&&burn_count>=1):
+		self.burn(call_state.Hold)
+	elif (input==call_state.Hold&&self.lava_pools<=0&&burn_count>=1):
 		self.take_damage(1)
 		self.burn_count-=1
 		await get_tree().create_timer(0.25).timeout
-		self.burn(burn_state.Hold)
-	elif(input==burn_state.End):
+		self.burn(call_state.Hold)
+	elif(input==call_state.End):
 		self.lava_pools-=1
 		print("player is in "+str(self.lava_pools)+" lava pools")
 		if lava_pools<=0:
@@ -99,7 +99,7 @@ func burn(input:int):
 
 	
 func _on_screenshake(amount: float) -> void:
-	shake = min(shake + amount, 1.0)
+	shake = min(shake + amount, 0.5)
 	
 func screenshake() -> void:
 	var max_offset := Vector2(50, 50)

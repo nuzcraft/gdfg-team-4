@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dv6gx6xpgvqa8" path="res://scenes/levels/level.gd" id="1_dywbp"]
 [ext_resource type="TileSet" uid="uid://d25t2rrj02qel" path="res://resources/dark_rock_tile_set.res" id="2_6sh32"]
 [ext_resource type="TileSet" uid="uid://r8yy5teapt5r" path="res://resources/15TilesDarkRockTileSet.tres" id="3_2r1tl"]
-[ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/aoes/lava_aoe.tscn" id="3_ejswk"]
+[ext_resource type="PackedScene" uid="uid://dx5hkxw8veil" path="res://scenes/aoes/lava_aoe.tscn" id="3_ejswk"]
 [ext_resource type="TileSet" uid="uid://s37sss0ybk8g" path="res://resources/15GrayWallTiles.tres" id="4_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/enemies/lava_ant.tscn" id="4_bbk5w"]
 [ext_resource type="PackedScene" uid="uid://0tmqep1h7h4g" path="res://scenes/enemies/splitting_enemy.tscn" id="5_1seuy"]
