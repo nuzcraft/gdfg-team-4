@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://qxbajo21gg4j"]
+[gd_scene load_steps=8 format=3 uid="uid://qxbajo21gg4j"]
 
 [ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/hero.gd" id="1_w7pyx"]
 [ext_resource type="Texture2D" uid="uid://hck1dqeicbyn" path="res://PlaceholderAssets/hero.png" id="2_mv13s"]
 [ext_resource type="PackedScene" uid="uid://c4jn5ceehyndd" path="res://scenes/plasma_rifle.tscn" id="3_06baw"]
 [ext_resource type="PackedScene" uid="uid://dcyj8ess4gt2j" path="res://scenes/utility/hud.tscn" id="4_mv13s"]
+[ext_resource type="Texture2D" uid="uid://dkqmxrikedr38" path="res://PlaceholderAssets/scifiEnvironment_15.png" id="5_y2sko"]
+[ext_resource type="Theme" uid="uid://c8kkdp01b836k" path="res://swarmed_theme.tres" id="6_mo806"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tnpc"]
 radius = 42.0
@@ -39,3 +41,21 @@ zoom = Vector2(0.8, 0.8)
 [node name="PlasmaRifle" parent="." instance=ExtResource("3_06baw")]
 
 [node name="Hud" parent="." instance=ExtResource("4_mv13s")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Hud/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_y2sko")
+
+[node name="CrystalLabel" type="Label" parent="Hud/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_mo806")
+theme_override_font_sizes/font_size = 48
+text = "0"
