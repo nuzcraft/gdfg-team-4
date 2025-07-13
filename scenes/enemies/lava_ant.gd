@@ -88,6 +88,7 @@ func _on_attack_area_2d_body_exited(_body):
 func explode():
 	animation_player.play("RESET")
 	animated_sprite_2d.play("explode")
+	Globals.add_screenshake(0.3)
 
 func _on_explode_timer_timeout():
 	if player_near:
