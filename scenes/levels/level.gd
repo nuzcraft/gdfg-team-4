@@ -9,14 +9,15 @@ var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
 	for enemy in $Enemies.get_children():
-		if enemy is LavaAnt:
-			enemy.target = $Hero
-			enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 		if enemy is Splitting:
 			for splitting_enemy in enemy.get_children():
 				splitting_enemy.target = $Hero
 				if splitting_enemy is LavaAnt:
 					splitting_enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
+		else:
+			enemy.target = $Hero
+			if enemy is LavaAnt:
+				enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 	Globals.player_health = 100
 	Globals.player_max_health = 100
 	Globals.player_armor = 0

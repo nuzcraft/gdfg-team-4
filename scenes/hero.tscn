@@ -13,7 +13,7 @@ height = 116.0
 
 [node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("primary_weapon")]
 z_index = 10
-collision_mask = 9
+collision_mask = 12
 script = ExtResource("1_w7pyx")
 primary_weapon = NodePath("PlasmaRifle")
 
