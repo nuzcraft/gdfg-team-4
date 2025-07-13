@@ -4,6 +4,7 @@ class_name Hero
 var can_shoot: bool = true
 var can_melee: bool = true
 var currently_in_lava: bool = false
+var crystals_collected: int = 0
 
 
 @export var max_speed: int =500
@@ -19,6 +20,7 @@ var camera_base_offset: Vector2
 func _ready():
 	Globals.screenshake.connect(_on_screenshake)
 	camera_base_offset = $Camera2D.offset
+	Globals.collected.connect(_on_collectable_collected)
 
 func _process(delta):
 	#input
@@ -59,7 +61,11 @@ func screenshake() -> void:
 	var max_offset := Vector2(50, 50)
 	var power := 2
 	var amount := pow(shake, power)
-	print(amount)
 	$Camera2D.offset.x = camera_base_offset.x + (max_offset.x * amount * randi_range(-1, 1))
 	$Camera2D.offset.y = camera_base_offset.y + (max_offset.y * amount * randi_range(-1, 1))
 	
+func _on_collectable_collected(type: String):
+	if type == "crystal":
+		crystals_collected += 1
+		#print("num collected: ", crystals_collected)
+		$Hud/HBoxContainer/CrystalLabel.text = str(crystals_collected)

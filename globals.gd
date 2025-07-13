@@ -1,6 +1,7 @@
 extends Node
 
 signal screenshake (amount)
+signal collected (type)
 
 var player_pos: Vector2
 var player_vulnerable: bool = true
@@ -16,3 +17,6 @@ func player_invulnerable_timer():
 	
 func add_screenshake(amount: float):
 	screenshake.emit(amount)
+	
+func collectable_collected(type: String) -> void:
+	collected.emit(type)
