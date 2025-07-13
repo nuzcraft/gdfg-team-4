@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://daibw0k3mle4g"]
+
+[ext_resource type="Texture2D" uid="uid://qsudtm6dxf35" path="res://PlaceholderAssets/hand_small_point.svg" id="1_6cysq"]
+[ext_resource type="Script" uid="uid://d4aqsx366je2g" path="res://scenes/collectables/collectable.gd" id="1_vtu06"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtu06"]
+radius = 50.0
+
+[node name="Collectable" type="Node2D"]
+script = ExtResource("1_vtu06")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6cysq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vtu06")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,29 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://s37sss0ybk8g"]
+
+[ext_resource type="Texture2D" uid="uid://mdmg6lqvgffb" path="res://assets/15TilesDarkWallSet.png" id="1_binex"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_plydf"]
+texture = ExtResource("1_binex")
+texture_region_size = Vector2i(150, 150)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+2:3/0/y_sort_origin = 1
+3:3/0 = 0
+
+[resource]
+tile_size = Vector2i(150, 150)
+sources/0 = SubResource("TileSetAtlasSource_plydf")

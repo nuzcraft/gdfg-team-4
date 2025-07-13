@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://rcwk8083hdh4"]
+
+[ext_resource type="PackedScene" uid="uid://daibw0k3mle4g" path="res://scenes/collectables/collectable.tscn" id="1_onntb"]
+[ext_resource type="Texture2D" uid="uid://dkqmxrikedr38" path="res://PlaceholderAssets/scifiEnvironment_15.png" id="2_32w74"]
+
+[node name="Crystal" instance=ExtResource("1_onntb")]
+type = "crystal"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_32w74")
