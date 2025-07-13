@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://ceoxogknad0np"]
+[gd_scene load_steps=7 format=4 uid="uid://ceoxogknad0np"]
 
 [ext_resource type="Script" uid="uid://dv6gx6xpgvqa8" path="res://scenes/levels/level.gd" id="1_dywbp"]
 [ext_resource type="TileSet" uid="uid://d25t2rrj02qel" path="res://resources/dark_rock_tile_set.res" id="2_6sh32"]
 [ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/aoes/lava_aoe.tscn" id="3_ejswk"]
 [ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/enemies/lava_ant.tscn" id="4_bbk5w"]
+[ext_resource type="PackedScene" uid="uid://0tmqep1h7h4g" path="res://scenes/enemies/splitting_enemy.tscn" id="5_1seuy"]
 [ext_resource type="PackedScene" uid="uid://qxbajo21gg4j" path="res://scenes/hero.tscn" id="5_conm7"]
 
 [node name="Level1" type="Node2D"]
@@ -54,6 +55,13 @@ scaling = 0.5
 position = Vector2(722, 409)
 target = NodePath("../../Hero")
 scaling = 0.75
+
+[node name="SplittingEnemy" parent="Enemies" instance=ExtResource("5_1seuy")]
+
+[node name="LavaAnt" parent="Enemies/SplittingEnemy" node_paths=PackedStringArray("target") instance=ExtResource("4_bbk5w")]
+position = Vector2(500, -500)
+target = NodePath("../../../Hero")
+scaling = 2.0
 
 [node name="Hero" parent="." instance=ExtResource("5_conm7")]
 position = Vector2(-42, 96)
