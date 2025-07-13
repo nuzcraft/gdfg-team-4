@@ -22,13 +22,25 @@ func aim_at(direction):
 func fire(direction):
 	if in_cooldown:
 		return
-
+	
 	var projectile = projectile_scene.instantiate()
 	projectile.position = $NozzleOffset.global_position
 	projectile.direction = direction
-	projectile.weapon = self
+	
+	projectile.weapon = _create_weapon_data()
 	get_tree().get_root().add_child(projectile)
-
+	
 	in_cooldown = true
 	await get_tree().create_timer(cooldown).timeout
 	in_cooldown = false
+
+func _create_weapon_data() -> WeaponData:
+	var weapon_data = WeaponData.new()
+	weapon_data.speed_curve = speed_curve 
+	weapon_data.speed = speed 
+	weapon_data.total_ttl = total_ttl 
+	weapon_data.cooldown = cooldown 
+	weapon_data.damage = damage
+	weapon_data.projectile_texture = get_node("ProjectileType/Sprite2D").texture
+	weapon_data.projectile_shape = get_node("ProjectileType/CollisionShape2D").shape
+	return weapon_data
