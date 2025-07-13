@@ -29,7 +29,7 @@ func _on_explode_timer_timeout():
 		switch_state(PURSUIT)
 
 func summon_lava_aoe():
-	lava_aoe.emit(position)
+	lava_aoe.emit(position, scaling)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "explode":

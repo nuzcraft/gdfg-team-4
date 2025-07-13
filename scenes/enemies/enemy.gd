@@ -8,12 +8,12 @@ class_name Enemy
 @export var target: Node2D
 @export var scaling: float = 1
 
-var idle_speed: int = 100
-var pursuit_speed: int = 300
+@export var idle_speed: int = 100
+@export var pursuit_speed: int = 300
 var speed: int = 0
 var vulnerable: bool = true
 var player_near: bool = false
-var health: int = 10
+@export var health: int = 10
 var target_pos: Vector2
 var home_pos: Vector2
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
@@ -33,11 +33,9 @@ func _ready() -> void:
 	idle_speed += ((1 - scaling) * 2) * idle_speed
 	pursuit_speed += ((1 - scaling) * 1.5) * pursuit_speed
 	if scaling > 0.75:
-		health = 30
+		health *= 3
 	elif scaling > 0.5:
-		health = 20
-	else:
-		health = 10
+		health *= 2
 	switch_state(IDLE)
 
 func hit(damage):

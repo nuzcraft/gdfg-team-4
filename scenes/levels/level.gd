@@ -5,6 +5,7 @@ const TARGET_ROUND_B = preload("res://PlaceholderAssets/target_round_b.svg")
 const MAX_LEVELS = 3
 
 var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
+const ACID_AOE = preload("res://scenes/aoes/acid_aoe.tscn")
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
@@ -22,20 +23,29 @@ func _ready() -> void:
 	Globals.player_max_health = 100
 	Globals.player_armor = 0
 	Globals.player_max_armor = 100
+	Globals.acid_aoe.connect(_on_acid_aoe)
 
 func _process(_delta):
 	if (_enemy_wave_cleared()):
 		_next_level()
 		queue_free()
 
-func create_lava_aoe(pos):
+func create_lava_aoe(pos, scaling):
 	var aoe = lava_aoe_scene.instantiate() as Area2D
 	aoe.position = pos
-	aoe.is_in_group("FireArea")
+	aoe.scale = Vector2(scaling, scaling)
+	aoe.add_to_group("FireArea")
 	$AOEs.add_child(aoe)
 
-func _on_lava_ant_lava_aoe(pos):
-	create_lava_aoe(pos)
+func _on_lava_ant_lava_aoe(pos, scaling):
+	create_lava_aoe(pos, scaling)
+	
+func _on_acid_aoe(pos, scaling) -> void:
+	var aoe = ACID_AOE.instantiate()
+	aoe.position = pos
+	aoe.scale = Vector2(scaling, scaling)
+	aoe.add_to_group("FireArea")
+	$AOEs.add_child(aoe)
 
 func _enemy_wave_cleared() -> bool:
 	var enemies = $Enemies.get_children()

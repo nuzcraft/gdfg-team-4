@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/enemies/lava_ant.tscn" id="4_bbk5w"]
 [ext_resource type="PackedScene" uid="uid://0tmqep1h7h4g" path="res://scenes/enemies/splitting_enemy.tscn" id="5_1seuy"]
 [ext_resource type="PackedScene" uid="uid://qxbajo21gg4j" path="res://scenes/hero.tscn" id="5_conm7"]
-[ext_resource type="PackedScene" uid="uid://wdam72ei55cg" path="res://scenes/enemies/enemy.tscn" id="8_5ntmo"]
 [ext_resource type="PackedScene" uid="uid://rcwk8083hdh4" path="res://scenes/collectables/crystal.tscn" id="9_5ntmo"]
+[ext_resource type="PackedScene" uid="uid://c6ts2hfff11hw" path="res://scenes/enemies/acid_slug.tscn" id="10_5ntmo"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_dywbp")
@@ -73,16 +73,16 @@ position = Vector2(500, -500)
 target = NodePath("../../../Hero")
 scaling = 2.0
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("8_5ntmo")]
-position = Vector2(-482, 8)
+[node name="AcidSlug" parent="Enemies" instance=ExtResource("10_5ntmo")]
+position = Vector2(-426, -6)
+scaling = 0.75
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("8_5ntmo")]
-position = Vector2(-473, 242)
-scaling = 0.6
+[node name="AcidSlug2" parent="Enemies" instance=ExtResource("10_5ntmo")]
+position = Vector2(-520, 100)
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource("8_5ntmo")]
-position = Vector2(-470, 501)
-scaling = 0.55
+[node name="AcidSlug3" parent="Enemies" instance=ExtResource("10_5ntmo")]
+position = Vector2(-400, 188)
+scaling = 0.5
 
 [node name="Crystal" parent="." instance=ExtResource("9_5ntmo")]
 position = Vector2(384, 514)

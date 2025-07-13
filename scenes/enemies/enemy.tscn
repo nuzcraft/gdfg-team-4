@@ -90,6 +90,7 @@ z_index = 5
 collision_layer = 2
 collision_mask = 12
 script = ExtResource("1_n7575")
+health = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ey3sv")
