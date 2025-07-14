@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dv6gx6xpgvqa8" path="res://scenes/levels/level.gd" id="1_d5djh"]
 [ext_resource type="TileSet" uid="uid://d25t2rrj02qel" path="res://resources/dark_rock_tile_set.res" id="2_ok6xr"]
-[ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/aoes/lava_aoe.tscn" id="3_dj4wq"]
+[ext_resource type="PackedScene" uid="uid://dx5hkxw8veil" path="res://scenes/aoes/lava_aoe.tscn" id="3_dj4wq"]
 [ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/enemies/lava_ant.tscn" id="4_k0mew"]
 [ext_resource type="PackedScene" uid="uid://qxbajo21gg4j" path="res://scenes/hero.tscn" id="5_b0vvs"]
 

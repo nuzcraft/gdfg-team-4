@@ -38,7 +38,9 @@ scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_b66rh")
 
 [node name="NavigationAgent2D" parent="." index="5"]
-avoidance_layers = 8
+navigation_layers = 2
+path_postprocessing = 0
+avoidance_layers = 16
 avoidance_mask = 16
 debug_enabled = true
 
@@ -46,4 +48,5 @@ debug_enabled = true
 wait_time = 0.5
 autostart = true
 
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="AcidTimer" to="." method="_on_acid_timer_timeout"]

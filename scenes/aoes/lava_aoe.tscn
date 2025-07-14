@@ -10,4 +10,6 @@ aoe_ability = "burn"
 wait_time = 5.0
 
 [node name="NavigationObstacle2D" parent="." index="3"]
+radius = 207.92
+affect_navigation_mesh = true
 avoidance_layers = 16

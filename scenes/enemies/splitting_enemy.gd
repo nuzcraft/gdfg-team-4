@@ -14,7 +14,7 @@ func _ready() -> void:
 		tracked_enemies.append(enemy)
 		enemy.tree_exiting.connect(_on_enemy_exiting.bind(enemy))
 
-func _process(delta: float) -> void:
+func _process(_delta):
 	if get_children().size() == 0:
 		queue_free()
 

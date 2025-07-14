@@ -54,7 +54,7 @@ func _process(delta):
 #<<<<<<< HEAD
 func die():
 	if self.alive:
-		print("Player died.")
+		#print("Player died.")
 		self.alive=false
 
 func take_damage(n: int):
@@ -62,7 +62,7 @@ func take_damage(n: int):
 		self.die()
 	else:
 		Globals.player_health -= n
-		print("Player has "+str(Globals.player_health)+" health.")
+		#print("Player has "+str(Globals.player_health)+" health.")
 
 var lava_pools: int = 0
 var burn_count: int = 0
