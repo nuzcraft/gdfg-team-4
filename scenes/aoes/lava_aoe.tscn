@@ -9,7 +9,18 @@ aoe_ability = "burn"
 [node name="DespawnTimer" parent="." index="2"]
 wait_time = 5.0
 
+<<<<<<< HEAD
 [node name="NavigationObstacle2D" parent="." index="3"]
 radius = 207.92
 affect_navigation_mesh = true
 avoidance_layers = 16
+=======
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.266667, 0.176471, 1)
+position = Vector2(-0.500008, 3.5)
+scale = Vector2(1.37667, 1.49)
+texture = ExtResource("1_32bv6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+>>>>>>> origin/elija

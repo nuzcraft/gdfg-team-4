@@ -3,11 +3,14 @@ class_name Hero
 
 var can_shoot: bool = true
 var can_melee: bool = true
+<<<<<<< HEAD
 #<<<<<<< HEAD
 var alive: bool = true
 #=======
 var crystals_collected: int = 0
 #>>>>>>> 4ab65722292bb4a282e9a4cfa85b5278d2622ac5
+=======
+>>>>>>> origin/elija
 
 
 @export var max_speed: int =500
@@ -51,6 +54,7 @@ func _process(delta):
 	#Melee attack input
 	#if Input.is_action_pressed("secondaryAction") and can_melee:
 	#	pass
+<<<<<<< HEAD
 #<<<<<<< HEAD
 func die():
 	if self.alive:
@@ -67,10 +71,16 @@ func take_damage(n: int):
 var lava_pools: int = 0
 var burn_count: int = 0
 enum call_state{
+=======
+var is_in_lava: bool = false
+var burn_count: int = 0
+enum burn_state{
+>>>>>>> origin/elija
 	Start,
 	Hold,
 	End
 }
+<<<<<<< HEAD
 func burn(input:int):
 	if(input==call_state.Start&&self.lava_pools<=0):
 		$Label.text = "Burning"
@@ -113,3 +123,24 @@ func _on_collectable_collected(type: String):
 		crystals_collected += 1
 		#print("num collected: ", crystals_collected)
 		$Hud/HBoxContainer/CrystalLabel.text = str(crystals_collected)
+=======
+func burn(input:burn_state):
+	if(burn_state.Start&&!self.is_in_lava):
+		$Label.text = "Burning"
+		self.burn_count=0
+		self.is_in_lava=true
+		await get_tree().create_timer(0.1)
+		self.burn(burn_state.Hold)
+	if(burn_state.Hold&&self.is_in_lava):
+		Globals.player_health -= 1
+		await get_tree().create_timer(0.1)
+		self.burn(burn_state.Hold)
+	if(burn_state.Hold&&!self.is_in_lava&&self.burn_count>0):
+		Globals.player_health -= 1
+		self.burn_count -=1
+		await get_tree().create_timer(0.1)
+		self.burn(burn_state.Hold)
+	if(burn_state.End):
+		self.is_in_lava=false
+		self.burn_count=10
+>>>>>>> origin/elija
