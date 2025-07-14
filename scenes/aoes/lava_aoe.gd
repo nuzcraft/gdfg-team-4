@@ -1,10 +1,15 @@
-extends Area2D
+extends BaseAOE
+
+enum burn_state{
+	Start,
+	Hold,
+	End
+}
 
 func _on_body_entered(body):
 	if body.has_method("burn"):
-		body.burn()
-		await get_tree().create_timer(0.5).timeout
-		body.burn()
+		body.burn(burn_state.Start)
 
-func _on_despawn_timer_timeout() -> void:
-	queue_free()
+func _on_body_exited(body: Node2D) -> void:
+	if body.has_method("burn"):
+		body.burn(burn_state.End)

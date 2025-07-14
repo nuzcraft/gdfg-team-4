@@ -4,6 +4,7 @@ class_name Hero
 var can_shoot: bool = true
 var can_melee: bool = true
 var currently_in_lava: bool = false
+var alive: bool = true
 var crystals_collected: int = 0
 
 
@@ -40,7 +41,6 @@ func _process(delta):
 	#Range attack input
 	if Input.is_action_just_pressed("primaryAction") and can_shoot:
 		primary_weapon.fire(mouse_direction)
-		Globals.add_screenshake(0.2)
 	
 	#Melee attack input
 	#if Input.is_action_pressed("secondaryAction") and can_melee:
@@ -49,11 +49,6 @@ func _process(delta):
 		shake = max(shake - 0.8 * delta, 0)
 		screenshake()
 
-func burn():
-	Globals.player_health -= 5
-	currently_in_lava = true
-	$Label.text = "Burning"
-	
 func _on_screenshake(amount: float) -> void:
 	shake = min(shake + amount, 1.0)
 	
@@ -69,3 +64,45 @@ func _on_collectable_collected(type: String):
 		crystals_collected += 1
 		#print("num collected: ", crystals_collected)
 		$Hud/HBoxContainer/CrystalLabel.text = str(crystals_collected)
+
+func die():
+	if alive:
+		#print("Player died.")
+		alive=false
+
+func take_damage(n: int):
+	if Globals.player_health<=n:
+		die()
+	else:
+		Globals.player_health -= n
+		#print("Player has "+str(Globals.player_health)+" health.")
+
+var lava_pools: int = 0
+var burn_count: int = 0
+var is_in_lava: bool = false
+
+enum burn_state{
+	Start,
+	Hold,
+	End
+}
+
+func burn(input:burn_state):
+	if(burn_state.Start&&!is_in_lava):
+		$Label.text = "Burning"
+		burn_count=0
+		is_in_lava=true
+		await get_tree().create_timer(0.1)
+		burn(burn_state.Hold)
+	if(burn_state.Hold&&is_in_lava):
+		Globals.player_health -= 1
+		await get_tree().create_timer(0.1)
+		burn(burn_state.Hold)
+	if(burn_state.Hold&&!is_in_lava&&burn_count>0):
+		Globals.player_health -= 1
+		burn_count -=1
+		await get_tree().create_timer(0.1)
+		burn(burn_state.Hold)
+	if(burn_state.End):
+		is_in_lava=false
+		burn_count=10

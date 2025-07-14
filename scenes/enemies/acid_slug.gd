@@ -12,3 +12,4 @@ func _process(delta: float) -> void:
 func _on_acid_timer_timeout() -> void:
 	Globals.place_acid_aoe(position, scaling)
 	$AcidTimer.start()
+	
