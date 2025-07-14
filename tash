@@ -1,0 +1,567 @@
+[33mcommit 9b4c13c59c3b1387a0300eb6c77317edb94d813f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32melija[m[33m, [m[1;31morigin/elija[m[33m)[m
+Author: bleakgh <andrewemoorehead@gmail.com>
+Date:   Wed Jul 9 00:07:54 2025 -0700
+
+    improved lava aoe damage scripting
+
+[33mcommit a5d3752e663ea284a1728da471b8cc5030ba4d60[m
+Author: bleakgh <andrewemoorehead@gmail.com>
+Date:   Tue Jul 8 19:30:34 2025 -0700
+
+    Changed projectile speed curve, reduced opacity over lifetime, reduced lifetime
+
+[33mcommit 460c7813a50c7aa970178bbc5d43c6de9f5031c4[m
+Merge: 97fe324 96b9f13
+Author: Tamir Amitai <72648573+t-amitai@users.noreply.github.com>
+Date:   Tue Jul 8 17:08:22 2025 -0600
+
+    Merge pull request #25 from nuzcraft/healthbar_math_fix
+    
+    fixes int division in healthbar
+
+[33mcommit 96b9f13fbf476e752e94934291f8a0bd91e628af[m[33m ([m[1;31morigin/healthbar_math_fix[m[33m)[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Tue Jul 8 17:07:38 2025 -0600
+
+    fixes int division in healthbar
+
+[33mcommit 97fe3249f7b117e1540adbb44005d6d254015cdd[m
+Merge: e786ce3 fe6ca72
+Author: Tamir Amitai <72648573+t-amitai@users.noreply.github.com>
+Date:   Tue Jul 8 16:39:18 2025 -0600
+
+    Merge pull request #24 from nuzcraft/healthbar
+    
+    Healthbar
+
+[33mcommit e786ce3d0f9d5350859467fa6df764a87c1c8663[m
+Merge: b7cf6df ee784a0
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Tue Jul 8 17:37:00 2025 -0500
+
+    Merge pull request #23 from nuzcraft/lava-ant-update
+    
+    Lava ant update
+
+[33mcommit ee784a0a651282df19258f724bd18fc11756d845[m[33m ([m[1;31morigin/lava-ant-update[m[33m)[m
+Merge: b0fada8 b7cf6df
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Tue Jul 8 17:36:46 2025 -0500
+
+    Merge branch 'main' into lava-ant-update
+
+[33mcommit fe6ca72a81752a164b8d2e5461134b5a11c8b44d[m[33m ([m[1;31morigin/healthbar[m[33m)[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Tue Jul 8 16:36:42 2025 -0600
+
+    adds health_bar script to update shader on player_health/player_armor chage
+
+[33mcommit da978981ab05890b23239128d0fae98349f4f886[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Tue Jul 8 16:35:38 2025 -0600
+
+    adds player armor to globals
+
+[33mcommit b0fada802d1c4d5756721dfc0bd1944448c8cbb3[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Tue Jul 8 17:34:15 2025 -0500
+
+    starting some navigation stuff
+
+[33mcommit 8e922c9c4123831aa4d9824b60ed72a2ba703a51[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Tue Jul 8 16:22:17 2025 -0600
+
+    adds player_max_health global
+
+[33mcommit 88218e351d5e1c57e497c179a30d796c33b6357c[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Tue Jul 8 16:16:48 2025 -0600
+
+    adds healthbar shaders
+
+[33mcommit f3f295e0d671ee3f652dc96bb9200755be847ca0[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Tue Jul 8 17:16:06 2025 -0500
+
+    adding shader material for flashing colors
+
+[33mcommit 3ecb8bc5d54b7acd89fb6f90690bd6248071a089[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Tue Jul 8 16:15:59 2025 -0600
+
+    deletes dead healthbar vars from hero
+
+[33mcommit 9f70acfb0dded458e04e0a1315d0f2c33d8ef2eb[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Tue Jul 8 16:15:22 2025 -0600
+
+    moves healthbar assets into folder and adds armor bar
+
+[33mcommit b7cf6df724c3cda7cb3ddcbaba78f18e89cb901f[m
+Merge: 3c73342 13770c4
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Tue Jul 8 17:17:30 2025 -0400
+
+    Merge pull request #22 from nuzcraft/exit-btn
+    
+    wire up the exit btn on the title scene
+
+[33mcommit 3c73342863a8b5eb8a4bf5415a3713dea2cb7419[m
+Merge: cd7b5cb a68501c
+Author: Tamir Amitai <72648573+t-amitai@users.noreply.github.com>
+Date:   Tue Jul 8 15:08:39 2025 -0600
+
+    Merge pull request #21 from nuzcraft/projectile-fix
+    
+    fixes projectile_image
+
+[33mcommit a68501c235d077b53c3036b2f5c657774a9d328d[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Tue Jul 8 15:07:30 2025 -0600
+
+    fixes projectile_image
+
+[33mcommit 13770c4832820d26a4863328bbcebbbb51b2932d[m[33m ([m[1;31morigin/exit-btn[m[33m)[m
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Tue Jul 8 16:51:53 2025 -0400
+
+    wire up the exit btn on the title scene
+
+[33mcommit fb82d3cd28d40893c3a801cb7311e74a077382b2[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Tue Jul 8 12:07:00 2025 -0500
+
+    working on adding new shaders and such
+
+[33mcommit cd7b5cbb344e329568221537fe57498495d04e5d[m
+Merge: 3009e6f 5e4693e
+Author: BardicSoulkeeper <164677640+BardicSoulkeeper@users.noreply.github.com>
+Date:   Tue Jul 8 08:58:14 2025 -0600
+
+    Merge pull request #20 from nuzcraft/PlayerBurningAttempt2
+    
+    July7, Hero affected by fire
+    I added a burn function on the hero and gave the Lava AOE the ability to detect the hero entering it.
+
+[33mcommit 3009e6fdbd5df6441138eb3759ccc83f31ca4ae4[m
+Merge: 6e6210b c347e42
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Tue Jul 8 09:18:52 2025 -0400
+
+    Merge pull request #19 from nuzcraft/controller-support
+    
+    add controller support for movement, aiming and shooting
+
+[33mcommit c347e42bfb0287342417d7f7d82185f5a1786acf[m[33m ([m[1;31morigin/controller-support[m[33m)[m
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Tue Jul 8 09:18:22 2025 -0400
+
+    add controller support for movement, aiming and shooting
+
+[33mcommit 5a53fb6574c07ccd39166af88ac4357e55b6f2f2[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Tue Jul 8 07:54:44 2025 -0500
+
+    added placeholder explosion
+
+[33mcommit 5e4693e135845b010a3f6169490a37e800fdbc46[m[33m ([m[1;31morigin/PlayerBurningAttempt2[m[33m)[m
+Author: BardicSoulkeeper <164677640+BardicSoulkeeper@users.noreply.github.com>
+Date:   Mon Jul 7 21:09:34 2025 -0600
+
+    July7, Hero affected by fire
+    
+    I added a burn function on the hero and gave the Lava AOE the ability to detect the hero entering it.
+
+[33mcommit 6e6210b7d119f2cdbaa72cbffa5a246eca9f82a3[m
+Merge: 65403ce 4036c3b
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Mon Jul 7 22:32:29 2025 -0400
+
+    Merge pull request #18 from nuzcraft/title-scene-song
+    
+    add intro music (disabled by default for now)
+
+[33mcommit 4036c3bb72fde4fc085468aa85c02fa29251b6a3[m[33m ([m[1;31morigin/title-scene-song[m[33m)[m
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Mon Jul 7 22:31:40 2025 -0400
+
+    add intro music (disabled by default for now)
+
+[33mcommit 65403ceefc095795f31853a35552c59f037f5eb6[m
+Merge: 151253c 95a3838
+Author: Tamir Amitai <72648573+t-amitai@users.noreply.github.com>
+Date:   Mon Jul 7 15:39:04 2025 -0600
+
+    Merge pull request #17 from nuzcraft/hud-start
+    
+    Hud start
+
+[33mcommit 95a383871503f1d0ae8da98c05d17f91082ab5e2[m[33m ([m[1;31morigin/hud-start[m[33m)[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Mon Jul 7 15:36:02 2025 -0600
+
+    adds utility/hud scene
+
+[33mcommit fa0186d0be6cf4e51a1ab40968945e0f0a7db639[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Mon Jul 7 15:30:52 2025 -0600
+
+    adds health bar assets
+
+[33mcommit 4b6a52a0e2945c39e8d3c4ebc4f084b8fbf1d1a1[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Mon Jul 7 15:27:08 2025 -0600
+
+    removes healthbar everywhere
+
+[33mcommit 151253cce46644dc477b074b14b3719a3138a10e[m
+Merge: 49ee343 c2006f7
+Author: Lucas Kannebley Tavares <lucaskt@users.noreply.github.com>
+Date:   Mon Jul 7 16:45:52 2025 -0300
+
+    Merge pull request #16 from nuzcraft/collision-fixes
+    
+    Projectile and Collision Fixes
+
+[33mcommit c2006f78ee670f8ace50333b0a2b6c976630652c[m[33m ([m[1;31morigin/collision-fixes[m[33m)[m
+Author: Lucas Kannebley Tavares <lucaskt@gmail.com>
+Date:   Mon Jul 7 16:42:55 2025 -0300
+
+    Projectile and Collision Fixes
+    
+    Fixed collision layers for all elements. Added Layer 3 for Static Objects and Layer 4 for Projectiles.
+    Added Collision detection between walls and projectiles
+    Added Monster behavior when receiving shots
+    Fixed rotation of projectiles
+
+[33mcommit 49ee343f482261946ac30ec247f161e72c47b733[m
+Merge: f6da9e1 ee535c8
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Mon Jul 7 13:49:30 2025 -0500
+
+    Merge pull request #15 from nuzcraft/hero-scene
+    
+    added hero scene and reorganized some stuff
+
+[33mcommit ee535c8995cba0858526fcf3c8dd4e40be2a3cad[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Mon Jul 7 13:48:39 2025 -0500
+
+    added hero scene and reorganized some stuff
+
+[33mcommit f6da9e1d3e0ea74c2787db625fb073ff74803fee[m
+Merge: 24e85af 19d2983
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Mon Jul 7 13:29:12 2025 -0500
+
+    Merge pull request #14 from nuzcraft/tileset-walls
+    
+    Tileset walls
+
+[33mcommit 19d2983e49fcbb8466aaa7cd702d0c8c9f664fa6[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Mon Jul 7 13:26:16 2025 -0500
+
+    changing z indexes for tileset to show at bottom
+
+[33mcommit e5d7604767c14128e5d5b3a18ba8486e749c5e68[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Mon Jul 7 13:22:36 2025 -0500
+
+    adding wall tile + collisions
+
+[33mcommit 24e85afee30d88840abdd21345cc09bc518fdd67[m
+Merge: 6b15afe 380379d
+Author: Lucas Kannebley Tavares <lucaskt@users.noreply.github.com>
+Date:   Mon Jul 7 03:26:13 2025 -0300
+
+    Merge pull request #13 from nuzcraft/projectiles
+    
+    Add Support for Weapons and Projectiles
+
+[33mcommit 380379d1a3d329acd3d2f7d6711dd3328cab0f91[m
+Author: Lucas Kannebley Tavares <lucaskt@gmail.com>
+Date:   Mon Jul 7 03:17:36 2025 -0300
+
+    Add Support for Weapons and Projectiles
+    
+    This diff adds basic support for a Weapon Class, and the player having a Primary Weapon.
+    It also adds support to projectiles, and connects hits to monsters.
+
+[33mcommit 6b15afe684d20838f52c4f6716c75b11ddf7fd8f[m
+Merge: 5f807f2 64ece8c
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 21:18:19 2025 -0500
+
+    Merge pull request #12 from nuzcraft/tileset
+    
+    adding dark rock tileset
+
+[33mcommit 64ece8c5095ed5ac1fe213c1584b70511099014a[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 21:06:19 2025 -0500
+
+    adding dark rock tileset
+
+[33mcommit 5f807f223528ff8effe6921ed34c8253a45a9cd7[m
+Merge: 898c18a c1ca075
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Sun Jul 6 21:47:05 2025 -0400
+
+    Merge pull request #11 from nuzcraft/scrolling-stars-title-screen
+    
+    Scrolling stars title screen
+
+[33mcommit c1ca075b7fbe836383bbf9a964a5a70ffa5fb7d3[m
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Sun Jul 6 21:41:36 2025 -0400
+
+    add depth of field by adding more parallax layers of stars
+
+[33mcommit f48909c984d3a7eedec1b62e813cfd4b2485b47d[m
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Sun Jul 6 21:30:37 2025 -0400
+
+    add a single scrolling parralax layer with stars
+
+[33mcommit 898c18a05a4e0e4d3a80071235fe324c2a18fda4[m
+Merge: eaccdd7 dede3a8
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Sun Jul 6 20:04:49 2025 -0400
+
+    Merge pull request #10 from nuzcraft/godot-project-name
+    
+    change godot config name to Swarmed
+
+[33mcommit dede3a81dd0c143744e8bff20da225200cc84ba1[m
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Sun Jul 6 20:03:24 2025 -0400
+
+    change godot config name to Swarmed
+
+[33mcommit eaccdd78fd1487db8842e55be2527d4fdf0afbd6[m
+Merge: ff63f19 bc76127
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 16:51:00 2025 -0500
+
+    Merge pull request #9 from nuzcraft/title-screen-space-bg
+    
+    set title screen bg color to black - add a Theme and set some basic c…
+
+[33mcommit bc76127fb42d08d089b762a01d83c1f9a062473d[m
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Sun Jul 6 17:42:32 2025 -0400
+
+    set title screen bg color to black - add a Theme and set some basic colors for Label and Button - add a silly subtitle for the game
+
+[33mcommit ff63f196fbf1a85d9a7f4899247800dfc2006aa3[m
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Sun Jul 6 16:43:02 2025 -0400
+
+    set title to Swarmed
+
+[33mcommit df0edfff639f74c0fb0868a50b6ab2c806555d43[m
+Merge: 3db9e9a a6dfd09
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 15:25:09 2025 -0500
+
+    Merge pull request #8 from nuzcraft/pipelines
+    
+    updating task version number
+
+[33mcommit a6dfd095f64866260cc92f828bb17eacc6ffcca8[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 15:24:34 2025 -0500
+
+    updating task version number
+
+[33mcommit 3db9e9ae2afa89a44b354f4340f83cabf97a5918[m
+Merge: a1979bc cbd2925
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 15:22:54 2025 -0500
+
+    Merge pull request #7 from nuzcraft/pipelines
+    
+    Pipelines
+
+[33mcommit cbd2925c31af788b2295e4ffed627590f2d8f03e[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 15:22:00 2025 -0500
+
+    fixing bad directory
+
+[33mcommit 6ffd22bea0e273c347bcd48835e9378b92e3c6c0[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 15:20:56 2025 -0500
+
+    fixing bad directory + adding macos
+
+[33mcommit a1979bc6e36f6dc5d42205d05e6f19775a66a1b1[m
+Merge: a63467b 1851280
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 15:12:06 2025 -0500
+
+    Merge pull request #6 from nuzcraft/pipelines
+    
+    adding pipeline and export presets
+
+[33mcommit 18512805ff4df8a424c7388562bc976ad070f826[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 15:08:46 2025 -0500
+
+    adding pipeline and export presets
+
+[33mcommit a63467b265c040400212e2d23bd469499a405b9d[m
+Merge: 61284cb 78f18e9
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 13:40:25 2025 -0500
+
+    Merge pull request #5 from nuzcraft/player-health-damage
+    
+    health bars
+
+[33mcommit 78f18e9e5941f563ce63754713f95788afa45fbe[m
+Merge: e20f9c3 61284cb
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 13:40:13 2025 -0500
+
+    Merge branch 'main' into player-health-damage
+
+[33mcommit 61284cbcf2cd6bd79795ee5f7670299ec542592a[m
+Merge: fd8aee2 535f3d8
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sun Jul 6 13:36:32 2025 -0500
+
+    Merge pull request #4 from nuzcraft/settings-button
+
+[33mcommit e20f9c31e42dcf9eaefc88d53cdfc81d4c91f813[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Sun Jul 6 12:24:17 2025 -0600
+
+    lava_ant name typo fix
+
+[33mcommit 48a44a66ae0468e2520de28d9a9574e2715b3cbe[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Sun Jul 6 12:22:17 2025 -0600
+
+    renames files removing prototype prefix
+
+[33mcommit 417a2759f07559d3b52e7d8f7dda8e893c4a8e7d[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Sun Jul 6 12:14:50 2025 -0600
+
+    adds healthBar to prototype_lava_ant
+
+[33mcommit 2e7eac5a979b6ac1162471240c8fb70bdeba1221[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Sun Jul 6 12:13:22 2025 -0600
+
+    adds healthBar to proto_player.gd
+
+[33mcommit a08dc8bb9260dc21e44ae32dea48ad8108438c90[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Sun Jul 6 12:12:31 2025 -0600
+
+    refactors health_bar color
+
+[33mcommit 16e4959a8525a0edcfecc26a15ebf6a32255da6d[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Sun Jul 6 11:57:50 2025 -0600
+
+    adds health_bar uid
+
+[33mcommit 895f7f863161d5234c61c80d3fa8a176bfb9ac9f[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Sun Jul 6 11:57:12 2025 -0600
+
+    adds HealthBar to prototype_01.tscn Player
+
+[33mcommit fcb992eb1572b8d99443308e57c0a348fa5fd4e0[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Sun Jul 6 11:35:09 2025 -0600
+
+    adds HealthBar scene and script
+
+[33mcommit 63d80fabd1b09cec3f040519099ccae9e84e3cd3[m
+Author: t-amitai <tamitai147@gmail.com>
+Date:   Sun Jul 6 10:40:40 2025 -0600
+
+    adds player sprite
+
+[33mcommit 535f3d82cbc9c029850f8d73eca321286fdb975b[m
+Author: Tyler Frankenstein <tyler.frankenstein@gmail.com>
+Date:   Sun Jul 6 11:35:31 2025 -0400
+
+    Add a Settings Button and Scene with a Music Checkbox placeholder
+
+[33mcommit fd8aee23435bd684288db30786ec0d7a6eb892b2[m
+Author: BardicSoulkeeper <164677640+BardicSoulkeeper@users.noreply.github.com>
+Date:   Sat Jul 5 22:14:37 2025 -0600
+
+    Prototype1_July5
+    
+    This is my attempt at a very bare bones prototype. There is a player and four copies of a basic, exploding enemy. I ran out of time before the player got any attacks. I am not precious about this at all and want it to start getting ideas going. I tried to label everything so it will be easy to throw away later.
+
+[33mcommit c206a22697588fbc706128da4245edad19405b32[m
+Merge: 1763b9c 70b782e
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sat Jul 5 15:27:06 2025 -0500
+
+    Merge pull request #3 from nuzcraft/title-screen
+    
+    updated label
+
+[33mcommit 70b782e159ff75c71b7cf13ab9df8423b8831046[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sat Jul 5 15:26:24 2025 -0500
+
+    updated label
+
+[33mcommit 1763b9c1333d0ef4aedf61bf2582de53e2e4c446[m
+Merge: 281fc20 c783489
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sat Jul 5 15:25:28 2025 -0500
+
+    Merge pull request #2 from nuzcraft/title-screen
+    
+    adding basic title screen
+
+[33mcommit c783489640b2d3fb241675e6e42a22334ccbe17b[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Sat Jul 5 15:24:49 2025 -0500
+
+    adding basic title screen
+
+[33mcommit 281fc2084bee36d648426495503855aa1d112538[m
+Merge: 4d5eea2 9da1ce0
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Thu Jul 3 13:47:56 2025 -0500
+
+    Merge pull request #1 from nuzcraft/git-guide
+    
+    Git guide
+
+[33mcommit 9da1ce0363c44ba268551e586ca7facba490fd79[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Thu Jul 3 13:01:19 2025 -0500
+
+    more updates to git cheatsheet
+
+[33mcommit 7fcd4192565d3a840e053e4ceed93898057a18d1[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Thu Jul 3 12:57:40 2025 -0500
+
+    working on git cheat sheet
+
+[33mcommit 4d5eea2bd42ef87f6709ebc2bd95e65f232cf0d7[m
+Author: nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Thu Jul 3 12:41:58 2025 -0500
+
+    creating empty project
+
+[33mcommit 0554cc5e76fd3f722f39f5a3305a3337bc52182b[m
+Author: Nuzcraft <20135847+nuzcraft@users.noreply.github.com>
+Date:   Wed Jul 2 19:00:51 2025 -0500
+
+    Initial commit
