@@ -27,5 +27,4 @@ texture = ExtResource("1_32bv6")
 wait_time = 15.0
 autostart = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

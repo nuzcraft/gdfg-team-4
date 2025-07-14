@@ -77,32 +77,49 @@ func take_damage(n: int):
 		Globals.player_health -= n
 		#print("Player has "+str(Globals.player_health)+" health.")
 
-var lava_pools: int = 0
-var burn_count: int = 0
 var is_in_lava: bool = false
+var is_in_acid: bool = false
 
-enum burn_state{
+enum call_state{
 	Start,
 	Hold,
 	End
 }
 
-func burn(input:burn_state):
-	if(burn_state.Start&&!is_in_lava):
-		$Label.text = "Burning"
-		burn_count=0
-		is_in_lava=true
-		await get_tree().create_timer(0.1)
-		burn(burn_state.Hold)
-	if(burn_state.Hold&&is_in_lava):
-		Globals.player_health -= 1
-		await get_tree().create_timer(0.1)
-		burn(burn_state.Hold)
-	if(burn_state.Hold&&!is_in_lava&&burn_count>0):
-		Globals.player_health -= 1
-		burn_count -=1
-		await get_tree().create_timer(0.1)
-		burn(burn_state.Hold)
-	if(burn_state.End):
-		is_in_lava=false
-		burn_count=10
+func burn(input:call_state):
+	match input:
+		call_state.Start:
+			$Label.text = "Burning"
+			is_in_lava=true
+			burn(call_state.Hold)
+		call_state.Hold:
+			if is_in_lava:
+				Globals.player_health -= 1
+				await get_tree().create_timer(1.0).timeout
+				burn(call_state.Hold)
+		call_state.End:
+			is_in_lava = false
+			await damage_over_time(2, 5, 2.0, 'Burning')
+			$Label.text = "Player"
+
+func acidify(input: call_state):
+	match input:
+		call_state.Start:
+			$Label.text = "Acidic"
+			is_in_acid=true
+			acidify(call_state.Hold)
+		call_state.Hold:
+			if is_in_acid:
+				Globals.player_health -= 2
+				await get_tree().create_timer(1.0).timeout
+				acidify(call_state.Hold)
+		call_state.End:
+			is_in_acid = false
+			$Label.text = "Player"
+#
+func damage_over_time(damage: int, num_hits: int, wait_time: float, effect: String):
+	$Label.text = effect
+	for i in num_hits:
+		Globals.player_health -= damage
+		await get_tree().create_timer(wait_time).timeout
+	$Label.text = "Player"
