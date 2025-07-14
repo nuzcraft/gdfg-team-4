@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://wdam72ei55cg"]
 
-[ext_resource type="Script" uid="uid://6v47g6hw8ldq" path="res://scenes/enemies/enemy.gd" id="1_n7575"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_n7575"]
 [ext_resource type="Material" uid="uid://cgls8su2rfgsh" path="res://shaders/flash_shader_material.tres" id="2_qch6t"]
 [ext_resource type="Texture2D" uid="uid://d2d6cw5cwmqnm" path="res://PlaceholderAssets/KlassySketchLavaAnt.png" id="3_38ino"]
 
