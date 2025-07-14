@@ -41,7 +41,6 @@ func _process(delta):
 	#Range attack input
 	if Input.is_action_just_pressed("primaryAction") and can_shoot:
 		primary_weapon.fire(mouse_direction)
-		Globals.add_screenshake(0.2)
 	
 	#Melee attack input
 	#if Input.is_action_pressed("secondaryAction") and can_melee:
@@ -49,11 +48,6 @@ func _process(delta):
 	if shake:
 		shake = max(shake - 0.8 * delta, 0)
 		screenshake()
-
-#func burn():
-	#Globals.player_health -= 5
-	#currently_in_lava = true
-	#$Label.text = "Burning"
 
 func _on_screenshake(amount: float) -> void:
 	shake = min(shake + amount, 1.0)
