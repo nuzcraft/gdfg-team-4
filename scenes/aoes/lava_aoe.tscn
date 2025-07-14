@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0obualjs4wyq"]
 
 [ext_resource type="Texture2D" uid="uid://bx4camf6v7d5j" path="res://PlaceholderAssets/ManaSpiritLayersHead.png" id="1_32bv6"]
-[ext_resource type="Script" uid="uid://cra7pe4sqos0l" path="res://scenes/aoes/lava_aoe.gd" id="1_wpkc3"]
+[ext_resource type="Script" uid="uid://cbjikmoeu0tum" path="res://scenes/aoes/base_aoe.gd" id="1_wpkc3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqv5b"]
 radius = 198.0
@@ -11,6 +11,7 @@ z_index = 5
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_wpkc3")
+aoe_ability = "burn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

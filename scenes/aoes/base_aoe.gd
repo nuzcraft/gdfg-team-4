@@ -1,4 +1,5 @@
-class_name BaseAOE extends Area2D
+extends Area2D
+class_name BaseAOE 
 
 @export var aoe_ability: String
 enum call_state{

@@ -6,6 +6,7 @@
 radius = 50.0
 
 [node name="AcidAOE" instance=ExtResource("1_ti5bu")]
+aoe_ability = "acidify"
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_ti5bu")
