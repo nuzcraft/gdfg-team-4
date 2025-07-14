@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://dn3sxfmxtfgrd"]
+[gd_scene load_steps=2 format=3 uid="uid://dn3sxfmxtfgrd"]
+
+[ext_resource type="Script" uid="uid://cbjikmoeu0tum" path="res://scenes/aoes/base_aoe.gd" id="1_ej4od"]
 
 [node name="BaseAoe" type="Area2D"]
+script = ExtResource("1_ej4od")
