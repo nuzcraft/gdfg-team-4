@@ -2,14 +2,19 @@ extends Area2D
 class_name BaseAOE 
 
 @export var aoe_ability: String
+
 enum call_state{
 	Start,
 	Hold,
 	End
 }
 
+func _ready():
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+
 func _on_despawn_timer_timeout() -> void:
-	self.queue_free()
+	queue_free()
 
 func _on_body_entered(body):
 	if aoe_ability != null:
