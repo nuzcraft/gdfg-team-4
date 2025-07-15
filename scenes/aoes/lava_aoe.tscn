@@ -16,9 +16,11 @@ shader_parameter/movement_speed = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqv5b"]
 radius = 185.0
+radius = 185.0
 
 [node name="LavaAOE" type="Area2D" groups=["FireArea"]]
 z_index = 5
+material = SubResource("ShaderMaterial_mw2g3")
 material = SubResource("ShaderMaterial_mw2g3")
 collision_layer = 16
 collision_mask = 3
@@ -30,7 +32,13 @@ modulate = Color(1, 0, 0, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("5_mw2g3")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tkr6r")
+scale = Vector2(2, 2)
+texture = ExtResource("3_tkr6r")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 visible = false
 shape = SubResource("CircleShape2D_lqv5b")
 
