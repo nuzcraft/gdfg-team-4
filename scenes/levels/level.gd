@@ -24,6 +24,8 @@ func _ready() -> void:
 	Globals.player_armor = 0
 	Globals.player_max_armor = 100
 	Globals.acid_aoe.connect(_on_acid_aoe)
+	var tex = $SubViewport.get_viewport().get_texture()
+	$ColorRect.material.set_shader_parameter("image", tex)
 
 func _process(_delta):
 	if (_enemy_wave_cleared()):

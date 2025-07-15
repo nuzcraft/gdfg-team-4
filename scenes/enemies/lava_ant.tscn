@@ -157,7 +157,6 @@ shape = SubResource("CircleShape2D_54yyh")
 material = ExtResource("2_ey3sv")
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_bm7qs")
-animation = &"explode"
 
 [node name="ExplodeTimer" type="Timer" parent="."]
 
