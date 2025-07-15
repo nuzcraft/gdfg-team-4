@@ -37,6 +37,12 @@ material = SubResource("ShaderMaterial_2k3yi")
 scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_b66rh")
 
+[node name="NavigationAgent2D" parent="." index="5"]
+avoidance_enabled = true
+avoidance_layers = 2
+avoidance_mask = 2
+debug_enabled = true
+
 [node name="AcidTimer" type="Timer" parent="." index="6"]
 wait_time = 0.5
 autostart = true

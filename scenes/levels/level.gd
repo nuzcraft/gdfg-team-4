@@ -35,16 +35,20 @@ func create_lava_aoe(pos, scaling):
 	aoe.position = pos
 	aoe.scale = Vector2(scaling, scaling)
 	aoe.add_to_group("FireArea")
-	$AOEs.add_child(aoe)
+	$AOEs/LavaRegion.add_child(aoe)
+	_bake_lava_region_avoidance_map()
 
 func _on_lava_ant_lava_aoe(pos, scaling):
 	create_lava_aoe(pos, scaling)
-	
+
+func _on_lava_aoe_despawn_timeout():
+	_bake_lava_region_avoidance_map()
+
 func _on_acid_aoe(pos, scaling) -> void:
 	var aoe = ACID_AOE.instantiate()
 	aoe.position = pos
 	aoe.scale = Vector2(scaling, scaling)
-	aoe.add_to_group("FireArea")
+	aoe.add_to_group("AcidArea")
 	$AOEs.add_child(aoe)
 
 func _enemy_wave_cleared() -> bool:
@@ -80,4 +84,6 @@ func _next_level():
 
 func _change_scene_safe(scene_path: String):
 	get_tree().change_scene_to_file(scene_path)
-		
+
+func _bake_lava_region_avoidance_map():
+	$AOEs/LavaRegion.bake_navigation_polygon()

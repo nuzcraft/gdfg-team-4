@@ -27,4 +27,9 @@ texture = ExtResource("1_32bv6")
 wait_time = 15.0
 autostart = true
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 198.0
+affect_navigation_mesh = true
+avoidance_layers = 2
+
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

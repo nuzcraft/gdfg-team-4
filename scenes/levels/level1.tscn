@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ceoxogknad0np"]
+[gd_scene load_steps=12 format=4 uid="uid://ceoxogknad0np"]
 
 [ext_resource type="Script" uid="uid://dv6gx6xpgvqa8" path="res://scenes/levels/level.gd" id="1_dywbp"]
 [ext_resource type="TileSet" uid="uid://d25t2rrj02qel" path="res://resources/dark_rock_tile_set.res" id="2_6sh32"]
@@ -10,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://qxbajo21gg4j" path="res://scenes/hero.tscn" id="5_conm7"]
 [ext_resource type="PackedScene" uid="uid://rcwk8083hdh4" path="res://scenes/collectables/crystal.tscn" id="9_5ntmo"]
 [ext_resource type="PackedScene" uid="uid://c6ts2hfff11hw" path="res://scenes/enemies/acid_slug.tscn" id="10_5ntmo"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5ntmo"]
+vertices = PackedVector2Array(3188.95, 1248.98, -755.063, 1245.01, -767.938, -786, 3180.04, -786)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-778, -796, 3190, -796, 3199, 1259, -765, 1255)])
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_dywbp")
@@ -32,7 +37,11 @@ tile_set = ExtResource("4_2r1tl")
 
 [node name="AOEs" type="Node" parent="."]
 
-[node name="LavaAOE" parent="AOEs" instance=ExtResource("3_ejswk")]
+[node name="LavaRegion" type="NavigationRegion2D" parent="AOEs"]
+navigation_polygon = SubResource("NavigationPolygon_5ntmo")
+navigation_layers = 0
+
+[node name="LavaAOE" parent="AOEs/LavaRegion" instance=ExtResource("3_ejswk")]
 position = Vector2(501, -439)
 collision_layer = 8
 
