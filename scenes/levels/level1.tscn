@@ -39,7 +39,7 @@ tile_set = ExtResource("4_2r1tl")
 
 [node name="LavaRegion" type="NavigationRegion2D" parent="AOEs"]
 navigation_polygon = SubResource("NavigationPolygon_5ntmo")
-navigation_layers = 0
+navigation_layers = 2
 
 [node name="LavaAOE" parent="AOEs/LavaRegion" instance=ExtResource("3_ejswk")]
 position = Vector2(501, -439)

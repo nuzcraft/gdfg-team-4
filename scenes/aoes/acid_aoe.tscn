@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1cgjd14n8se2"]
+[gd_scene load_steps=4 format=3 uid="uid://c1cgjd14n8se2"]
 
 [ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/aoes/lava_aoe.tscn" id="1_ti5bu"]
+
+[sub_resource type="GDScript" id="GDScript_ti5bu"]
+script/source = "extends BaseAOE
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ti5bu"]
 radius = 50.0
 
 [node name="AcidAOE" instance=ExtResource("1_ti5bu")]
+script = SubResource("GDScript_ti5bu")
 aoe_ability = "acidify"
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -15,6 +20,3 @@ shape = SubResource("CircleShape2D_ti5bu")
 modulate = Color(0.18, 1, 0.385, 1)
 position = Vector2(0, 0)
 scale = Vector2(0.35, 0.4)
-
-[node name="DespawnTimer" parent="." index="2"]
-wait_time = 5.0
