@@ -31,20 +31,20 @@ func _process(_delta):
 		queue_free()
 
 func create_lava_aoe(pos, scaling):
-	var aoe = lava_aoe_scene.instantiate() as Area2D
+	var aoe = lava_aoe_scene.instantiate()
 	aoe.position = pos
 	aoe.scale = Vector2(scaling, scaling)
 	aoe.add_to_group("FireArea")
-	$AOEs.add_child(aoe)
+	$AOEs/LavaRegion.add_child(aoe)
 
 func _on_lava_ant_lava_aoe(pos, scaling):
 	create_lava_aoe(pos, scaling)
-	
+
 func _on_acid_aoe(pos, scaling) -> void:
 	var aoe = ACID_AOE.instantiate()
 	aoe.position = pos
 	aoe.scale = Vector2(scaling, scaling)
-	aoe.add_to_group("FireArea")
+	aoe.add_to_group("AcidArea")
 	$AOEs.add_child(aoe)
 
 func _enemy_wave_cleared() -> bool:
@@ -80,4 +80,3 @@ func _next_level():
 
 func _change_scene_safe(scene_path: String):
 	get_tree().change_scene_to_file(scene_path)
-		
