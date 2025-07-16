@@ -60,7 +60,7 @@ void fragment() {
 	COLOR.rgb = green_replaced.rgb;
 	//COLOR.rgb = source_col.rgb;
 	//COLOR.rgb = mix(red_tex, overlay_color, mix_g_amount).rgb;
-	//if (COLOR.rgb == vec3(0.0)) { // if black
-		//COLOR.a = 0.0; // transparent
-	//}
+	if (COLOR.rgb == vec3(0.0)) { // if black
+		COLOR.a = 0.0; // transparent
+	}
 }
