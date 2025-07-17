@@ -32,7 +32,7 @@ Check out this [Cheat Sheet](https://education.github.com/git-cheat-sheet-educat
 9. back on your machine, `git switch main` or `git checkout main` to switch back to the `main` branch
    - `git pull` to make sure you have the most recent changes, then repeat the cycle
 
-## AOE Texturing Shader (WIP)
+## AOE Texturing (WIP)
 
 - AOE Texture Replacer Scene handles rendering the AOEs and replacing the textures
 - when ever we spawn an AOE, call add_sprite on the texture replacer and pass in your node
