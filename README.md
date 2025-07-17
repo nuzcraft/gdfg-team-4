@@ -46,6 +46,7 @@ Check out this [Cheat Sheet](https://education.github.com/git-cheat-sheet-educat
 - _IMPORTANT_
   - only red and green supported right now
   - trivial to add new colors
+  - still want to mask the walls from the tilemap so that the aoes stay under the walls
   - would like to add some wiggle
 
 ## Credits
