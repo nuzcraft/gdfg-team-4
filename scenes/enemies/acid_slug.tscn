@@ -43,7 +43,6 @@ target_desired_distance = 5.0
 avoidance_enabled = true
 avoidance_layers = 3
 avoidance_mask = 3
-debug_enabled = true
 
 [node name="AcidTimer" type="Timer" parent="." index="6"]
 wait_time = 0.5

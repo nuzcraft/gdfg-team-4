@@ -1,30 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpu7qmyyp6op8"]
+[gd_scene load_steps=7 format=3 uid="uid://bpu7qmyyp6op8"]
 
 [ext_resource type="Script" uid="uid://nig5p75a8fft" path="res://scenes/aoe_texture_replacer.gd" id="1_fg3h8"]
-[ext_resource type="Texture2D" uid="uid://brw3gugm7hmkm" path="res://assets/aoe_sprites/red_splat.png" id="1_uv12y"]
 [ext_resource type="Shader" uid="uid://c1ci6iym4b4vv" path="res://shaders/aoe_tex_replace.gdshader" id="2_53yve"]
-[ext_resource type="Texture2D" uid="uid://b81ffq8me01cd" path="res://assets/Lava_Ant.png" id="3_0o8u1"]
+[ext_resource type="Texture2D" uid="uid://5bsrilvkhkro" path="res://PlaceholderAssets/Liquid_Green_02-512x512.png" id="3_fg3h8"]
 [ext_resource type="Texture2D" uid="uid://dk6kc7fjjiv8b" path="res://assets/rgbcym-palette.png" id="3_goany"]
-[ext_resource type="Texture2D" uid="uid://q26jjmgbfjhb" path="res://icon.svg" id="4_0o8u1"]
-[ext_resource type="Texture2D" uid="uid://dkqmxrikedr38" path="res://PlaceholderAssets/scifiEnvironment_15.png" id="6_53yve"]
+[ext_resource type="Texture2D" uid="uid://deo2xgygxyyu2" path="res://PlaceholderAssets/Lava #4.png" id="5_fg3h8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_djor2"]
 shader = ExtResource("2_53yve")
 shader_parameter/palette = ExtResource("3_goany")
 shader_parameter/palette_size = 8
-shader_parameter/red_sampler = ExtResource("4_0o8u1")
-shader_parameter/red_sampler_scale = 0.007
-shader_parameter/green_sampler = ExtResource("3_0o8u1")
-shader_parameter/green_sampler_scale = 0.007
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fg3h8"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_53yve"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_goany"]
-blend_mode = 1
+shader_parameter/red_sampler = ExtResource("5_fg3h8")
+shader_parameter/red_sampler_scale = 0.01
+shader_parameter/green_sampler = ExtResource("3_fg3h8")
+shader_parameter/green_sampler_scale = 0.01
 
 [node name="AoeTextureReplacer" type="Node2D"]
 script = ExtResource("1_fg3h8")
@@ -50,25 +39,6 @@ render_target_update_mode = 0
 
 [node name="CanvasGroup" type="CanvasGroup" parent="SubViewportContainer/SubViewport2"]
 
-[node name="RedSplat" type="Sprite2D" parent="SubViewportContainer/SubViewport2/CanvasGroup"]
-material = SubResource("CanvasItemMaterial_fg3h8")
-position = Vector2(186, 152)
-texture = ExtResource("1_uv12y")
-
-[node name="RedSplat2" type="Sprite2D" parent="SubViewportContainer/SubViewport2/CanvasGroup"]
-material = SubResource("CanvasItemMaterial_53yve")
-position = Vector2(297, 185)
-texture = ExtResource("1_uv12y")
-
-[node name="RedSplat3" type="Sprite2D" parent="SubViewportContainer/SubViewport2/CanvasGroup"]
-material = SubResource("CanvasItemMaterial_goany")
-position = Vector2(146, 266)
-texture = ExtResource("1_uv12y")
-
-[node name="ScifiEnvironment15" type="Sprite2D" parent="SubViewportContainer/SubViewport2/CanvasGroup"]
-position = Vector2(223, 226)
-texture = ExtResource("6_53yve")
-
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
 transparent_bg = true
@@ -77,22 +47,3 @@ size = Vector2i(5000, 3000)
 render_target_update_mode = 4
 
 [node name="CanvasGroup" type="CanvasGroup" parent="SubViewport"]
-
-[node name="RedSplat" type="Sprite2D" parent="SubViewport/CanvasGroup"]
-material = SubResource("CanvasItemMaterial_fg3h8")
-position = Vector2(186, 152)
-texture = ExtResource("1_uv12y")
-
-[node name="RedSplat2" type="Sprite2D" parent="SubViewport/CanvasGroup"]
-material = SubResource("CanvasItemMaterial_53yve")
-position = Vector2(297, 185)
-texture = ExtResource("1_uv12y")
-
-[node name="RedSplat3" type="Sprite2D" parent="SubViewport/CanvasGroup"]
-material = SubResource("CanvasItemMaterial_goany")
-position = Vector2(146, 266)
-texture = ExtResource("1_uv12y")
-
-[node name="ScifiEnvironment16" type="Sprite2D" parent="SubViewport/CanvasGroup"]
-position = Vector2(223, 226)
-texture = ExtResource("6_53yve")

@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0obualjs4wyq"]
+[gd_scene load_steps=3 format=3 uid="uid://c0obualjs4wyq"]
 
 [ext_resource type="Script" uid="uid://cbjikmoeu0tum" path="res://scenes/aoes/base_aoe.gd" id="1_wpkc3"]
 [ext_resource type="Texture2D" uid="uid://brw3gugm7hmkm" path="res://assets/aoe_sprites/red_splat.png" id="2_wpkc3"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lqv5b"]
-radius = 198.0
 
 [node name="LavaAOE" type="Area2D" groups=["FireArea"]]
 z_index = 5
@@ -13,20 +10,19 @@ collision_mask = 3
 script = ExtResource("1_wpkc3")
 aoe_ability = "burn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_lqv5b")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
 texture = ExtResource("2_wpkc3")
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 15.0
+one_shot = true
 autostart = true
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 radius = 198.0
 avoidance_layers = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-18, -106, -18, -104, -20.7, -102, -23.1, -102, -22, -75.9, -22, -73.5, -29, -61.5, -37.5, -58, -41.5, -58, -53, -65.1, -53, -67, -66.1, -67, -69.1, -62, -71.3, -62, -70, -52.7, -70, -50, -52.7, -36, -50.5, -29, -51, -22.1, -51, -19.8, -58, -12.8, -64.4, -10, -67.6, -10, -99.8, -16, -110, -16, -113, -12, -115, -12, -115, 1.10001, -110, 4.10001, -110, 6.10001, -83.9, 5, -78.6, 5, -52.6, -7, -49.5, -7, -43.5, -4, -42, -4, -31.1, 12, -30.4, 12, -30, 13.3, -30, 20.3, -34, 26.4, -34, 27.8, -72.6, 53, -76, 53, -76, 71.2, -72.5, 73, -62.3, 73, -42, 55.9, -36, 54.7, -26.2, 57, -25, 57, -21, 62, -18.6, 71, -19, 74.8, -19, 100.8, -13.8, 106, -3, 106, 1, 101, 3.2, 101, 0, 69, 0, 65.6, 3, 61.7, 3, 60.1, 11, 55.1, 11, 54.4, 12.3, 54, 19.5, 54, 24.4, 57, 26, 57, 42, 77.6, 42, 80, 51.8, 80, 54.8, 77, 56.5, 77, 62, 57.3, 62, 56.1, 71, 51.2, 80.9, 52, 83.1, 52, 96.2, 64, 107, 64, 110, 60, 112.4, 60, 110, 47.6, 110, 44.8, 76.5, 27, 75.2, 27, 69, 15.4, 69, 13.6, 75, 2.5, 75, 0.899994, 82, -5.1, 96.4, -8, 106.7, -8, 112.7, -13, 115, -13, 115, -25, 111, -28, 111, -30, 96.6, -30, 85.6, -26, 77.6, -26, 68.6, -32, 65, -39.4, 65, -45.4, 71, -56.5, 71, -62.8, 66, -67.8, 66, -70.3, 55.8, -69, 52.4, -69, 42.5, -62, 40.1, -62, 18.2, -39, 1.89999, -39, -4.1, -46, -5.3, -52, -1, -91.9, -1, -100, -6, -104, -6, -106)
 
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
