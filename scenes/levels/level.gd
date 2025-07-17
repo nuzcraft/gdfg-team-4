@@ -36,6 +36,8 @@ func create_lava_aoe(pos, scaling):
 	aoe.scale = Vector2(scaling, scaling)
 	aoe.add_to_group("FireArea")
 	$AOEs/LavaRegion.add_child(aoe)
+	$AoeTextureReplacer.add_sprite(aoe)
+	aoe.hide()
 
 func _on_lava_ant_lava_aoe(pos, scaling):
 	create_lava_aoe(pos, scaling)
@@ -46,6 +48,8 @@ func _on_acid_aoe(pos, scaling) -> void:
 	aoe.scale = Vector2(scaling, scaling)
 	aoe.add_to_group("AcidArea")
 	$AOEs.add_child(aoe)
+	$AoeTextureReplacer.add_sprite(aoe)
+	aoe.hide()
 
 func _enemy_wave_cleared() -> bool:
 	var enemies = $Enemies.get_children()

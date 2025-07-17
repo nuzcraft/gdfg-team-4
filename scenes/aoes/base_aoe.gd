@@ -12,6 +12,7 @@ enum call_state{
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	rotation_degrees = randi_range(0, 360)
 
 func _on_despawn_timer_timeout() -> void:
 	queue_free()
