@@ -36,6 +36,7 @@ func add_sprite(node: Node2D) -> void:
 		elif sub_node is Timer:
 			new_timer = sub_node.duplicate()
 			new_timer.wait_time = sub_node.wait_time
-	new_spr.add_child(new_timer)
-	new_timer.start()
+	if new_timer:
+		new_spr.add_child(new_timer)
+		new_timer.start()
 	
