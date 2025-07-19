@@ -24,7 +24,6 @@ var shot_timer: Timer
 
 enum {
 	IDLE,
-	SHOOTING,
 	PURSUIT,
 	DEAD
 }
@@ -64,13 +63,6 @@ func _process(_delta):
 	match state:
 		PURSUIT:
 			target_pos = target.position
-		SHOOTING:
-			if can_shoot:
-				target_pos = target.position
-				var _target_dir = (target_pos - position).normalized()
-				weapon.fire(_target_dir)
-				can_shoot = false
-				shot_timer.start()
 
 func _physics_process(_delta: float) -> void:
 	if target_pos:
@@ -110,8 +102,6 @@ func switch_state(state_enum) -> void:
 			home_pos = position
 			target_pos = Vector2(rng.randf() * 500, rng.randf() * 500) + home_pos
 			speed = idle_speed
-		SHOOTING:
-			state = SHOOTING
 		PURSUIT:
 			state = PURSUIT
 			speed = pursuit_speed
