@@ -75,7 +75,7 @@ func _next_level():
 				print("Switching to: ", next_level)
 				call_deferred('_change_scene_safe', next_level)
 			else:
-				push_error("Level name does not match file name")
+				call_deferred('_change_scene_safe', 'res://scenes/title.tscn')
 		else:
 			print("Game over")
 			call_deferred('_change_scene_safe', 'res://scenes/title.tscn')
