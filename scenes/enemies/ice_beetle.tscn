@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8l10bql0l7di"]
+
+[ext_resource type="Script" uid="uid://cm00wcleushpj" path="res://scenes/enemies/ice_beetle.gd" id="1_c1jgf"]
+[ext_resource type="Shader" uid="uid://che53ctbfdnlm" path="res://shaders/flash.gdshader" id="2_d0krm"]
+[ext_resource type="Texture2D" uid="uid://c37ydxqwmx8pn" path="res://assets/ice_beetle/Beetle_Front.png" id="3_tq2wm"]
+[ext_resource type="Texture2D" uid="uid://b3aigvrgy5bal" path="res://assets/ice_beetle/Beetle_back.png" id="4_shxcu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4746"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3hu0"]
+radius = 200.212
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gn0v3"]
+resource_local_to_scene = true
+shader = ExtResource("2_d0krm")
+shader_parameter/active = false
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c28hs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tq2wm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_shxcu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ba1pi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:material:shader_parameter/color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ey3sv"]
+resource_name = "hit"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:material:shader_parameter/color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ckxfm"]
+_data = {
+&"RESET": SubResource("Animation_ba1pi"),
+&"hit": SubResource("Animation_ey3sv")
+}
+
+[node name="IceBeetle" type="CharacterBody2D"]
+script = ExtResource("1_c1jgf")
+metadata/_custom_type_script = "uid://6v47g6hw8ldq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i4746")
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
+shape = SubResource("CircleShape2D_o3hu0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_gn0v3")
+sprite_frames = SubResource("SpriteFrames_c28hs")
+
+[node name="HitTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ckxfm")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_max_distance = 300.0
+path_postprocessing = 1
+avoidance_enabled = true
+avoidance_layers = 3
+avoidance_mask = 3
+
+[node name="IceTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
+[connection signal="timeout" from="IceTimer" to="." method="_on_ice_timer_timeout"]
