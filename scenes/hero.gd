@@ -70,11 +70,11 @@ func die():
 		#print("Player died.")
 		alive=false
 
-func take_damage(n: int):
-	if Globals.player_health<=n:
+func hit(damage: int):
+	if Globals.player_health<=damage:
 		die()
 	else:
-		Globals.player_health -= n
+		Globals.player_health -= damage
 		#print("Player has "+str(Globals.player_health)+" health.")
 
 var is_in_lava: bool = false

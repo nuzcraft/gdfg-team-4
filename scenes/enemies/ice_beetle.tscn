@@ -138,11 +138,17 @@ avoidance_layers = 3
 avoidance_mask = 3
 
 [node name="ShotTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
 one_shot = true
 
 [node name="Weapon" type="Node2D" parent="."]
 script = ExtResource("5_tq2wm")
 speed_curve = SubResource("Curve_shxcu")
+speed = 500.0
+total_ttl = 2.0
+damage = 5
+from_enemy = true
 metadata/_custom_type_script = "uid://n5hl0c088sp6"
 
 [node name="ProjectileType" type="Node" parent="Weapon"]

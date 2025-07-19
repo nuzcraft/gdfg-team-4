@@ -65,9 +65,12 @@ func _process(_delta):
 		PURSUIT:
 			target_pos = target.position
 		SHOOTING:
-			target_pos = target.position
-			#var _target_dir = (target_pos - position).normalized()
-			#weapon.aim_at(_target_dir)
+			if can_shoot:
+				target_pos = target.position
+				var _target_dir = (target_pos - position).normalized()
+				weapon.fire(_target_dir)
+				can_shoot = false
+				shot_timer.start()
 
 func _physics_process(_delta: float) -> void:
 	if target_pos:
@@ -83,11 +86,6 @@ func _physics_process(_delta: float) -> void:
 			animated_sprite_2d.frame = 0
 		elif direction.y <= -0.25:
 			animated_sprite_2d.frame = 1
-	if state == SHOOTING and can_shoot:
-		var _target_dir = (target_pos - position).normalized()
-		weapon.fire(_target_dir)
-		can_shoot = false
-		shot_timer.start()
 	
 	velocity = direction * speed
 	move_and_slide()
