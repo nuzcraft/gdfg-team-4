@@ -98,8 +98,8 @@ _data = {
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4746"]
-size = Vector2(14, 31)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shxcu"]
+size = Vector2(30, 8)
 
 [node name="IceBeetle" type="CharacterBody2D"]
 script = ExtResource("1_c1jgf")
@@ -154,8 +154,8 @@ metadata/_custom_type_script = "uid://n5hl0c088sp6"
 [node name="ProjectileType" type="Node" parent="Weapon"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/ProjectileType"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_i4746")
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_shxcu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon/ProjectileType"]
 texture = ExtResource("6_shxcu")
