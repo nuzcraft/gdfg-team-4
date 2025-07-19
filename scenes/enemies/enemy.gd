@@ -17,10 +17,7 @@ var player_near: bool = false
 var target_pos: Vector2
 var home_pos: Vector2
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-var can_shoot: bool = true
 
-var weapon: Weapon
-var shot_timer: Timer
 
 enum {
 	IDLE,
@@ -32,10 +29,6 @@ var state = IDLE
 func _ready() -> void:
 	rng.randomize()
 	animated_sprite_2d.play("default")
-	for child in get_children():
-		if child is Weapon:
-			weapon = child
-			shot_timer = $ShotTimer
 	# scaling
 	scale = Vector2(scaling, scaling)
 	idle_speed += ((1 - scaling) * 2) * idle_speed
@@ -56,8 +49,6 @@ func hit(damage):
 		switch_state(PURSUIT)
 	if health <= 0:
 		switch_state(DEAD)
-
-
 
 func _process(_delta):
 	match state:
@@ -81,7 +72,6 @@ func _physics_process(_delta: float) -> void:
 	
 	velocity = direction * speed
 	move_and_slide()
-
 
 func _on_attack_area_2d_body_entered(body):
 	if body.name == "Hero":
@@ -114,7 +104,3 @@ func _on_navigation_agent_2d_target_reached() -> void:
 	match state:
 		IDLE:
 			target_pos = Vector2(rng.randf() * 500, rng.randf() * 500) + home_pos
-
-func _on_shot_timer_timeout():
-	can_shoot = true
-	
