@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi4nry6akri6x"]
+
+[ext_resource type="FontFile" uid="uid://cf01kekac2ysj" path="res://assets/fonts/orange-kid/Orange Kid.otf" id="1_l1drq"]
+[ext_resource type="Texture2D" uid="uid://3xsncjue460g" path="res://assets/BlueTechPanel.png" id="1_y1yol"]
+[ext_resource type="Script" uid="uid://c2woi6pbsujj6" path="res://scenes/utility/menu.gd" id="2_el1m6"]
+[ext_resource type="Texture2D" uid="uid://bq01vggk4yab7" path="res://assets/BlueSimplePanel.png" id="4_4ea3p"]
+[ext_resource type="LabelSettings" uid="uid://bbdyaw8jp0amn" path="res://resources/text_overlay.tres" id="5_c4hkh"]
+
+[sub_resource type="Theme" id="Theme_g3wkw"]
+default_font = ExtResource("1_l1drq")
+default_font_size = 32
+Button/fonts/font = ExtResource("1_l1drq")
+Label/fonts/font = ExtResource("1_l1drq")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_g3wkw")
+script = ExtResource("2_el1m6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_y1yol")
+patch_margin_left = 54
+patch_margin_top = 146
+patch_margin_right = 86
+patch_margin_bottom = 95
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_4ea3p")
+region_rect = Rect2(10.9615, 16.5499, 582.151, 562.605)
+patch_margin_left = 47
+patch_margin_top = 51
+patch_margin_right = 50
+patch_margin_bottom = 51
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is a menu. We can add Power-Ups and settings here."
+label_settings = ExtResource("5_c4hkh")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_4ea3p")
+region_rect = Rect2(10.9615, 16.5499, 582.151, 562.605)
+patch_margin_left = 47
+patch_margin_top = 51
+patch_margin_right = 50
+patch_margin_bottom = 51
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+
+[node name="Button" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Example
+Button
+1"
+
+[node name="Button2" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Example
+Button
+2"
+
+[node name="Button3" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Example 
+Button
+3"
+
+[node name="CloseMenuButton" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Close Menu"
+
+[connection signal="pressed" from="MarginContainer/CloseMenuButton" to="." method="_on_close_menu_button_pressed"]

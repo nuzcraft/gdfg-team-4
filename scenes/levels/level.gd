@@ -84,3 +84,11 @@ func _next_level():
 
 func _change_scene_safe(scene_path: String):
 	get_tree().change_scene_to_file(scene_path)
+
+
+
+
+
+func _on_intro_text_timer_timeout():
+	$CanvasLayer/TextOverlay.visible = false
+	
