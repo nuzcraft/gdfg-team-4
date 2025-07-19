@@ -1,15 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8l10bql0l7di"]
+[gd_scene load_steps=16 format=3 uid="uid://b8l10bql0l7di"]
 
 [ext_resource type="Script" uid="uid://cm00wcleushpj" path="res://scenes/enemies/ice_beetle.gd" id="1_c1jgf"]
 [ext_resource type="Shader" uid="uid://che53ctbfdnlm" path="res://shaders/flash.gdshader" id="2_d0krm"]
 [ext_resource type="Texture2D" uid="uid://c37ydxqwmx8pn" path="res://assets/ice_beetle/Beetle_Front.png" id="3_tq2wm"]
 [ext_resource type="Texture2D" uid="uid://b3aigvrgy5bal" path="res://assets/ice_beetle/Beetle_back.png" id="4_shxcu"]
+[ext_resource type="Script" uid="uid://n5hl0c088sp6" path="res://scripts/weapon.gd" id="5_tq2wm"]
+[ext_resource type="Texture2D" uid="uid://ngyj0qx70gia" path="res://assets/ice_beetle/Spike.png" id="6_shxcu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4746"]
 radius = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3hu0"]
-radius = 200.212
+radius = 400.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gn0v3"]
 resource_local_to_scene = true
@@ -92,8 +94,17 @@ _data = {
 &"hit": SubResource("Animation_ey3sv")
 }
 
+[sub_resource type="Curve" id="Curve_shxcu"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4746"]
+size = Vector2(14, 31)
+
 [node name="IceBeetle" type="CharacterBody2D"]
 script = ExtResource("1_c1jgf")
+idle_speed = 50
+pursuit_speed = 100
 metadata/_custom_type_script = "uid://6v47g6hw8ldq"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -126,13 +137,29 @@ avoidance_enabled = true
 avoidance_layers = 3
 avoidance_mask = 3
 
-[node name="IceTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
+[node name="ShotTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Weapon" type="Node2D" parent="."]
+script = ExtResource("5_tq2wm")
+speed_curve = SubResource("Curve_shxcu")
+metadata/_custom_type_script = "uid://n5hl0c088sp6"
+
+[node name="ProjectileType" type="Node" parent="Weapon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/ProjectileType"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_i4746")
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapon/ProjectileType"]
+texture = ExtResource("6_shxcu")
+
+[node name="NozzleOffset" type="Marker2D" parent="Weapon"]
+position = Vector2(-17, 31)
 
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
-[connection signal="timeout" from="IceTimer" to="." method="_on_ice_timer_timeout"]
+[connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
