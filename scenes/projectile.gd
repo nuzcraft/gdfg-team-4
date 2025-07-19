@@ -28,6 +28,8 @@ func _physics_process(delta):
 			$Sprite.modulate = Color(1,1,1,sqrt(ttl/weapon.total_ttl))
 
 func _on_body_entered(body):
+	if body is Enemy and weapon.from_enemy:
+		return
 	if body.has_method("hit"):
 		body.hit(weapon.damage)
-	queue_free()
+		queue_free()

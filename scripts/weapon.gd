@@ -6,6 +6,7 @@ class_name Weapon
 @export var total_ttl := 1.0
 @export var cooldown := 0.5
 @export var damage:= 10
+@export var from_enemy := false
 
 var in_cooldown := false
 const projectile_scene := preload("res://scenes/projectile.tscn")
@@ -41,6 +42,7 @@ func _create_weapon_data() -> WeaponData:
 	weapon_data.total_ttl = total_ttl 
 	weapon_data.cooldown = cooldown 
 	weapon_data.damage = damage
+	weapon_data.from_enemy = from_enemy
 	weapon_data.projectile_texture = get_node("ProjectileType/Sprite2D").texture
 	weapon_data.projectile_shape = get_node("ProjectileType/CollisionShape2D").shape
 	return weapon_data

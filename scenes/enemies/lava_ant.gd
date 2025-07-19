@@ -5,7 +5,7 @@ signal lava_aoe
 
 # new states for lava ant
 enum {
-	PRIMED = 3
+	PRIMED = 4
 }
 
 func _ready() -> void:

@@ -18,6 +18,7 @@ var target_pos: Vector2
 var home_pos: Vector2
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
+
 enum {
 	IDLE,
 	PURSUIT,
@@ -53,7 +54,7 @@ func _process(_delta):
 	match state:
 		PURSUIT:
 			target_pos = target.position
-	
+
 func _physics_process(_delta: float) -> void:
 	if target_pos:
 		navigation_agent_2d.target_position = target_pos
@@ -71,7 +72,7 @@ func _physics_process(_delta: float) -> void:
 	
 	velocity = direction * speed
 	move_and_slide()
-	
+
 func _on_attack_area_2d_body_entered(body):
 	if body.name == "Hero":
 		switch_state(PURSUIT)

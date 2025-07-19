@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ceoxogknad0np"]
+[gd_scene load_steps=13 format=4 uid="uid://ceoxogknad0np"]
 
 [ext_resource type="Script" uid="uid://dv6gx6xpgvqa8" path="res://scenes/levels/level.gd" id="1_dywbp"]
 [ext_resource type="TileSet" uid="uid://d25t2rrj02qel" path="res://resources/dark_rock_tile_set.res" id="2_6sh32"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://qxbajo21gg4j" path="res://scenes/hero.tscn" id="5_conm7"]
 [ext_resource type="PackedScene" uid="uid://bpu7qmyyp6op8" path="res://scenes/aoe_texture_replacer.tscn" id="6_nkeig"]
 [ext_resource type="PackedScene" uid="uid://rcwk8083hdh4" path="res://scenes/collectables/crystal.tscn" id="9_5ntmo"]
+[ext_resource type="PackedScene" uid="uid://b8l10bql0l7di" path="res://scenes/enemies/ice_beetle.tscn" id="9_nkeig"]
 [ext_resource type="PackedScene" uid="uid://c6ts2hfff11hw" path="res://scenes/enemies/acid_slug.tscn" id="10_5ntmo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5ntmo"]
@@ -91,6 +92,15 @@ position = Vector2(339, 873)
 [node name="AcidSlug3" parent="Enemies" instance=ExtResource("10_5ntmo")]
 position = Vector2(459, 961)
 scaling = 0.5
+
+[node name="IceBeetle" parent="Enemies" instance=ExtResource("9_nkeig")]
+position = Vector2(2795, 1386)
+
+[node name="IceBeetle2" parent="Enemies" instance=ExtResource("9_nkeig")]
+position = Vector2(3243, 1151)
+
+[node name="IceBeetle3" parent="Enemies" instance=ExtResource("9_nkeig")]
+position = Vector2(2897, 760)
 
 [node name="Crystal" parent="." instance=ExtResource("9_5ntmo")]
 position = Vector2(1243, 1287)

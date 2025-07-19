@@ -8,3 +8,4 @@ var cooldown : float
 var damage: int
 var projectile_texture: Texture2D
 var projectile_shape: Shape2D
+var from_enemy: bool
