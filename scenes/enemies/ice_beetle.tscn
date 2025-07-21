@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://che53ctbfdnlm" path="res://shaders/flash.gdshader" id="2_d0krm"]
 [ext_resource type="Texture2D" uid="uid://c37ydxqwmx8pn" path="res://assets/ice_beetle/Beetle_Front.png" id="3_tq2wm"]
 [ext_resource type="Texture2D" uid="uid://b3aigvrgy5bal" path="res://assets/ice_beetle/Beetle_back.png" id="4_shxcu"]
-[ext_resource type="Script" uid="uid://n5hl0c088sp6" path="res://scripts/weapon.gd" id="5_tq2wm"]
+[ext_resource type="Script" uid="uid://n5hl0c088sp6" path="res://scenes/weapons/weapon.gd" id="5_tq2wm"]
 [ext_resource type="Texture2D" uid="uid://ngyj0qx70gia" path="res://assets/ice_beetle/Spike.png" id="6_shxcu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4746"]

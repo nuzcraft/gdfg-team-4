@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://bm0lj8ouj5bwk"]
 
-[ext_resource type="Script" uid="uid://3ykmvlq3q0p6" path="res://scenes/utility/health_bar.gd" id="1_oij4j"]
+[ext_resource type="Script" uid="uid://3ykmvlq3q0p6" path="res://scenes/ui/health_bar.gd" id="1_oij4j"]
 [ext_resource type="Texture2D" uid="uid://ebp6ducdw2e1" path="res://assets/health_bar/Health_Bar.png" id="1_yml1h"]
-[ext_resource type="Shader" uid="uid://c0l1cjogikqo2" path="res://scenes/utility/health_bar_health.gdshader" id="2_6uvj4"]
+[ext_resource type="Shader" uid="uid://c0l1cjogikqo2" path="res://scenes/ui/health_bar_health.gdshader" id="2_6uvj4"]
 [ext_resource type="Texture2D" uid="uid://c4j3eiljddoir" path="res://assets/health_bar/Health_Bar_Progress.png" id="2_tolga"]
 [ext_resource type="Texture2D" uid="uid://c0l7fq4ttoal8" path="res://assets/health_bar/Health_Bar_Armor.png" id="4_6uvj4"]
-[ext_resource type="Shader" uid="uid://eyarh1ftxvrl" path="res://scenes/utility/health_bar_armor.gdshader" id="4_v3yl3"]
+[ext_resource type="Shader" uid="uid://eyarh1ftxvrl" path="res://scenes/ui/health_bar_armor.gdshader" id="4_v3yl3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v3yl3"]
 shader = ExtResource("2_6uvj4")

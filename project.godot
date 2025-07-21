@@ -19,10 +19,10 @@ config/icon="uid://dt7fqg8ifiq2o"
 
 [autoload]
 
-Globals="*res://globals.gd"
-SettingsStore="*res://SettingsStore.gd"
-Music="*res://scenes/music_player.gd"
-MouseController="*res://MouseController.gd"
+Globals="*res://scenes/globals.gd"
+SettingsStore="*res://scenes/SettingsStore.gd"
+Music="*res://scenes/utility/music_player.gd"
+MouseController="*res://scenes/MouseController.gd"
 
 [editor_plugins]
 

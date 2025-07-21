@@ -9,7 +9,7 @@ class_name Weapon
 @export var from_enemy := false
 
 var in_cooldown := false
-const projectile_scene := preload("res://scenes/projectile.tscn")
+const projectile_scene := preload("res://scenes/weapons/projectile.tscn")
 
 func aim_at(direction):
 	var angle = rad_to_deg(direction.angle())

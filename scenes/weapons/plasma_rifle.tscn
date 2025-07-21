@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c4jn5ceehyndd"]
 
-[ext_resource type="Script" uid="uid://n5hl0c088sp6" path="res://scripts/weapon.gd" id="1_0g57o"]
+[ext_resource type="Script" uid="uid://n5hl0c088sp6" path="res://scenes/weapons/weapon.gd" id="1_0g57o"]
 [ext_resource type="Texture2D" uid="uid://1jevtmmvb24o" path="res://PlaceholderAssets/weapon.png" id="2_onp2x"]
 [ext_resource type="Texture2D" uid="uid://cuani15l8gpnx" path="res://assets/shot.png" id="3_85vdb"]
 [ext_resource type="Texture2D" uid="uid://7d10pimbcvvr" path="res://PlaceholderAssets/UICircle.png" id="4_13a4g"]
