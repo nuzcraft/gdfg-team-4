@@ -24,6 +24,11 @@ SettingsStore="*res://scenes/SettingsStore.gd"
 Music="*res://scenes/utility/music_player.gd"
 MouseController="*res://scenes/MouseController.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
