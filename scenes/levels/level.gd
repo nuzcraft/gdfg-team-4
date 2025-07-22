@@ -75,10 +75,10 @@ func _next_level():
 				print("Switching to: ", next_level)
 				call_deferred('_change_scene_safe', next_level)
 			else:
-				call_deferred('_change_scene_safe', 'res://scenes/title.tscn')
+				call_deferred('_change_scene_safe', 'res://scenes/utility/title.tscn')
 		else:
 			print("Game over")
-			call_deferred('_change_scene_safe', 'res://scenes/title.tscn')
+			call_deferred('_change_scene_safe', 'res://scenes/utility/title.tscn')
 	else:
 		push_error("Level name didn't match expected pattern.")
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://308rtes7svwa"]
 
-[ext_resource type="Script" uid="uid://clnos8pxbfevk" path="res://scenes/ui/title.gd" id="1_4ignj"]
-[ext_resource type="Script" uid="uid://bitrr7u3puege" path="res://scenes/ui/parallax_background.gd" id="2_pyl7j"]
+[ext_resource type="Script" uid="uid://clnos8pxbfevk" path="res://scenes/utility/title.gd" id="1_4ignj"]
+[ext_resource type="Script" uid="uid://bitrr7u3puege" path="res://scenes/utility/parallax_background.gd" id="2_pyl7j"]
 [ext_resource type="Theme" uid="uid://c8kkdp01b836k" path="res://resources/swarmed_theme.tres" id="2_wosw1"]
 [ext_resource type="Texture2D" uid="uid://btldtrm2irmyd" path="res://assets/title-screen-stars-bg.png" id="3_b3w7a"]
 
