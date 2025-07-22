@@ -11,10 +11,10 @@ func _ready() -> void:
 	save_btn.pressed.connect(_save_and_back)
 
 func _go_back() -> void:
-	get_tree().change_scene_to_file("res://scenes/title.tscn")
+	get_tree().change_scene_to_file("res://scenes/utility/title.tscn")
 
 func _save_and_back() -> void:
 	SettingsStore.enable_music = music_check.button_pressed
 	if !SettingsStore.enable_music:
 		Music.stop()
-	get_tree().change_scene_to_file("res://scenes/title.tscn")
+	get_tree().change_scene_to_file("res://scenes/utility/title.tscn")

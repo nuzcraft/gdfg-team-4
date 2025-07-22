@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://d25t2rrj02qel" path="res://resources/dark_rock_tile_set.res" id="2_ok6xr"]
 [ext_resource type="TileSet" uid="uid://r8yy5teapt5r" path="res://resources/15TilesDarkRockTileSet.tres" id="3_oyk6k"]
 [ext_resource type="TileSet" uid="uid://s37sss0ybk8g" path="res://resources/15GrayWallTiles.tres" id="4_gycjm"]
-[ext_resource type="PackedScene" uid="uid://bpu7qmyyp6op8" path="res://scenes/aoe_texture_replacer.tscn" id="5_8i1lk"]
+[ext_resource type="PackedScene" uid="uid://bpu7qmyyp6op8" path="res://scenes/utility/aoe_texture_replacer.tscn" id="5_8i1lk"]
 [ext_resource type="PackedScene" uid="uid://qxbajo21gg4j" path="res://scenes/hero.tscn" id="5_b0vvs"]
 [ext_resource type="PackedScene" uid="uid://b8l10bql0l7di" path="res://scenes/enemies/ice_beetle.tscn" id="6_k0mew"]
 [ext_resource type="PackedScene" uid="uid://rcwk8083hdh4" path="res://scenes/collectables/crystal.tscn" id="9_hkuam"]

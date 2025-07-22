@@ -1,6 +1,6 @@
 extends GutTest
 
-var title_scene := preload('res://scenes/title.tscn')
+var title_scene := preload('res://scenes/utility/title.tscn')
 var title
 
 func before_each():

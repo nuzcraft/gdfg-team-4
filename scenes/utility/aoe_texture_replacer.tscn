@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bpu7qmyyp6op8"]
 
-[ext_resource type="Script" uid="uid://nig5p75a8fft" path="res://scenes/aoe_texture_replacer.gd" id="1_fg3h8"]
+[ext_resource type="Script" uid="uid://nig5p75a8fft" path="res://scenes/utility/aoe_texture_replacer.gd" id="1_fg3h8"]
 [ext_resource type="Shader" uid="uid://c1ci6iym4b4vv" path="res://shaders/aoe_tex_replace.gdshader" id="2_53yve"]
 [ext_resource type="Texture2D" uid="uid://5bsrilvkhkro" path="res://PlaceholderAssets/Liquid_Green_02-512x512.png" id="3_fg3h8"]
 [ext_resource type="Texture2D" uid="uid://dk6kc7fjjiv8b" path="res://assets/rgbcym-palette.png" id="3_goany"]

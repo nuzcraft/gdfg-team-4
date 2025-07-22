@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d1mr1jwoop6vc" path="res://scenes/enemies/lava_ant.tscn" id="4_bbk5w"]
 [ext_resource type="PackedScene" uid="uid://0tmqep1h7h4g" path="res://scenes/enemies/splitting_enemy.tscn" id="5_1seuy"]
 [ext_resource type="PackedScene" uid="uid://qxbajo21gg4j" path="res://scenes/hero.tscn" id="5_conm7"]
-[ext_resource type="PackedScene" uid="uid://bpu7qmyyp6op8" path="res://scenes/aoe_texture_replacer.tscn" id="6_nkeig"]
+[ext_resource type="PackedScene" uid="uid://bpu7qmyyp6op8" path="res://scenes/utility/aoe_texture_replacer.tscn" id="6_nkeig"]
 [ext_resource type="PackedScene" uid="uid://rcwk8083hdh4" path="res://scenes/collectables/crystal.tscn" id="9_5ntmo"]
 [ext_resource type="PackedScene" uid="uid://b8l10bql0l7di" path="res://scenes/enemies/ice_beetle.tscn" id="9_nkeig"]
 [ext_resource type="PackedScene" uid="uid://c6ts2hfff11hw" path="res://scenes/enemies/acid_slug.tscn" id="10_5ntmo"]
