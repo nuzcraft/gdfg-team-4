@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1mr1jwoop6vc"]
+[gd_scene load_steps=16 format=3 uid="uid://d1mr1jwoop6vc"]
 
 [ext_resource type="Script" uid="uid://d13keqcgktvc4" path="res://scenes/enemies/lava_ant.gd" id="1_1ih35"]
 [ext_resource type="Material" uid="uid://cgls8su2rfgsh" path="res://shaders/flash_shader_material.tres" id="2_ey3sv"]
-[ext_resource type="Texture2D" uid="uid://b81ffq8me01cd" path="res://assets/Lava_Ant.png" id="2_pu7h8"]
+[ext_resource type="Texture2D" uid="uid://dt7fqg8ifiq2o" path="res://assets/lava_ant/Front.png" id="3_ba1pi"]
 [ext_resource type="Texture2D" uid="uid://d1fwd3fbx5r6m" path="res://PlaceholderAssets/Explosion/explosion00.png" id="3_jkuyd"]
+[ext_resource type="Texture2D" uid="uid://0xf0dkmy7tq3" path="res://assets/lava_ant/Behind.png" id="4_ckxfm"]
 [ext_resource type="Texture2D" uid="uid://km2ift1ystl0" path="res://PlaceholderAssets/Explosion/explosion01.png" id="4_ey3sv"]
 [ext_resource type="Texture2D" uid="uid://d2qnxcrcwusfv" path="res://PlaceholderAssets/Explosion/explosion02.png" id="5_ba1pi"]
 [ext_resource type="Texture2D" uid="uid://c7v66xxgb11qx" path="res://PlaceholderAssets/Explosion/explosion03.png" id="6_ckxfm"]
@@ -18,9 +19,12 @@ radius = 200.212
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pu7h8")
+"texture": ExtResource("3_ba1pi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ckxfm")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -135,7 +139,7 @@ _data = {
 }
 
 [node name="LavaAnt" type="CharacterBody2D"]
-z_index = 10
+z_index = 5
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_1ih35")
@@ -151,6 +155,7 @@ shape = SubResource("CircleShape2D_54yyh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_ey3sv")
+scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_bm7qs")
 
 [node name="ExplodeTimer" type="Timer" parent="."]

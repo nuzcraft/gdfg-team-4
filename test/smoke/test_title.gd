@@ -1,11 +1,11 @@
 extends GutTest
 
-var title_scene := preload('res://scenes/title.tscn')
+var title_scene := preload('res://scenes/utility/title.tscn')
 var title
 
 func before_each():
 	title = title_scene.instantiate()
-	add_child_autoqfree(title)
+	add_child_autofree(title)
 	await get_tree().process_frame
 
 func test_title_scene_loads():

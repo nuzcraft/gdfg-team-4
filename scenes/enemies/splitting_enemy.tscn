@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0tmqep1h7h4g"]
+
+[ext_resource type="Script" uid="uid://ux7yuhneeen0" path="res://scenes/enemies/splitting_enemy.gd" id="1_hx6p1"]
+
+[node name="SplittingEnemy" type="Node"]
+script = ExtResource("1_hx6p1")

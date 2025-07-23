@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0w53cb0b4jg5"]
+
+[ext_resource type="Script" uid="uid://cbjikmoeu0tum" path="res://scenes/aoes/base_aoe.gd" id="1_7axqi"]
+[ext_resource type="Texture2D" uid="uid://h27w30p5qyfm" path="res://assets/aoe_sprites/blue_splat.png" id="2_7axqi"]
+
+[node name="IceAoe" type="Area2D"]
+script = ExtResource("1_7axqi")
+metadata/_custom_type_script = "uid://cbjikmoeu0tum"
+
+[node name="BlueSplat" type="Sprite2D" parent="."]
+texture = ExtResource("2_7axqi")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -102, 10, -101, 18, -100, 25, -97, 32, -91, 44, -90, 52, -88, 68, -73, 71, -67, 73, -60, 74, -56, 84, -45, 85, -40, 86, -27, 88, -21, 90, -14, 91, -5, 91, 7, 90, 14, 89, 21, 85, 26, 80, 32, 79, 42, 78, 50, 76, 55, 72, 60, 67, 62, 63, 66, 60, 72, 56, 78, 53, 82, 48, 87, 43, 90, 37, 92, 31, 92, 27, 94, 23, 97, 18, 99, 11, 99, 4, 100, -1, 101, -9, 101, -16, 98, -22, 96, -28, 92, -35, 91, -41, 90, -47, 86, -52, 81, -56, 76, -64, 70, -71, 66, -75, 60, -76, 53, -77, 42, -78, 34, -83, 30, -87, 25, -87, 17, -85, 9, -84, 2, -87, -5, -90, -11, -93, -19, -93, -27, -91, -34, -88, -41, -83, -47, -79, -50, -75, -53, -72, -58, -71, -64, -70, -69, -67, -74, -62, -78, -56, -80, -50, -82, -46, -85, -42, -89, -38, -92, -34, -96, -27, -97, -22, -97, -15, -97, -10, -99, -5, -101)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(91.2851, -43.4639)
