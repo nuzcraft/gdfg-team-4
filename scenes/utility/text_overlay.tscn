@@ -18,7 +18,7 @@ anchor_right = 1.0
 grow_horizontal = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="TextPopUp"]
-modulate = Color(1, 1, 1, 0.858824)
+modulate = Color(1, 1, 1, 0.298039)
 layout_mode = 2
 texture = ExtResource("2_dwv6r")
 region_rect = Rect2(0, 0, 600, 600)

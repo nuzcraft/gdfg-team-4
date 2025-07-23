@@ -5,7 +5,14 @@
 [node name="Hud" type="CanvasLayer"]
 
 [node name="HealthBar" parent="." instance=ExtResource("1_kyygc")]
-offset_left = 1027.0
-offset_top = 523.0
-offset_right = 1027.0
-offset_bottom = 523.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -129.0
+offset_right = 130.0
+offset_bottom = 129.0
+grow_horizontal = 0
+grow_vertical = 0
