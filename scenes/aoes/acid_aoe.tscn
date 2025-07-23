@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1cgjd14n8se2"]
+
+[ext_resource type="PackedScene" uid="uid://c0obualjs4wyq" path="res://scenes/aoes/lava_aoe.tscn" id="1_ti5bu"]
+[ext_resource type="Texture2D" uid="uid://bjk46y6ifj0x8" path="res://assets/aoe_sprites/green_splat.png" id="2_bbd2x"]
+
+[sub_resource type="GDScript" id="GDScript_ti5bu"]
+script/source = "extends BaseAOE
+"
+
+[node name="AcidAOE" instance=ExtResource("1_ti5bu")]
+script = SubResource("GDScript_ti5bu")
+aoe_ability = "acidify"
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.35, 0.4)
+texture = ExtResource("2_bbd2x")
+
+[node name="DespawnTimer" parent="." index="1"]
+wait_time = 5.0
+
+[node name="CollisionPolygon2D" parent="." index="3"]
+disabled = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." index="4"]
+scale = Vector2(0.35, 0.4)
+polygon = PackedVector2Array(-8, -107.1, -8, -105.5, -14.4, -103, -17, -103, -20, -99, -21.4, -99, -28, -81.4, -28, -78.8, -34, -72.9, -44.2, -72, -55.6, -72, -60.5, -69, -63, -69, -71, -58, -72.7, -58, -76, -39.2, -76, -38, -82, -32.9, -95.5, -27, -98.1, -27, -104.1, -17, -106.1, -17, -105, 2.10001, -105, 5.8, -98, 12.8, -98, 14.3, -83.4, 21, -82.2, 21, -77.5, 30.5, -79, 36.8, -79, 39.2, -83.9, 45, -85.6, 45, -87.5, 53, -89.2, 53, -88, 65.2, -88, 69.8, -80, 78.7, -80, 80.3, -73, 83.2, -73, 85, -55.3, 85, -51.3, 82, -49.1, 82, -43.1, 75, -41.6, 75, -36, 58.3, -36, 56.9, -31, 53, -20.8, 52, -12.7, 52, -2.7, 60, -1.7, 66, -4, 73.7, -4, 90.7, 0, 95.7, 0, 98.1, 9, 104.1, 9, 106, 31.8, 106, 39.7, 99, 41.3, 99, 44.3, 92, 46, 92, 46, 73.5, 37.4, 57.4, 40, 48.3, 40, 47, 55.6, 36, 57.3, 36, 63, 23.4, 63, 21.9, 68, 18, 91.3, 14, 93.8, 14, 100.8, 7, 102.4, 7, 105.4, -2, 107, -2, 107, -15.6, 104, -20.6, 104, -23, 92, -32, 92, -33.6, 86.2, -35, 75.5, -35, 57.4, -25.5, 48.3, -28, 47.1, -28, 40, -38.7, 40, -41, 25.6, -51, 24.1, -51, 20.2, -58, 19.4, -58, 19, -59.3, 19, -64.7, 22.3, -72, 24, -72, 24, -89.7, 21, -93.7, 21, -96, 10, -104.1, 10, -105.9)

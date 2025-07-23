@@ -11,16 +11,27 @@ config_version=5
 [application]
 
 config/name="Swarmed"
+config/version="0.0.1"
 run/main_scene="uid://308rtes7svwa"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="uid://b26304nr5e5xq"
+config/icon="uid://dt7fqg8ifiq2o"
 
 [autoload]
 
-Globals="*res://globals.gd"
-SettingsStore="*res://SettingsStore.gd"
-Music="*res://scenes/music_player.gd"
-MouseController="*res://MouseController.gd"
+Globals="*res://scenes/globals.gd"
+SettingsStore="*res://scenes/SettingsStore.gd"
+Music="*res://scenes/utility/music_player.gd"
+MouseController="*res://scenes/MouseController.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 [editor_plugins]
 
@@ -78,6 +89,7 @@ primaryAction={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
