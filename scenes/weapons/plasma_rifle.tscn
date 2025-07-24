@@ -31,7 +31,6 @@ position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_bmw2d")
 
 [node name="NozzleOffset" type="Marker2D" parent="."]
-visible = false
 position = Vector2(56, -24)
 
 [node name="NozzlePositionDebug" type="Sprite2D" parent="NozzleOffset"]
