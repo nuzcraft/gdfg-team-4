@@ -15,12 +15,9 @@ var speed: int = max_speed
 @export var primary_weapon: Weapon
 
 var facing = 1.0
-var shake: float = 0.0
-var camera_base_offset: Vector2
 
 func _ready():
 	Globals.screenshake.connect(_on_screenshake)
-	camera_base_offset = $Camera2D.offset
 	Globals.collected.connect(_on_collectable_collected)
 
 func _process(delta):
@@ -35,7 +32,7 @@ func _process(delta):
 	primary_weapon.aim_at(mouse_direction)
 	
 	if sign(mouse_direction.x) != facing:
-		scale.x = -scale.x
+		$Sprite2D.scale.x = -$Sprite2D.scale.x
 		facing = -facing
 	
 	#Range attack input
@@ -45,19 +42,9 @@ func _process(delta):
 	#Melee attack input
 	#if Input.is_action_pressed("secondaryAction") and can_melee:
 	#	pass
-	if shake:
-		shake = max(shake - 0.8 * delta, 0)
-		screenshake()
 
 func _on_screenshake(amount: float) -> void:
-	shake = min(shake + amount, 1.0)
-	
-func screenshake() -> void:
-	var max_offset := Vector2(50, 50)
-	var power := 2
-	var amount := pow(shake, power)
-	$Camera2D.offset.x = camera_base_offset.x + (max_offset.x * amount * randi_range(-1, 1))
-	$Camera2D.offset.y = camera_base_offset.y + (max_offset.y * amount * randi_range(-1, 1))
+	$Camera2D.add_shake(amount)
 	
 func _on_collectable_collected(type: String):
 	if type == "crystal":

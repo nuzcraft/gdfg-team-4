@@ -14,9 +14,13 @@ const projectile_scene := preload("res://scenes/weapons/projectile.tscn")
 func aim_at(direction):
 	var angle = rad_to_deg(direction.angle())
 	if direction.x < 0.0:
-		rotation_degrees = 180 - angle
+		$Sprite2D.flip_v = true
+		$NozzleOffset.position.y = 24
+		#rotation_degrees = 180 - angle
 	else:
-		rotation_degrees = angle
+		$Sprite2D.flip_v = false
+		$NozzleOffset.position.y = -24.0
+	rotation_degrees = angle
 
 	z_index = -1 if (direction.y < 0.0) else 0
 
@@ -30,6 +34,7 @@ func fire(direction):
 	
 	projectile.weapon = _create_weapon_data()
 	get_tree().get_root().add_child(projectile)
+	Globals.add_screenshake(0.1)
 	
 	in_cooldown = true
 	await get_tree().create_timer(cooldown).timeout
