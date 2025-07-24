@@ -24,6 +24,7 @@ func _ready() -> void:
 	Globals.player_armor = 0
 	Globals.player_max_armor = 100
 	Globals.acid_aoe.connect(_on_acid_aoe)
+	load_level_from_image()
 
 func _process(_delta):
 	if (_enemy_wave_cleared()):
@@ -85,10 +86,49 @@ func _next_level():
 func _change_scene_safe(scene_path: String):
 	get_tree().change_scene_to_file(scene_path)
 
-
-
-
-
 func _on_intro_text_timer_timeout():
 	$CanvasLayer/TextOverlay.visible = false
+	
+func load_level_from_image() -> void:
+	var scene_name: String = str(get_tree().current_scene.name)
+	var regex = RegEx.new()
+	regex.compile("Level(\\d+)")
+	var name_result = regex.search(scene_name)
+	if name_result:
+		var num := int(name_result.get_string(1))
+		var image_file := "res://assets/levels/level" + str(num) + ".png"
+		print("loading level from: ", image_file)
+		# clear tilemaps
+		clear_tilemaps()
+		# set tilemaps from image
+		var tilemap_image: Image = Image.new()
+		tilemap_image.load(image_file)
+
+		for x in tilemap_image.get_width():
+			for y in tilemap_image.get_height():
+				var color = tilemap_image.get_pixel(x, y)
+				set_tile_map_cell(x, y, color)
+		# set aoe texture replacer
+		# move hero to starting location
+		# set enemy spawners
+		# set crystals
+		# trigger enemy spawners
+		
+func clear_tilemaps() -> void:
+	for tilemap: TileMapLayer in $TileMapLayers.get_children():
+		tilemap.clear()
+		
+func set_tile_map_cell(x :int , y: int, color: Color) -> void:
+	match color:
+		Color.BLACK:
+			$TileMapLayers/CollisionWallLayer.set_cell(Vector2i(x, y), 1, Vector2i(1, 0))
+			$TileMapLayers/RockWallsDual.set_cell(Vector2i(x, y), 0, Vector2i(2, 1))
+		_ :
+			$TileMapLayers/CollisionWallLayer.set_cell(Vector2i(x, y), 1, Vector2i(0, 0))
+			if randf() < 0.25:
+				$TileMapLayers/GroundLayerDual.set_cell(Vector2i(x, y), 0, Vector2(2, 1))
+			else:
+				$TileMapLayers/GroundLayerDual.set_cell(Vector2i(x, y), 0, Vector2(0, 3))
+		
+	
 	

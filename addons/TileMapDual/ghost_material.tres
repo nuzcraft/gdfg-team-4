@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cmbcfxlkxxnwq"]
+
+[ext_resource type="Shader" uid="uid://44652e0wv1ve" path="res://addons/TileMapDual/ghost.gdshader" id="1_gvngp"]
+
+[resource]
+shader = ExtResource("1_gvngp")
