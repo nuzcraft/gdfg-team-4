@@ -20,13 +20,7 @@ func _ready():
 	Globals.screenshake.connect(_on_screenshake)
 	Globals.collected.connect(_on_collectable_collected)
 
-func _process(delta):
-	#input
-	var direction = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * speed
-	move_and_slide()
-	Globals.player_pos = global_position
-
+func _process(_delta):
 	# Player faces the same direction as the weapon
 	var mouse_direction = (get_global_mouse_position() - position).normalized()
 	primary_weapon.aim_at(mouse_direction)
@@ -34,7 +28,15 @@ func _process(delta):
 	if sign(mouse_direction.x) != facing:
 		$Sprite2D.scale.x = -$Sprite2D.scale.x
 		facing = -facing
+
+func _physics_process(delta):
+	#input
+	var direction = Input.get_vector("left", "right", "up", "down")
+	velocity = direction * speed
+	move_and_slide()
+	Globals.player_pos = global_position
 	
+	var mouse_direction = (get_global_mouse_position() - position).normalized()
 	#Range attack input
 	if Input.is_action_just_pressed("primaryAction") and can_shoot:
 		primary_weapon.fire(mouse_direction)
