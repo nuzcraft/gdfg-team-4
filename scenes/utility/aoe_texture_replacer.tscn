@@ -16,6 +16,7 @@ shader_parameter/green_sampler = ExtResource("3_fg3h8")
 shader_parameter/green_sampler_scale = 0.01
 
 [node name="AoeTextureReplacer" type="Node2D"]
+z_index = 4
 script = ExtResource("1_fg3h8")
 
 [node name="ColorRect" type="ColorRect" parent="."]

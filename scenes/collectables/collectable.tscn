@@ -7,6 +7,7 @@
 radius = 50.0
 
 [node name="Collectable" type="Node2D"]
+z_index = 5
 script = ExtResource("1_vtu06")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

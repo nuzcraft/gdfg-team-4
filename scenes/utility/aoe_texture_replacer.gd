@@ -6,19 +6,20 @@ extends Node2D
 
 func _ready() -> void:
 	color_rect.show()
+	color_rect.hide()
 
-func _process(delta: float) -> void:
-	var img: Image = sub_viewport.get_viewport().get_texture().get_image()
-	var tex: ImageTexture = ImageTexture.create_from_image(img)
-	var mat: ShaderMaterial = color_rect.material
-	mat.set_shader_parameter("source_tex", tex)
-	
-	for sub_node in canvas_group.get_children():
-		for sub_sub_node in sub_node.get_children():
-			if sub_sub_node is Timer:
-				var timer: Timer = sub_sub_node
-				if timer.time_left <= 0.1:
-					timer.get_parent().queue_free()
+#func _process(delta: float) -> void:
+	#var img: Image = sub_viewport.get_viewport().get_texture().get_image()
+	#var tex: ImageTexture = ImageTexture.create_from_image(img)
+	#var mat: ShaderMaterial = color_rect.material
+	#mat.set_shader_parameter("source_tex", tex)
+	#
+	#for sub_node in canvas_group.get_children():
+		#for sub_sub_node in sub_node.get_children():
+			#if sub_sub_node is Timer:
+				#var timer: Timer = sub_sub_node
+				#if timer.time_left <= 0.1:
+					#timer.get_parent().queue_free()
 	
 func add_sprite(node: Node2D) -> void:
 	var new_spr: Sprite2D
@@ -39,4 +40,8 @@ func add_sprite(node: Node2D) -> void:
 	if new_timer:
 		new_spr.add_child(new_timer)
 		new_timer.start()
+		
+func set_size(vec: Vector2i) -> void:
+	$ColorRect.size = vec
+	$SubViewport.size = vec
 	

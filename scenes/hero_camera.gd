@@ -19,9 +19,9 @@ func _process(delta):
 	var move_offset = (mouse_pos - home_position) * mouse_offset_scale
 	target_position = home_position + move_offset
 	var new_gp = floor(global_position.lerp(target_position, follow_speed * delta))
-	if abs(move_offset.x) < max_offset and abs(move_offset.x) > 20:
+	if abs(move_offset.x) < max_offset:
 		global_position.x = new_gp.x
-	if abs(move_offset.y) < max_offset and abs(move_offset.y) > 20:
+	if abs(move_offset.y) < max_offset:
 		global_position.y = new_gp.y
 		
 	if shake:

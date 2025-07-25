@@ -6,6 +6,10 @@ const MAX_LEVELS = 3
 
 var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 const ACID_AOE = preload("res://scenes/aoes/acid_aoe.tscn")
+const CRYSTAL = preload("res://scenes/collectables/crystal.tscn")
+const SPAWNER = preload("res://scenes/enemies/spawner.tscn")
+
+var num_enemies_spawned = 0
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
@@ -30,15 +34,19 @@ func _process(_delta):
 	if (_enemy_wave_cleared()):
 		_next_level()
 		queue_free()
+	if Input.is_action_just_pressed("ui_page_down"):
+		_next_level()
+		queue_free()
 
 func create_lava_aoe(pos, scaling):
 	var aoe = lava_aoe_scene.instantiate()
 	aoe.position = pos
 	aoe.scale = Vector2(scaling, scaling)
 	aoe.add_to_group("FireArea")
-	$AOEs/LavaRegion.add_child(aoe)
+	#$AOEs/LavaRegion.add_child(aoe)
+	$AOEs.add_child(aoe)
 	$AoeTextureReplacer.add_sprite(aoe)
-	aoe.hide()
+	#aoe.hide()
 
 func _on_lava_ant_lava_aoe(pos, scaling):
 	create_lava_aoe(pos, scaling)
@@ -50,11 +58,11 @@ func _on_acid_aoe(pos, scaling) -> void:
 	aoe.add_to_group("AcidArea")
 	$AOEs.add_child(aoe)
 	$AoeTextureReplacer.add_sprite(aoe)
-	aoe.hide()
+	#aoe.hide()
 
 func _enemy_wave_cleared() -> bool:
 	var enemies = $Enemies.get_children()
-	if enemies.size() == 0:
+	if enemies.size() == 0 and num_enemies_spawned > 0:
 		return true
 	else:
 		return false
@@ -98,21 +106,42 @@ func load_level_from_image() -> void:
 		var num := int(name_result.get_string(1))
 		var image_file := "res://assets/levels/level" + str(num) + ".png"
 		print("loading level from: ", image_file)
+		# remove old enemies and aoes
+		for aoe in $AOEs.get_children():
+			if aoe is BaseAOE:
+				aoe.queue_free()
+		for enemy in $Enemies.get_children():
+			if enemy is Enemy or enemy is Splitting:
+				enemy.queue_free()
+		
 		# clear tilemaps
 		clear_tilemaps()
-		# set tilemaps from image
+		# get image
 		var tilemap_image: Image = Image.new()
 		tilemap_image.load(image_file)
+		
+		# set aoe texture replacer
+		$AoeTextureReplacer.set_size(tilemap_image.get_size() * 150)
 
+		# set tilemaps from image
 		for x in tilemap_image.get_width():
 			for y in tilemap_image.get_height():
 				var color = tilemap_image.get_pixel(x, y)
 				set_tile_map_cell(x, y, color)
-		# set aoe texture replacer
-		# move hero to starting location
-		# set enemy spawners
-		# set crystals
+				match color:
+					Color.BLUE:
+						$Hero.position = Vector2(x * 150, y * 150)
+					Color.GREEN:
+						var crystal := CRYSTAL.instantiate()
+						add_child(crystal)
+						crystal.position = Vector2(x * 150, y * 150)
+					Color.RED:
+						var spawner:= SPAWNER.instantiate()
+						add_child(spawner)
+						spawner.position = Vector2(x * 150, y * 150)
+						
 		# trigger enemy spawners
+		trigger_spawners()
 		
 func clear_tilemaps() -> void:
 	for tilemap: TileMapLayer in $TileMapLayers.get_children():
@@ -121,14 +150,31 @@ func clear_tilemaps() -> void:
 func set_tile_map_cell(x :int , y: int, color: Color) -> void:
 	match color:
 		Color.BLACK:
-			$TileMapLayers/CollisionWallLayer.set_cell(Vector2i(x, y), 1, Vector2i(1, 0))
+			$TileMapLayers/CollisionWallLayer.set_cell(Vector2i(x, y), 0, Vector2i(1, 0))
 			$TileMapLayers/RockWallsDual.set_cell(Vector2i(x, y), 0, Vector2i(2, 1))
 		_ :
-			$TileMapLayers/CollisionWallLayer.set_cell(Vector2i(x, y), 1, Vector2i(0, 0))
+			$TileMapLayers/CollisionWallLayer.set_cell(Vector2i(x, y), 0, Vector2i(0, 0))
 			if randf() < 0.25:
 				$TileMapLayers/GroundLayerDual.set_cell(Vector2i(x, y), 0, Vector2(2, 1))
 			else:
 				$TileMapLayers/GroundLayerDual.set_cell(Vector2i(x, y), 0, Vector2(0, 3))
+				
+func trigger_spawners():
+	for node in get_children():
+		if node is Spawner:
+			var num_spawn: int = randi_range(node.min_spawn, node.max_spawn)
+			for i in num_spawn:
+				var enemy = node.spawn()
+				var r = (randf() * 2 - 1) * node.max_distance
+				enemy.position = node.position + Vector2(r, r)
+				enemy.target = $Hero
+				if enemy is LavaAnt:
+					enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
+				$Enemies.add_child(enemy)
+				num_enemies_spawned += 1
+				
+				
+				
 		
 	
 	
