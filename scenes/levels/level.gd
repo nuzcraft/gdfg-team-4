@@ -81,10 +81,10 @@ func _enemy_wave_cleared() -> bool:
 
 func _next_level():
 	current_level += 1
-	if current_level >= LEVELS.size():
+	if current_level > LEVELS.size():
 		call_deferred('_change_scene_safe', 'res://scenes/utility/title.tscn')
 	else:
-		var next_level = LEVELS[current_level]
+		var next_level = LEVELS[current_level - 1]
 		call_deferred('_change_scene_safe', next_level)
 
 func _change_scene_safe(scene_path: String):
@@ -95,15 +95,7 @@ func _on_intro_text_timer_timeout():
 	
 func load_level_from_image() -> void:
 	
-	var scene_name: String = str(get_tree().current_scene.name)
-	var regex = RegEx.new()
-	regex.compile("Level(\\d+)")
-	var name_result = regex.search(scene_name)
-	var level_name: String
-	if name_result:
-		level_name = "Level" + name_result.get_string(1)
-	else:
-		level_name = "Level"
+	var level_name = "Level" + str(current_level)
 	if level_images.has(level_name):
 		num_enemies_spawned = 0
 		var image_file: CompressedTexture2D = level_images[level_name]
