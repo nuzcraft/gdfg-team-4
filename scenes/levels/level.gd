@@ -8,8 +8,12 @@ var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 const ACID_AOE = preload("res://scenes/aoes/acid_aoe.tscn")
 const CRYSTAL = preload("res://scenes/collectables/crystal.tscn")
 const SPAWNER = preload("res://scenes/enemies/spawner.tscn")
+const LEVEL_2: CompressedTexture2D = preload("res://assets/levels/level2.png")
 
 var num_enemies_spawned = 0
+var level_images = {
+	"Level2" : LEVEL_2
+}
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
@@ -23,6 +27,7 @@ func _ready() -> void:
 			enemy.target = $Hero
 			if enemy is LavaAnt:
 				enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
+	trigger_spawners()
 	Globals.player_health = 100
 	Globals.player_max_health = 100
 	Globals.player_armor = 0
@@ -34,9 +39,9 @@ func _process(_delta):
 	if (_enemy_wave_cleared()):
 		_next_level()
 		queue_free()
-	if Input.is_action_just_pressed("ui_page_down"):
-		_next_level()
-		queue_free()
+	#if Input.is_action_just_pressed("ui_page_down"):
+		#_next_level()
+		#queue_free()
 
 func create_lava_aoe(pos, scaling):
 	var aoe = lava_aoe_scene.instantiate()
@@ -98,14 +103,16 @@ func _on_intro_text_timer_timeout():
 	$CanvasLayer/TextOverlay.visible = false
 	
 func load_level_from_image() -> void:
+	
 	var scene_name: String = str(get_tree().current_scene.name)
 	var regex = RegEx.new()
 	regex.compile("Level(\\d+)")
 	var name_result = regex.search(scene_name)
-	if name_result:
-		var num := int(name_result.get_string(1))
-		var image_file := "res://assets/levels/level" + str(num) + ".png"
-		print("loading level from: ", image_file)
+	var level_name := "Level" + name_result.get_string(1)
+	if level_images.has(level_name):
+		num_enemies_spawned = 0
+		var image_file: CompressedTexture2D = level_images[level_name]
+		#print("loading level from: ", image_file)
 		# remove old enemies and aoes
 		for aoe in $AOEs.get_children():
 			if aoe is BaseAOE:
@@ -113,12 +120,14 @@ func load_level_from_image() -> void:
 		for enemy in $Enemies.get_children():
 			if enemy is Enemy or enemy is Splitting:
 				enemy.queue_free()
+		for spawner in get_children():
+			if spawner is Spawner:
+				spawner.queue_free()
 		
 		# clear tilemaps
 		clear_tilemaps()
 		# get image
-		var tilemap_image: Image = Image.new()
-		tilemap_image.load(image_file)
+		var tilemap_image: Image = image_file.get_image()
 		
 		# set aoe texture replacer
 		$AoeTextureReplacer.set_size(tilemap_image.get_size() * 150)

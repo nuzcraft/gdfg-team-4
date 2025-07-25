@@ -4,7 +4,7 @@ class_name Spawner
 @export var spawn_scene: PackedScene
 @export var min_spawn: int = 2
 @export var max_spawn: int = 4
-@export var max_distance: int = 300
+@export var max_distance: int = 100
 
 const ACID_SLUG = preload("res://scenes/enemies/acid_slug.tscn")
 const ICE_BEETLE = preload("res://scenes/enemies/ice_beetle.tscn")
