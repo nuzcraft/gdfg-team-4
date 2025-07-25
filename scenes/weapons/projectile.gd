@@ -30,6 +30,8 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body is Enemy and weapon.from_enemy:
 		return
+	if body is Hero and not weapon.from_enemy:
+		return
 	if body.has_method("hit"):
 		body.hit(weapon.damage)
 		queue_free()

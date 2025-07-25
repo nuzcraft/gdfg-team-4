@@ -49,6 +49,23 @@ Check out this [Cheat Sheet](https://education.github.com/git-cheat-sheet-educat
   - still want to mask the walls from the tilemap so that the aoes stay under the walls
   - would like to add some wiggle
 
+## PNG Level Generation
+
+- create a small pixel image (50x50 probably at the largest)
+- each pixel color represents what should be generated
+  - white = floor
+  - black = wall
+  - blue = hero spawn point
+  - green = crystals
+  - red = enemy spawner
+- name the files `level1.png` (replace with your number)
+- in `level.gd` import the image file as a const and add it to the `level_images` dictionary
+- if there is an image for a specific level, it will get generated instead of whatever level was manually placed there
+
+below is the png used for the current level 2
+
+![level 2 png](assets/levels/level2.png)
+
 ## Credits
 
 Some Placeholder Art by [Kenney](https://kenney.nl)

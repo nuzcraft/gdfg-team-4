@@ -28,6 +28,7 @@ var state = IDLE
 
 func _ready() -> void:
 	rng.randomize()
+	scaling = randf_range(0.5, 2.0)
 	animated_sprite_2d.play("default")
 	# scaling
 	scale = Vector2(scaling, scaling)

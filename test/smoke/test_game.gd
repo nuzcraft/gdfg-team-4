@@ -12,3 +12,5 @@ func test_level1_scene_loads():
 	var hero = level.get_node('Hero')
 	assert_true(hero.get_scene_file_path() == 'res://scenes/hero.tscn')
 	assert_true(hero is Hero, 'hero is not of class Hero')
+	# cleanup
+	get_tree().current_scene = null
