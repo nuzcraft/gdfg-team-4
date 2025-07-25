@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/hero.gd" id="1_w7pyx"]
 [ext_resource type="Texture2D" uid="uid://hck1dqeicbyn" path="res://PlaceholderAssets/hero.png" id="2_mv13s"]
 [ext_resource type="PackedScene" uid="uid://c4jn5ceehyndd" path="res://scenes/weapons/plasma_rifle.tscn" id="3_06baw"]
-[ext_resource type="Script" uid="uid://1y3xm6eag4vy" path="res://scenes/hero_camera.gd" id="3_mo806"]
+[ext_resource type="Script" path="res://scenes/hero_camera.gd" id="3_mo806"]
 [ext_resource type="PackedScene" uid="uid://dcyj8ess4gt2j" path="res://scenes/utility/hud.tscn" id="4_mv13s"]
 [ext_resource type="Texture2D" uid="uid://dkqmxrikedr38" path="res://PlaceholderAssets/scifiEnvironment_15.png" id="5_y2sko"]
 [ext_resource type="Theme" uid="uid://c8kkdp01b836k" path="res://resources/swarmed_theme.tres" id="6_mo806"]
