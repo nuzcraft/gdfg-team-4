@@ -4,7 +4,6 @@ var level1_scene := preload('res://scenes/levels/level1.tscn')
 
 func test_level1_scene_loads():
 	var level = level1_scene.instantiate()
-	get_tree().current_scene = level
 	add_child_autofree(level)
 	await get_tree().process_frame
 	# has level
