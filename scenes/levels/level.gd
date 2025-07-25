@@ -108,7 +108,11 @@ func load_level_from_image() -> void:
 	var regex = RegEx.new()
 	regex.compile("Level(\\d+)")
 	var name_result = regex.search(scene_name)
-	var level_name := "Level" + name_result.get_string(1)
+	var level_name: String
+	if name_result:
+		level_name = "Level" + name_result.get_string(1)
+	else:
+		level_name = "Level"
 	if level_images.has(level_name):
 		num_enemies_spawned = 0
 		var image_file: CompressedTexture2D = level_images[level_name]
