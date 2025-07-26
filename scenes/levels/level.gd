@@ -58,7 +58,7 @@ func create_lava_aoe(pos, scaling):
 	#$AOEs/LavaRegion.add_child(aoe)
 	$AOEs.add_child(aoe)
 	$AoeTextureReplacer.add_sprite(aoe)
-	#aoe.hide()
+	aoe.hide()
 
 func _on_lava_ant_lava_aoe(pos, scaling):
 	create_lava_aoe(pos, scaling)
@@ -70,7 +70,7 @@ func _on_acid_aoe(pos, scaling) -> void:
 	aoe.add_to_group("AcidArea")
 	$AOEs.add_child(aoe)
 	$AoeTextureReplacer.add_sprite(aoe)
-	#aoe.hide()
+	aoe.hide()
 
 func _enemy_wave_cleared() -> bool:
 	var enemies = $Enemies.get_children()
@@ -118,6 +118,8 @@ func load_level_from_image() -> void:
 		
 		# set aoe texture replacer
 		$AoeTextureReplacer.set_size(tilemap_image.get_size() * 150)
+		$AoeTextureReplacer.create_color_rects()
+		$AoeTextureReplacer.update_viewport_texture()
 
 		# set tilemaps from image
 		for x in tilemap_image.get_width():
