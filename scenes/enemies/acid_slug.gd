@@ -10,7 +10,8 @@ func _process(delta: float) -> void:
 	super._process(delta)
 
 func _on_acid_timer_timeout() -> void:
-	Globals.place_acid_aoe(position, scaling)
+	if position.distance_to(target.position) < 1500:
+		Globals.place_acid_aoe(position, scaling)
 	$AcidTimer.start()
 
 

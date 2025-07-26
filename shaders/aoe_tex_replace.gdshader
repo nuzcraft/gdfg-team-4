@@ -1,6 +1,8 @@
 shader_type canvas_item;
 
 uniform sampler2D source_tex: repeat_disable, filter_nearest;
+uniform vec2 tile_offset;
+uniform vec2 tile_size;
 uniform sampler2D palette: repeat_disable, filter_nearest;
 uniform int palette_size: hint_range(0, 16, 1) = 6;
 uniform sampler2D red_sampler: repeat_enable, filter_nearest;
@@ -22,20 +24,21 @@ void vertex(){
 }
 
 void fragment() {
-	vec4 source_col = texture(source_tex, UV);
+	vec2 real_uv = tile_offset + UV * tile_size;
+	vec4 source_col = texture(source_tex, real_uv);
 	// quantize to palette
-	float closest_distance = 9999.0;
-	vec4 closest_color = vec4(0.0);
-
-	for (int i = 0; i < palette_size; i++) {
-		float u = float(i) / float(palette_size - 1);
-		vec3 palette_color = texture(palette, vec2(u, 0.0)).rgb;
-		float dist = color_distance(source_col.rgb, palette_color);
-		if (dist < closest_distance) {
-			closest_distance = dist;
-			closest_color = vec4(palette_color, 1.0);
-		}
-	}
+	//float closest_distance = 9999.0;
+	//vec4 closest_color = vec4(0.0);
+//
+	//for (int i = 0; i < palette_size; i++) {
+		//float u = float(i) / float(palette_size - 1);
+		//vec3 palette_color = texture(palette, vec2(u, 0.0)).rgb;
+		//float dist = color_distance(source_col.rgb, palette_color);
+		//if (dist < closest_distance) {
+			//closest_distance = dist;
+			//closest_color = vec4(palette_color, 1.0);
+		//}
+	//}
 
 	// sample the overlay_tex using worldPos
 	vec4 red_tex = texture(red_sampler, world_position * red_sampler_scale);
@@ -43,24 +46,24 @@ void fragment() {
 
 	float mix_r_amount = 0.0;
 	float mix_g_amount = 0.0;
-	if (closest_color.rgb == vec3(1.0, 0.0, 0.0)) { //red mask
+	if (distance(source_col.rgb, vec3(1.0, 0.0, 0.0)) < 0.01) { //red mask
 		mix_r_amount = 1.0;
 	}
-	else if (closest_color.rgb == vec3(0.0, 1.0, 0.0)) { // green mask
+	else if (distance(source_col.rgb, vec3(0.0, 1.0, 0.0)) < 0.01) { // green mask
 		mix_g_amount = 1.0;
 	}
 
 	// combine original color and overlay color together
 	//COLOR = source_col;
 	//COLOR.rgb = closest_color.rgb;
-	vec4 red_replaced = mix(closest_color, red_tex, mix_r_amount);
+	vec4 red_replaced = mix(source_col, red_tex, mix_r_amount);
 	//COLOR.rgb = red_replaced.rgb;
 	vec4 green_replaced = mix(red_replaced, green_tex, mix_g_amount);
 
 	COLOR.rgb = green_replaced.rgb;
 	//COLOR.rgb = source_col.rgb;
 	//COLOR.rgb = mix(red_tex, overlay_color, mix_g_amount).rgb;
-	if (COLOR.rgb == vec3(0.0)) { // if black
+	if (distance(COLOR.rgb , vec3(0.0)) < 0.01) { // if black
 		COLOR.a = 0.0; // transparent
 	}
 }
