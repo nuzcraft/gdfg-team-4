@@ -14,12 +14,6 @@ const LEVEL_2: CompressedTexture2D = preload("res://assets/levels/level2.png")
 const LEVELS = [
 	"res://scenes/levels/level1.tscn",
 	"res://scenes/levels/level2.tscn",
-	"res://scenes/levels/level2.tscn",
-	
-	"res://scenes/levels/level2.tscn",
-	"res://scenes/levels/level2.tscn",
-	"res://scenes/levels/level2.tscn",
-	
 ]
 
 @export var current_level = 0
