@@ -1,16 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://qxbajo21gg4j"]
+[gd_scene load_steps=12 format=3 uid="uid://qxbajo21gg4j"]
 
 [ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/hero.gd" id="1_w7pyx"]
 [ext_resource type="Texture2D" uid="uid://hck1dqeicbyn" path="res://PlaceholderAssets/hero.png" id="2_mv13s"]
+[ext_resource type="Shader" uid="uid://b5amdpamwydut" path="res://shaders/teleport.gdshader" id="2_n40cg"]
 [ext_resource type="PackedScene" uid="uid://c4jn5ceehyndd" path="res://scenes/weapons/plasma_rifle.tscn" id="3_06baw"]
 [ext_resource type="Script" uid="uid://1y3xm6eag4vy" path="res://scenes/hero_camera.gd" id="3_mo806"]
 [ext_resource type="PackedScene" uid="uid://dcyj8ess4gt2j" path="res://scenes/utility/hud.tscn" id="4_mv13s"]
 [ext_resource type="Texture2D" uid="uid://dkqmxrikedr38" path="res://PlaceholderAssets/scifiEnvironment_15.png" id="5_y2sko"]
 [ext_resource type="Theme" uid="uid://c8kkdp01b836k" path="res://resources/swarmed_theme.tres" id="6_mo806"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mo806"]
+shader = ExtResource("2_n40cg")
+shader_parameter/progress = 0.0
+shader_parameter/noise_density = 60.0
+shader_parameter/beam_size = 0.07
+shader_parameter/color = Color(0, 1.02, 1.2, 1)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tnpc"]
 radius = 40.0
 height = 116.0
+
+[sub_resource type="Environment" id="Environment_n40cg"]
+glow_enabled = true
 
 [node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("primary_weapon")]
 z_index = 10
@@ -21,6 +32,7 @@ primary_weapon = NodePath("PlasmaRifle")
 [node name="MeleeAttackTimer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mo806")
 texture = ExtResource("2_mv13s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -60,3 +72,6 @@ layout_mode = 2
 theme = ExtResource("6_mo806")
 theme_override_font_sizes/font_size = 48
 text = "0"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n40cg")

@@ -13,7 +13,7 @@ const LEVEL_2: CompressedTexture2D = preload("res://assets/levels/level2.png")
 
 const LEVELS = [
 	"res://scenes/levels/level1.tscn",
-	"res://scenes/levels/level2.tscn"
+	"res://scenes/levels/level2.tscn",
 ]
 
 @export var current_level = 0
@@ -23,6 +23,9 @@ var level_images = {
 	"Level1" : LEVEL_1,
 	"Level2" : LEVEL_2
 }
+
+var hero: Hero
+var _change_scene:bool = false
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
@@ -43,14 +46,16 @@ func _ready() -> void:
 	Globals.player_max_armor = 100
 	Globals.acid_aoe.connect(_on_acid_aoe)
 	load_level_from_image()
+	hero = get_node('Hero')
+	hero.teleport_in()
 
 func _process(_delta):
-	if (_enemy_wave_cleared()):
+	if (_enemy_wave_cleared() and not _change_scene):
+		_change_scene = true
 		_next_level()
-		queue_free()
 	#if Input.is_action_just_pressed("ui_page_down"):
 		#_next_level()
-		#queue_free()
+
 
 func create_lava_aoe(pos, scaling):
 	var aoe = lava_aoe_scene.instantiate()
@@ -82,19 +87,19 @@ func _enemy_wave_cleared() -> bool:
 		return false
 
 func _next_level():
+	hero.teleport_out()
+	await get_tree().create_timer(1.0).timeout
 	current_level += 1
+	var scene_path
 	if current_level > LEVELS.size():
-		call_deferred('_change_scene_safe', 'res://scenes/utility/title.tscn')
+		scene_path = 'res://scenes/utility/title.tscn'
 	else:
-		var next_level = LEVELS[current_level - 1]
-		call_deferred('_change_scene_safe', next_level)
-
-func _change_scene_safe(scene_path: String):
+		scene_path = LEVELS[current_level - 1]
 	get_tree().change_scene_to_file(scene_path)
 
 func _on_intro_text_timer_timeout():
 	$CanvasLayer/TextOverlay.visible = false
-	
+
 func load_level_from_image() -> void:
 	
 	var level_name = "Level" + str(current_level)
@@ -153,11 +158,11 @@ func load_level_from_image() -> void:
 						
 		# trigger enemy spawners
 		trigger_spawners()
-		
+
 func clear_tilemaps() -> void:
 	for tilemap: TileMapLayer in $TileMapLayers.get_children():
 		tilemap.clear()
-		
+
 func set_tile_map_cell(x :int , y: int, color: Color) -> void:
 	match color:
 		Color.BLACK:
@@ -169,7 +174,7 @@ func set_tile_map_cell(x :int , y: int, color: Color) -> void:
 				$TileMapLayers/GroundLayerDual.set_cell(Vector2i(x, y), 0, Vector2(2, 1))
 			else:
 				$TileMapLayers/GroundLayerDual.set_cell(Vector2i(x, y), 0, Vector2(0, 3))
-				
+
 func trigger_spawners():
 	for node in get_children():
 		if node is Spawner:
@@ -184,9 +189,3 @@ func trigger_spawners():
 					enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 				$Enemies.add_child(enemy)
 				num_enemies_spawned += 1
-				
-				
-				
-		
-	
-	

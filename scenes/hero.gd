@@ -6,7 +6,7 @@ var can_melee: bool = true
 var currently_in_lava: bool = false
 var alive: bool = true
 var crystals_collected: int = 0
-
+var teleporting: bool = false
 
 @export var max_speed: int =500
 var speed: int = max_speed
@@ -30,6 +30,8 @@ func _process(_delta):
 		facing = -facing
 
 func _physics_process(delta):
+	if teleporting:
+		return
 	#input
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
@@ -65,6 +67,35 @@ func hit(damage: int):
 	else:
 		Globals.player_health -= damage
 		#print("Player has "+str(Globals.player_health)+" health.")
+
+func teleport_in():
+	teleporting = true
+	_on_teleport('in')
+
+func teleport_out():
+	teleporting = true
+	$PlasmaRifle.hide()
+	$Label.hide()
+	_on_teleport('out')
+
+func _on_teleport(type):
+	var start : float
+	var end : float
+	match type:
+		'in':
+			start = 1.0
+			end = 0.0
+		'out':
+			start = 0.0
+			end = 1.0
+	var t = create_tween().tween_method(
+		func(v):
+			$Sprite2D.material.set_shader_parameter("progress", v),
+		start,
+		end,
+		1.0
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	teleporting = false
 
 var is_in_lava: bool = false
 var is_in_acid: bool = false
