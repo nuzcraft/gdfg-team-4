@@ -31,6 +31,7 @@ var level_images = {
 }
 
 var hero: Hero
+var _change_scene:bool = false
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
@@ -55,7 +56,8 @@ func _ready() -> void:
 	hero.teleport_in()
 
 func _process(_delta):
-	if (_enemy_wave_cleared()):
+	if (_enemy_wave_cleared() and not _change_scene):
+		_change_scene = true
 		_next_level()
 	#if Input.is_action_just_pressed("ui_page_down"):
 		#_next_level()
