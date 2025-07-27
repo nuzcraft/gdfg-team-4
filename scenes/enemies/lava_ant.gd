@@ -49,8 +49,3 @@ func switch_state(state_enum) -> void:
 			explode()
 		_:
 			super.switch_state(state_enum)
-			
-func _on_navigation_agent_2d_target_reached() -> void:
-	match state:
-		IDLE:
-			target_pos = Vector2(rng.randf() * 500, rng.randf() * 500) + home_pos
