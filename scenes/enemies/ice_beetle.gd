@@ -28,8 +28,7 @@ func _process(delta):
 	match state:
 		SHOOTING:
 				if can_shoot:
-					target_pos = target.position
-					var _target_dir = (target_pos - position).normalized()
+					var _target_dir = (target.position - position).normalized()
 					weapon.fire(_target_dir)
 					can_shoot = false
 					shot_timer.start()

@@ -8,6 +8,7 @@ var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 const ACID_AOE = preload("res://scenes/aoes/acid_aoe.tscn")
 const CRYSTAL = preload("res://scenes/collectables/crystal.tscn")
 const SPAWNER = preload("res://scenes/enemies/spawner.tscn")
+const LEVEL_1: CompressedTexture2D = preload("res://assets/levels/level1.png")
 const LEVEL_2: CompressedTexture2D = preload("res://assets/levels/level2.png")
 
 const LEVELS = [
@@ -19,6 +20,7 @@ const LEVELS = [
 
 var num_enemies_spawned = 0
 var level_images = {
+	"Level1" : LEVEL_1,
 	"Level2" : LEVEL_2
 }
 
@@ -135,6 +137,17 @@ func load_level_from_image() -> void:
 						crystal.position = Vector2(x * 150, y * 150)
 					Color.RED:
 						var spawner:= SPAWNER.instantiate()
+						spawner.spawn_scene = spawner.LAVA_ANT
+						add_child(spawner)
+						spawner.position = Vector2(x * 150, y * 150)
+					Color.MAGENTA:
+						var spawner:= SPAWNER.instantiate()
+						spawner.spawn_scene = spawner.ACID_SLUG
+						add_child(spawner)
+						spawner.position = Vector2(x * 150, y * 150)
+					Color.CYAN:
+						var spawner:= SPAWNER.instantiate()
+						spawner.spawn_scene = spawner.ICE_BEETLE
 						add_child(spawner)
 						spawner.position = Vector2(x * 150, y * 150)
 						
@@ -166,6 +179,7 @@ func trigger_spawners():
 				var r = (randf() * 2 - 1) * node.max_distance
 				enemy.position = node.position + Vector2(r, r)
 				enemy.target = $Hero
+				enemy.collision_tilemap = $TileMapLayers/CollisionWallLayer
 				if enemy is LavaAnt:
 					enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 				$Enemies.add_child(enemy)
