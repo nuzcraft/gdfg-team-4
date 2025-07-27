@@ -13,18 +13,19 @@ const SPLITTING_ENEMY = preload("res://scenes/enemies/splitting_enemy.tscn")
 
 func _ready() -> void:
 	var r = randf()
-	if r < 0.3:
-		spawn_scene = LAVA_ANT
-	elif r < 0.6:
-		spawn_scene = ACID_SLUG
-	elif r < 0.9:
-		spawn_scene = ICE_BEETLE
-	else:
-		spawn_scene = LAVA_ANT
-		#TODO fix splitting enemy spawner
-		#spawn_scene = SPLITTING_ENEMY
-		#min_spawn = 1
-		#max_spawn = 1
+	if not spawn_scene:
+		if r < 0.3:
+			spawn_scene = LAVA_ANT
+		elif r < 0.6:
+			spawn_scene = ACID_SLUG
+		elif r < 0.9:
+			spawn_scene = ICE_BEETLE
+		else:
+			spawn_scene = LAVA_ANT
+			#TODO fix splitting enemy spawner
+			#spawn_scene = SPLITTING_ENEMY
+			#min_spawn = 1
+			#max_spawn = 1
 			
 func spawn():
 	var scene = spawn_scene.instantiate()
