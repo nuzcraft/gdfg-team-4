@@ -122,6 +122,7 @@ func load_level_from_image() -> void:
 		clear_tilemaps()
 		# get image
 		var tilemap_image: Image = image_file.get_image()
+		var aoe_tilemap_image: Image = image_file.get_image()
 		
 		# set aoe texture replacer
 		$AoeTextureReplacer.set_size(tilemap_image.get_size() * 150)
@@ -136,26 +137,59 @@ func load_level_from_image() -> void:
 				match color:
 					Color.BLUE:
 						$Hero.position = Vector2(x * 150, y * 150)
+						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.GREEN:
 						var crystal := CRYSTAL.instantiate()
 						add_child(crystal)
 						crystal.position = Vector2(x * 150, y * 150)
+						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.RED:
 						var spawner:= SPAWNER.instantiate()
 						spawner.spawn_scene = spawner.LAVA_ANT
 						add_child(spawner)
 						spawner.position = Vector2(x * 150, y * 150)
+						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.MAGENTA:
 						var spawner:= SPAWNER.instantiate()
 						spawner.spawn_scene = spawner.ACID_SLUG
 						add_child(spawner)
 						spawner.position = Vector2(x * 150, y * 150)
+						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.CYAN:
 						var spawner:= SPAWNER.instantiate()
 						spawner.spawn_scene = spawner.ICE_BEETLE
 						add_child(spawner)
 						spawner.position = Vector2(x * 150, y * 150)
-						
+						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
+					Color.BLACK:
+						aoe_tilemap_image.set_pixel(x, y, Color.WHITE)
+					_ :
+						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
+					
+		aoe_tilemap_image.resize(aoe_tilemap_image.get_width() * 4, aoe_tilemap_image.get_height() * 4, Image.INTERPOLATE_NEAREST)
+		var list_pixels: Array[Vector2i]
+		for x in aoe_tilemap_image.get_width():
+			for y in aoe_tilemap_image.get_height():
+				var color = aoe_tilemap_image.get_pixel(x, y)
+				if color != Color.WHITE:
+					if y > 1 and aoe_tilemap_image.get_pixel(x, y - 1) == Color.WHITE:
+						list_pixels.append(Vector2i(x, y))
+					elif y < aoe_tilemap_image.get_height() and aoe_tilemap_image.get_pixel(x, y + 1) == Color.WHITE:
+						list_pixels.append(Vector2i(x, y))
+		
+		for pixel in list_pixels:
+			aoe_tilemap_image.set_pixel(pixel.x, pixel.y, Color.WHITE)
+		
+		# send the aoe tilemap image to the aoe replacer
+		var aoe_tilemap_sprite := Sprite2D.new()
+		aoe_tilemap_sprite.texture = ImageTexture.create_from_image(aoe_tilemap_image)
+		var node: Node2D = Node2D.new()
+		node.add_child(aoe_tilemap_sprite)
+		node.scale = Vector2(37.5, 37.5)
+		node.position = aoe_tilemap_image.get_size() / 2 * 37.5
+		node.hide()
+		$AoeTextureReplacer.add_sprite(node)
+		
 		# trigger enemy spawners
 		trigger_spawners()
 
