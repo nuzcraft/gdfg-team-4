@@ -4,3 +4,4 @@
 
 [node name="Level2" instance=ExtResource("1_e0cvd")]
 current_level = 2
+jungle_wall = true
