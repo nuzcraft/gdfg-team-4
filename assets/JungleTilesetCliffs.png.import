@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c54i24hg12ru"
-path="res://.godot/imported/level2.png-f3c24df0ac78fa703b07d1b0985e0c47.ctex"
+uid="uid://c83in3aif1oeb"
+path="res://.godot/imported/JungleTilesetCliffs.png-94ff281f38c4d85c989895120c3bbd8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/levels/level2.png"
-dest_files=["res://.godot/imported/level2.png-f3c24df0ac78fa703b07d1b0985e0c47.ctex"]
+source_file="res://assets/JungleTilesetCliffs.png"
+dest_files=["res://.godot/imported/JungleTilesetCliffs.png-94ff281f38c4d85c989895120c3bbd8b.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bimvu5ux2vbbg"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dgf1qqnniqqb8"]
 
-[ext_resource type="Texture2D" uid="uid://dtt7hupybpver" path="res://assets/15TilesDarkTileSet.png" id="1_jpth5"]
+[ext_resource type="Texture2D" uid="uid://fxy332hrmdrk" path="res://assets/JungleTileset.png" id="1_i4hrx"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_icy5c"]
-texture = ExtResource("1_jpth5")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pb6i"]
+texture = ExtResource("1_i4hrx")
 texture_region_size = Vector2i(150, 150)
 0:3/0 = 0
 0:3/0/terrain_set = 0
@@ -109,8 +109,6 @@ tile_size = Vector2i(150, 150)
 terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "<any>"
 terrain_set_0/terrain_0/color = Color(0.933333, 0.509804, 0.933333, 1)
-terrain_set_0/terrain_1/name = "FG -15TilesDarkTileSet.png"
+terrain_set_0/terrain_1/name = "FG -JungleTileset.png"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
-terrain_set_0/terrain_2/name = "FG -JungleTileset.png"
-terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_icy5c")
+sources/0 = SubResource("TileSetAtlasSource_7pb6i")

@@ -10,18 +10,23 @@ const CRYSTAL = preload("res://scenes/collectables/crystal.tscn")
 const SPAWNER = preload("res://scenes/enemies/spawner.tscn")
 const LEVEL_1: CompressedTexture2D = preload("res://assets/levels/level1.png")
 const LEVEL_2: CompressedTexture2D = preload("res://assets/levels/level2.png")
+const LEVEL_3: CompressedTexture2D = preload("res://assets/levels/level3.png")
 
 const LEVELS = [
 	"res://scenes/levels/level1.tscn",
 	"res://scenes/levels/level2.tscn",
+	"res://scenes/levels/level3.tscn"
 ]
 
-@export var current_level = 0
+@export var current_level := 0
+@export var jungle_ground := false
+@export var jungle_wall := false
 
 var num_enemies_spawned = 0
 var level_images = {
 	"Level1" : LEVEL_1,
-	"Level2" : LEVEL_2
+	"Level2" : LEVEL_2,
+	"Level3" : LEVEL_3,
 }
 
 var hero: Hero
@@ -45,6 +50,12 @@ func _ready() -> void:
 	Globals.player_armor = 0
 	Globals.player_max_armor = 100
 	Globals.acid_aoe.connect(_on_acid_aoe)
+	if jungle_ground:
+		$TileMapLayers/JGroundLayerDual.show()
+		$TileMapLayers/GroundLayerDual.hide()
+	if jungle_wall:
+		$TileMapLayers/JRockWallsDual.show()
+		$TileMapLayers/RockWallsDual.hide()
 	load_level_from_image()
 	hero = get_node('Hero')
 	hero.teleport_in()
@@ -202,12 +213,15 @@ func set_tile_map_cell(x :int , y: int, color: Color) -> void:
 		Color.BLACK:
 			$TileMapLayers/CollisionWallLayer.set_cell(Vector2i(x, y), 0, Vector2i(1, 0))
 			$TileMapLayers/RockWallsDual.set_cell(Vector2i(x, y), 0, Vector2i(2, 1))
+			$TileMapLayers/JRockWallsDual.set_cell(Vector2i(x, y), 0, Vector2i(2, 1))
 		_ :
 			$TileMapLayers/CollisionWallLayer.set_cell(Vector2i(x, y), 0, Vector2i(0, 0))
 			if randf() < 0.25:
 				$TileMapLayers/GroundLayerDual.set_cell(Vector2i(x, y), 0, Vector2(2, 1))
+				$TileMapLayers/JGroundLayerDual.set_cell(Vector2i(x, y), 0, Vector2(2, 1))
 			else:
 				$TileMapLayers/GroundLayerDual.set_cell(Vector2i(x, y), 0, Vector2(0, 3))
+				$TileMapLayers/JGroundLayerDual.set_cell(Vector2i(x, y), 0, Vector2(0, 3))
 
 func trigger_spawners():
 	for node in get_children():

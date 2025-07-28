@@ -4,3 +4,4 @@
 
 [node name="Level1" instance=ExtResource("1_x6ivy")]
 current_level = 1
+jungle_ground = true
