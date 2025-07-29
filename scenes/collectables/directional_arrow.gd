@@ -15,7 +15,6 @@ func _process(_delta):
 	if target != null:
 		$Sprite2D.look_at(target.global_position)
 		distance = global_position.distance_to(target.global_position)
-	print(distance)
 	if distance < 590:
 		$Sprite2D.visible = false
 	else: 
