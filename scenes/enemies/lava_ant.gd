@@ -20,6 +20,12 @@ func explode():
 	animation_player.play("RESET")
 	animated_sprite_2d.play("explode")
 	Globals.add_screenshake(0.3)
+	for body in $AttackArea2D.get_overlapping_bodies():
+		if body is Enemy:
+			if body is not LavaAnt:
+				body.hit(5)
+		elif body is Hero:
+			body.hit(5)
 
 func _on_explode_timer_timeout():
 	if player_near:

@@ -9,6 +9,10 @@ uniform float beam_size : hint_range(0.01, 0.15) = 0.07;
 // glow color; in Godot 4 replace hint_color with source_color
 uniform vec4 color : source_color = vec4(0.0, 1.02, 1.2, 1.0);  // :contentReference[oaicite:0]{index=0}
 
+// for flash
+uniform bool flash_active = false;
+uniform vec3 flash_color: source_color = vec3(1.0);
+
 // simple 2D value‐noise
 vec2 random(vec2 uv) {
     uv = vec2(dot(uv, vec2(127.1,311.7)),
@@ -41,4 +45,14 @@ void fragment() {
     // fade out underlying sprite as beam passes
     tex.a *= d2;
     COLOR = tex;
+
+	vec4 previous_color = tex;
+	vec4 white_color = vec4(flash_color.rgb, previous_color.a);
+	vec4 new_color = previous_color;
+	if (flash_active == true)
+	{
+		new_color = white_color;
+	}
+	COLOR = new_color;
+
 }
