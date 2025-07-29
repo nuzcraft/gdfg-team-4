@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://rcwk8083hdh4"]
+[gd_scene load_steps=4 format=3 uid="uid://rcwk8083hdh4"]
 
 [ext_resource type="PackedScene" uid="uid://daibw0k3mle4g" path="res://scenes/collectables/collectable.tscn" id="1_onntb"]
 [ext_resource type="Texture2D" uid="uid://dkqmxrikedr38" path="res://PlaceholderAssets/scifiEnvironment_15.png" id="2_32w74"]
+[ext_resource type="PackedScene" uid="uid://dpvn1tunxid0d" path="res://scenes/collectables/directional_arrow.tscn" id="3_1p3l8"]
 
 [node name="Crystal" instance=ExtResource("1_onntb")]
 type = "crystal"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_32w74")
+
+[node name="DirectionalArrow" parent="." index="2" node_paths=PackedStringArray("target") instance=ExtResource("3_1p3l8")]
+modulate = Color(0.227451, 0.74902, 0.0980392, 1)
+target = NodePath("..")

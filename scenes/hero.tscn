@@ -23,7 +23,7 @@ height = 116.0
 [sub_resource type="Environment" id="Environment_n40cg"]
 glow_enabled = true
 
-[node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("primary_weapon")]
+[node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("primary_weapon") groups=["Hero"]]
 z_index = 10
 collision_mask = 12
 script = ExtResource("1_w7pyx")

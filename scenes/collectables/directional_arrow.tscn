@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpvn1tunxid0d"]
+
+[ext_resource type="Script" uid="uid://5xts5tavsvuo" path="res://scenes/collectables/directional_arrow.gd" id="1_jf27l"]
+[ext_resource type="Texture2D" uid="uid://hrmsx523t5vm" path="res://assets/DirectionArrow.png" id="1_rh01a"]
+
+[node name="DirectionalArrow" type="Node2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_jf27l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.501961, 1, 0.458824, 0.819608)
+top_level = true
+texture = ExtResource("1_rh01a")
+offset = Vector2(500, 0)
