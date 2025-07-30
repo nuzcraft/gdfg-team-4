@@ -1,0 +1,106 @@
+[gd_scene load_steps=6 format=3 uid="uid://b665roenfn8fk"]
+
+[ext_resource type="Texture2D" uid="uid://3xsncjue460g" path="res://assets/BlueTechPanel.png" id="1_bqxyb"]
+[ext_resource type="Theme" uid="uid://c8kkdp01b836k" path="res://resources/swarmed_theme.tres" id="1_euf3j"]
+[ext_resource type="Script" uid="uid://bbyeq7oncm6lp" path="res://scenes/utility/end_screen.gd" id="2_dcpoi"]
+[ext_resource type="Theme" uid="uid://c5v72c25vwjor" path="res://scenes/utility/menu_theme_blue.tres" id="2_tb0yk"]
+[ext_resource type="LabelSettings" uid="uid://bbdyaw8jp0amn" path="res://resources/text_overlay.tres" id="3_euf3j"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_euf3j")
+script = ExtResource("2_dcpoi")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bqxyb")
+region_rect = Rect2(0, 0, 601.333, 600)
+patch_margin_left = 55
+patch_margin_top = 139
+patch_margin_right = 84
+patch_margin_bottom = 111
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_tb0yk")
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BugsText" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Bugs Killed:"
+label_settings = ExtResource("3_euf3j")
+
+[node name="BugsKilledLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CrystalsText" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Crystals Collected:"
+label_settings = ExtResource("3_euf3j")
+
+[node name="CrystalsCollectedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LastLevelText" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Total Levels Reached:"
+label_settings = ExtResource("3_euf3j")
+
+[node name="LevelNumberLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="TitleScreenButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Back to Title Screen"
+
+[node name="RestartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Restart"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TitleScreenButton" to="." method="_on_title_screen_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

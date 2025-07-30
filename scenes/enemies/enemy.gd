@@ -116,6 +116,7 @@ func switch_state(state_enum) -> void:
 			state = PURSUIT
 			speed = pursuit_speed
 		DEAD:
+			Globals.enemies_killed += 1
 			state = DEAD
 			speed = 0
 			navigating = false
