@@ -13,6 +13,8 @@ var player_health: int = 100
 var player_max_health: int = 100
 var player_armor: int = 0
 var player_max_armor: int = 100
+var crystals_collected: int = 0
+var enemies_killed: int = 0
 
 func player_invulnerable_timer():
 	await get_tree().create_timer(0.5).timeout
@@ -23,6 +25,8 @@ func add_screenshake(amount: float):
 
 func collectable_collected(type: String) -> void:
 	collected.emit(type)
+	if type == "crystal":
+		crystals_collected += 1
 
 func place_acid_aoe(position: Vector2, scaling: float) -> void:
 	acid_aoe.emit(position, scaling)

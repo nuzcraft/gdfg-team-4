@@ -1,16 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi4nry6akri6x"]
+[gd_scene load_steps=6 format=3 uid="uid://bi4nry6akri6x"]
 
-[ext_resource type="FontFile" uid="uid://cf01kekac2ysj" path="res://assets/fonts/orange-kid/Orange Kid.otf" id="1_l1drq"]
+[ext_resource type="Theme" uid="uid://c5v72c25vwjor" path="res://scenes/utility/menu_theme_blue.tres" id="1_l1drq"]
 [ext_resource type="Texture2D" uid="uid://3xsncjue460g" path="res://assets/BlueTechPanel.png" id="1_y1yol"]
 [ext_resource type="Script" uid="uid://c2woi6pbsujj6" path="res://scenes/utility/menu.gd" id="2_el1m6"]
 [ext_resource type="Texture2D" uid="uid://bq01vggk4yab7" path="res://assets/BlueSimplePanel.png" id="4_4ea3p"]
 [ext_resource type="LabelSettings" uid="uid://bbdyaw8jp0amn" path="res://resources/text_overlay.tres" id="5_c4hkh"]
-
-[sub_resource type="Theme" id="Theme_g3wkw"]
-default_font = ExtResource("1_l1drq")
-default_font_size = 32
-Button/fonts/font = ExtResource("1_l1drq")
-Label/fonts/font = ExtResource("1_l1drq")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -19,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_g3wkw")
+theme = ExtResource("1_l1drq")
 script = ExtResource("2_el1m6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

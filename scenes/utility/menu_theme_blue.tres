@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c5v72c25vwjor"]
+
+[ext_resource type="FontFile" uid="uid://cf01kekac2ysj" path="res://assets/fonts/orange-kid/Orange Kid.otf" id="1_q7qeu"]
+
+[resource]
+default_font = ExtResource("1_q7qeu")
+default_font_size = 32
+Button/fonts/font = ExtResource("1_q7qeu")
+Label/fonts/font = ExtResource("1_q7qeu")
