@@ -6,7 +6,6 @@ class_name Hero
 var can_shoot: bool = true
 var can_melee: bool = true
 var currently_in_lava: bool = false
-var alive: bool = true
 var crystals_collected: int = 0
 var teleporting: bool = false
 
@@ -57,19 +56,24 @@ func _on_collectable_collected(type: String):
 		crystals_collected += 1
 		#print("num collected: ", crystals_collected)
 		$Hud/HBoxContainer/CrystalLabel.text = str(crystals_collected)
+	if type == "armor":
+		Globals.player_armor = Globals.player_max_armor
 
 func die():
-	if alive:
-		#print("Player died.")
-		alive=false
+	get_tree().change_scene_to_file("res://scenes/utility/title.tscn")
 
 func hit(damage: int):
 	if Globals.player_health<=damage:
 		die()
 	else:
 		animation_player.play("hit")
-		Globals.player_health -= damage
-		#print("Player has "+str(Globals.player_health)+" health.")
+		var cur_armor = Globals.player_armor
+		if  cur_armor > damage:
+			Globals.player_armor -= damage
+		else:
+			var remainder = damage - cur_armor
+			Globals.player_armor = 0
+			Globals.player_health -= damage
 
 func teleport_in():
 	teleporting = true
@@ -119,6 +123,9 @@ func burn(input:call_state):
 				burn(call_state.Hold)
 		call_state.Hold:
 			if is_in_lava:
+				if Globals.player_health <= 1:
+					die()
+					return
 				Globals.player_health -= 1
 				animation_player.play("burning")
 				await get_tree().create_timer(1.0).timeout
@@ -139,6 +146,9 @@ func acidify(input: call_state):
 				acidify(call_state.Hold)
 		call_state.Hold:
 			if is_in_acid:
+				if Globals.player_health <= 2:
+					die()
+					return
 				Globals.player_health -= 2
 				animation_player.play("acidic")
 				await get_tree().create_timer(1.0).timeout
@@ -150,6 +160,9 @@ func acidify(input: call_state):
 func damage_over_time(damage: int, num_hits: int, wait_time: float, effect: String):
 	$Label.text = effect
 	for i in num_hits:
+		if Globals.player_health <= damage:
+			die()
+			return
 		Globals.player_health -= damage
 		if effect == "Burning":
 			animation_player.play("burning")
