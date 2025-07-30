@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1mr1jwoop6vc"]
+[gd_scene load_steps=17 format=3 uid="uid://d1mr1jwoop6vc"]
 
 [ext_resource type="Script" uid="uid://d13keqcgktvc4" path="res://scenes/enemies/lava_ant.gd" id="1_1ih35"]
 [ext_resource type="Material" uid="uid://cgls8su2rfgsh" path="res://shaders/flash_shader_material.tres" id="2_ey3sv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://km2ift1ystl0" path="res://PlaceholderAssets/Explosion/explosion01.png" id="4_ey3sv"]
 [ext_resource type="Texture2D" uid="uid://d2qnxcrcwusfv" path="res://PlaceholderAssets/Explosion/explosion02.png" id="5_ba1pi"]
 [ext_resource type="Texture2D" uid="uid://c7v66xxgb11qx" path="res://PlaceholderAssets/Explosion/explosion03.png" id="6_ckxfm"]
+[ext_resource type="Texture2D" uid="uid://clmfdiep65s2d" path="res://assets/circle.png" id="9_ckxfm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ey3sv"]
 radius = 50.0
@@ -149,6 +150,7 @@ shape = SubResource("CircleShape2D_ey3sv")
 
 [node name="AttackArea2D" type="Area2D" parent="."]
 collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
 shape = SubResource("CircleShape2D_54yyh")
@@ -174,6 +176,11 @@ target_desired_distance = 100.0
 path_postprocessing = 1
 simplify_path = true
 debug_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(9, -12)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_ckxfm")
 
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]

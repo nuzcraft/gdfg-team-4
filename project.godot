@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/TileMapDual/plugin.cfg", "res://addons/g
 [global_group]
 
 FireArea="Any area that can cause burning"
+Hero="The Player Character"
 
 [input]
 
