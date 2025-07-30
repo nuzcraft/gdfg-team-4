@@ -88,6 +88,7 @@ func teleport_out():
 func _on_teleport(type):
 	var start : float
 	var end : float
+	$Sprite2D.material.set_shader_parameter("flash_color", Color.WHITE)
 	match type:
 		'in':
 			start = 1.0
@@ -122,7 +123,7 @@ func burn(input:call_state):
 				is_in_lava=true
 				burn(call_state.Hold)
 		call_state.Hold:
-			if is_in_lava:
+			if is_in_lava and not is_in_acid:
 				if Globals.player_health <= 1:
 					die()
 					return
@@ -145,7 +146,7 @@ func acidify(input: call_state):
 				is_in_acid=true
 				acidify(call_state.Hold)
 		call_state.Hold:
-			if is_in_acid:
+			if is_in_acid and not is_in_lava:
 				if Globals.player_health <= 2:
 					die()
 					return
@@ -160,13 +161,14 @@ func acidify(input: call_state):
 func damage_over_time(damage: int, num_hits: int, wait_time: float, effect: String):
 	$Label.text = effect
 	for i in num_hits:
-		if Globals.player_health <= damage:
-			die()
-			return
-		Globals.player_health -= damage
-		if effect == "Burning":
-			animation_player.play("burning")
-		await get_tree().create_timer(wait_time).timeout
-		if effect == "Burning":
-			is_burning_after = false
+		if not is_in_lava:
+			if Globals.player_health <= damage:
+				die()
+				return
+			Globals.player_health -= damage
+			if effect == "Burning":
+				animation_player.play("burning")
+			await get_tree().create_timer(wait_time).timeout
+			if effect == "Burning":
+				is_burning_after = false
 	$Label.text = "Player"

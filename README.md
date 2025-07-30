@@ -68,4 +68,7 @@ below is the png used for the current level 2
 
 ## Credits
 
+Dual Tilemap Plugin by [Pablogila](https://github.com/pablogila/TileMapDual)
 Some Placeholder Art by [Kenney](https://kenney.nl)
+Acid sprite by [Screaming Brain Studios](https://opengameart.org/content/140-liquid-textures)
+Lava sprite by [LuminousDragonGames](https://opengameart.org/content/2-seamless-lava-tiles)
