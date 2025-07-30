@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4u4kyf0gc6ly"]
+[gd_scene load_steps=3 format=3 uid="uid://b4u4kyf0gc6ly"]
 
 [ext_resource type="PackedScene" uid="uid://drmiw8rcswdmk" path="res://scenes/levels/level.tscn" id="1_x6ivy"]
+[ext_resource type="PackedScene" uid="uid://dk0fef5g4cr4k" path="res://scenes/collectables/armor_pack.tscn" id="2_4tcl0"]
 
 [node name="Level1" instance=ExtResource("1_x6ivy")]
 current_level = 1
 jungle_ground = true
+
+[node name="ArmorPack" parent="." index="6" instance=ExtResource("2_4tcl0")]
+position = Vector2(529, 586)
