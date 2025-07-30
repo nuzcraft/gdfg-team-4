@@ -60,7 +60,7 @@ func _on_collectable_collected(type: String):
 		Globals.player_armor = Globals.player_max_armor
 
 func die():
-	get_tree().change_scene_to_file("res://scenes/utility/title.tscn")
+	get_tree().change_scene_to_file("res://scenes/utility/end_screen.tscn")
 
 func hit(damage: int):
 	if Globals.player_health<=damage:
