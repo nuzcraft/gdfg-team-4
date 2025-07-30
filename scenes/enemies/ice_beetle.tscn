@@ -163,6 +163,9 @@ texture = ExtResource("6_shxcu")
 [node name="NozzleOffset" type="Marker2D" parent="Weapon"]
 position = Vector2(-17, 31)
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = 1.5708
+
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

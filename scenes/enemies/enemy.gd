@@ -19,6 +19,10 @@ var player_near: bool = false
 var navigating: bool
 var home_pos: Vector2
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var attacking: bool = false
+var melee_damage: int = 1
+
+@onready var ray: RayCast2D = $RayCast2D
 
 enum {
 	IDLE,
@@ -58,6 +62,7 @@ func _process(_delta):
 			navigation_agent_2d.target_position = target.position
 			navigating = true
 
+var melee_count = 0
 func _physics_process(_delta: float) -> void:
 	if navigating:
 		var next_path_position = navigation_agent_2d.get_next_path_position()
@@ -71,9 +76,21 @@ func _physics_process(_delta: float) -> void:
 				animated_sprite_2d.frame = 0
 			elif direction.y <= -0.25:
 				animated_sprite_2d.frame = 1
-		
 		velocity = direction * speed
 		move_and_slide()
+		
+	if not attacking:
+		if ray.is_colliding():
+			var collider = ray.get_collider()
+			if collider is Hero:
+				attacking = true
+				collider.hit(melee_damage)
+	if attacking and melee_count < 60:
+		melee_count += 1
+	else:
+		attacking = false
+		melee_count = 0
+		
 
 func _on_attack_area_2d_body_entered(body):
 	if body.name == "Hero":

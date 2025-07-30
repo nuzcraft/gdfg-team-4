@@ -182,6 +182,9 @@ position = Vector2(9, -12)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_ckxfm")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = 1.5708
+
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

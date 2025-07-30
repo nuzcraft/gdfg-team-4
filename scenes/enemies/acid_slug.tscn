@@ -46,5 +46,8 @@ avoidance_mask = 3
 wait_time = 0.5
 autostart = true
 
+[node name="RayCast2D" type="RayCast2D" parent="." index="7"]
+rotation = 1.5708
+
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="AcidTimer" to="." method="_on_acid_timer_timeout"]
