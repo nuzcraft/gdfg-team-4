@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl7j6lw28a6qo"]
+
+[ext_resource type="Texture2D" uid="uid://dwx70ehs7yhd5" path="res://assets/lava_ant/dead.png" id="1_pdcod"]
+
+[node name="LavaAntCorpse" type="Node2D"]
+z_index = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pdcod")

@@ -40,6 +40,7 @@ func summon_lava_aoe():
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "explode":
 		summon_lava_aoe()
+		Globals.signal_enemy_died(enemy_name, position, scaling)
 		queue_free()
 		
 func switch_state(state_enum) -> void:

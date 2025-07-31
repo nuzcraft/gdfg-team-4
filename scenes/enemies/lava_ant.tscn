@@ -144,6 +144,7 @@ z_index = 5
 collision_layer = 2
 collision_mask = 12
 script = ExtResource("1_1ih35")
+enemy_name = "lava ant"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ey3sv")

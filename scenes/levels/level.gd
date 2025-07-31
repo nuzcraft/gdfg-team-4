@@ -33,6 +33,7 @@ var hero: Hero
 var _change_scene:bool = false
 
 func _ready() -> void:
+	Globals.enemy_died.connect(_on_enemy_died)
 	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
 	for enemy in $Enemies.get_children():
 		if enemy is Splitting:
@@ -237,3 +238,19 @@ func trigger_spawners():
 					enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 				$Enemies.add_child(enemy)
 				num_enemies_spawned += 1
+				
+func _on_enemy_died(type: String, pos: Vector2, scaling: float) -> void:
+	print(type)
+	match type:
+		"lava ant":
+			const LAVA_ANT_CORPSE = preload("res://scenes/enemies/lava_ant_corpse.tscn")
+			var corpse = LAVA_ANT_CORPSE.instantiate()
+			corpse.scale *= scaling
+			corpse.position = pos
+			add_child(corpse)
+		"acid slug":
+			const ACID_SLUG_CORPSE = preload("res://scenes/enemies/acid_slug_corpse.tscn")
+			var corpse = ACID_SLUG_CORPSE.instantiate()
+			corpse.scale *= scaling
+			corpse.position = pos
+			add_child(corpse)
