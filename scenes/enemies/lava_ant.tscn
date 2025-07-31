@@ -174,8 +174,6 @@ libraries = {
 path_desired_distance = 100.0
 target_desired_distance = 100.0
 path_postprocessing = 1
-simplify_path = true
-debug_enabled = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(9, -12)
