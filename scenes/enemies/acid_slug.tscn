@@ -30,6 +30,7 @@ animations = [{
 script = ExtResource("2_0y44s")
 idle_speed = 75
 pursuit_speed = 100
+enemy_name = "acid slug"
 health = 15
 
 [node name="AnimatedSprite2D" parent="." index="2"]

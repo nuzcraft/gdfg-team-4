@@ -5,6 +5,7 @@ signal collected (type)
 signal acid_aoe (position, scaling)
 signal lava_aoe (position, scaling)
 signal ice_aoe (position, scaling)
+signal enemy_died (type, scaling)
 
 
 var player_pos: Vector2
@@ -36,3 +37,6 @@ func place_lava_aoe(position: Vector2, scaling: float) -> void:
 
 func place_ice_aoe(position: Vector2, scaling: float) -> void:
 	ice_aoe.emit(position, scaling)
+	
+func signal_enemy_died(type: String, position: Vector2, scaling: float) -> void:
+	enemy_died.emit(type, position, scaling)

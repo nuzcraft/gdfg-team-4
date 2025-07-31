@@ -10,6 +10,7 @@ class_name Enemy
 
 @export var idle_speed: int = 150
 @export var pursuit_speed: int = 300
+@export var enemy_name: String = "enemy"
 var collision_tilemap: TileMapLayer
 var speed: int = 0
 var vulnerable: bool = true
@@ -38,7 +39,7 @@ func _ready() -> void:
 	# scaling
 	#scale = Vector2(scaling, scaling)
 	animated_sprite_2d.scale = Vector2(scaling, scaling)
-	$AttackArea2D.scale = Vector2(scaling, scaling) * 1.25
+	$AttackArea2D.scale *= Vector2(scaling, scaling)
 	idle_speed += ((1 - scaling) * 1.5) * idle_speed
 	pursuit_speed += ((1 - scaling) * 1.5) * pursuit_speed
 	if scaling > 0.75:
@@ -122,6 +123,7 @@ func switch_state(state_enum) -> void:
 			state = DEAD
 			speed = 0
 			navigating = false
+			Globals.signal_enemy_died(enemy_name, position, scaling)
 			queue_free()
 			
 func _on_navigation_agent_2d_target_reached() -> void:
