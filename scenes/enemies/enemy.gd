@@ -8,7 +8,7 @@ class_name Enemy
 @export var target: Node2D
 @export var scaling: float = 1
 
-@export var idle_speed: int = 100
+@export var idle_speed: int = 150
 @export var pursuit_speed: int = 300
 var collision_tilemap: TileMapLayer
 var speed: int = 0
@@ -33,11 +33,13 @@ var state = IDLE
 
 func _ready() -> void:
 	rng.randomize()
-	scaling = randf_range(0.5, 2.0)
+	scaling = randf_range(0.75, 1.5)
 	animated_sprite_2d.play("default")
 	# scaling
-	scale = Vector2(scaling, scaling)
-	idle_speed += ((1 - scaling) * 2) * idle_speed
+	#scale = Vector2(scaling, scaling)
+	animated_sprite_2d.scale = Vector2(scaling, scaling)
+	$AttackArea2D.scale = Vector2(scaling, scaling) * 1.25
+	idle_speed += ((1 - scaling) * 1.5) * idle_speed
 	pursuit_speed += ((1 - scaling) * 1.5) * pursuit_speed
 	if scaling > 0.75:
 		health *= 3
