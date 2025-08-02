@@ -102,6 +102,8 @@ point_count = 2
 size = Vector2(30, 8)
 
 [node name="IceBeetle" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 12
 script = ExtResource("1_c1jgf")
 idle_speed = 50
 pursuit_speed = 100
