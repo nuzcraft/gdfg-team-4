@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpav2ennn0x4p"]
+
+[ext_resource type="Script" uid="uid://b2ny41lantiaa" path="res://scenes/weapons/shotgun.gd" id="1_uukpr"]
+[ext_resource type="Texture2D" uid="uid://1jevtmmvb24o" path="res://PlaceholderAssets/weapon.png" id="2_qn8fy"]
+[ext_resource type="Texture2D" uid="uid://bitlx0y1mv7kh" path="res://assets/shot_shotgun.png" id="3_uukpr"]
+[ext_resource type="Texture2D" uid="uid://7d10pimbcvvr" path="res://PlaceholderAssets/UICircle.png" id="4_vx5qo"]
+
+[sub_resource type="Curve" id="Curve_uukpr"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uukpr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmw2d"]
+size = Vector2(27, 10)
+
+[node name="Shotgun" type="Node2D"]
+script = ExtResource("1_uukpr")
+speed_curve = SubResource("Curve_uukpr")
+total_ttl = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qn8fy")
+
+[node name="ProjectileType" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ProjectileType"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_uukpr")
+texture = ExtResource("3_uukpr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileType"]
+visible = false
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_bmw2d")
+
+[node name="NozzleOffset" type="Marker2D" parent="."]
+visible = false
+position = Vector2(56, -24)
+
+[node name="NozzlePositionDebug" type="Sprite2D" parent="NozzleOffset"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_vx5qo")
