@@ -54,6 +54,8 @@ var gems_collected:int = 0
 var total_gems:int = 0
 
 func _ready() -> void:
+	if current_level > 1:
+		$CanvasLayer/TextOverlay.hide()
 	Globals.enemy_died.connect(_on_enemy_died)
 	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
 	for enemy in $Enemies.get_children():

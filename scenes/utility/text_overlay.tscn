@@ -36,6 +36,6 @@ theme_override_constants/margin_bottom = 50
 
 [node name="Label" type="Label" parent="TextPopUp/MarginContainer"]
 layout_mode = 2
-text = "- Find the green power gem.
-- Kill all enemies to progress to the next level."
+text = "- Find all power gems.
+- Kill all enemies."
 label_settings = ExtResource("2_mtcwq")
