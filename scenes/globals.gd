@@ -7,7 +7,14 @@ signal lava_aoe (position, scaling)
 signal ice_aoe (position, scaling)
 signal enemy_died (type, scaling)
 
+enum WeaponEnum {
+	PLASMA_RIFLE,
+	SHOTGUN,
+	MACHINE_GUN
+}
+var inventory = [true,false,false]
 
+var primary_weapon: WeaponEnum = WeaponEnum.MACHINE_GUN
 var player_pos: Vector2
 var player_vulnerable: bool = true
 var player_health: int = 100
