@@ -7,6 +7,7 @@ const TARGET_ROUND_B = preload("res://PlaceholderAssets/target_round_b.svg")
 var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 const ACID_AOE = preload("res://scenes/aoes/acid_aoe.tscn")
 const CRYSTAL = preload("res://scenes/collectables/crystal.tscn")
+const PORTAL = preload("res://scenes/levels/portal.tscn")
 const SPAWNER = preload("res://scenes/enemies/spawner.tscn")
 const ARMOR_PACK = preload("res://scenes/collectables/armor_pack.tscn")
 const ACID_SLUG = preload("res://scenes/enemies/acid_slug.tscn")
@@ -207,6 +208,9 @@ func load_level_from_image(load_level: int) -> void:
 							spawner.position = Vector2(x * 150, y * 150)
 						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.CYAN:
+						var portal := PORTAL.instantiate()
+						portal.position = Vector2(x * 150, y * 150)
+						add_child(portal)
 						if current_level <= 4:
 							var ice_beetle := ICE_BEETLE.instantiate()
 							spawn_enemy(ice_beetle, Vector2(x * 150, y * 150))
