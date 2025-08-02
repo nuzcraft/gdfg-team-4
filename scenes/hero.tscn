@@ -176,6 +176,8 @@ zoom = Vector2(0.7, 0.7)
 script = ExtResource("3_mo806")
 
 [node name="PlasmaRifle" parent="." instance=ExtResource("3_06baw")]
+total_ttl = 1.25
+cooldown = 0.25
 
 [node name="Hud" parent="." instance=ExtResource("4_mv13s")]
 

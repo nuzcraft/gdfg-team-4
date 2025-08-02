@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://hrmsx523t5vm" path="res://assets/DirectionArrow.png" id="1_rh01a"]
 
 [node name="DirectionalArrow" type="Node2D"]
+z_index = 6
 scale = Vector2(5, 5)
 script = ExtResource("1_jf27l")
 

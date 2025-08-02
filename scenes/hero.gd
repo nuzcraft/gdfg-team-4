@@ -6,7 +6,6 @@ class_name Hero
 var can_shoot: bool = true
 var can_melee: bool = true
 var currently_in_lava: bool = false
-var crystals_collected: int = 0
 var teleporting: bool = false
 
 @export var max_speed: int =500
@@ -20,6 +19,7 @@ var facing = 1.0
 func _ready():
 	Globals.screenshake.connect(_on_screenshake)
 	Globals.collected.connect(_on_collectable_collected)
+	$Hud/HBoxContainer/CrystalLabel.text = str(Globals.crystals_collected)
 
 func _process(_delta):
 	# Player faces the same direction as the weapon
@@ -53,9 +53,8 @@ func _on_screenshake(amount: float) -> void:
 	
 func _on_collectable_collected(type: String):
 	if type == "crystal":
-		crystals_collected += 1
 		#print("num collected: ", crystals_collected)
-		$Hud/HBoxContainer/CrystalLabel.text = str(crystals_collected)
+		$Hud/HBoxContainer/CrystalLabel.text = str(Globals.crystals_collected)
 	if type == "armor":
 		Globals.player_armor = Globals.player_max_armor
 
@@ -127,7 +126,8 @@ func burn(input:call_state):
 				if Globals.player_health <= 1:
 					die()
 					return
-				Globals.player_health -= 1
+				#Globals.player_health -= 1
+				hit(1)
 				animation_player.play("burning")
 				await get_tree().create_timer(1.0).timeout
 				burn(call_state.Hold)
@@ -150,7 +150,8 @@ func acidify(input: call_state):
 				if Globals.player_health <= 2:
 					die()
 					return
-				Globals.player_health -= 2
+				#Globals.player_health -= 2
+				hit(2)
 				animation_player.play("acidic")
 				await get_tree().create_timer(1.0).timeout
 				acidify(call_state.Hold)
@@ -165,7 +166,8 @@ func damage_over_time(damage: int, num_hits: int, wait_time: float, effect: Stri
 			if Globals.player_health <= damage:
 				die()
 				return
-			Globals.player_health -= damage
+			#Globals.player_health -= damage
+			hit(damage)
 			if effect == "Burning":
 				animation_player.play("burning")
 			await get_tree().create_timer(wait_time).timeout
