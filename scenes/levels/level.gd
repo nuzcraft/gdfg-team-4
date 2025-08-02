@@ -82,20 +82,21 @@ func _ready() -> void:
 		$TileMapLayers/JRockWallsDual.show()
 		$TileMapLayers/RockWallsDual.hide()
 	load_level_from_image(current_level)
+	get_node('Portal').connect('portal', _on_portal)
 	hero = get_node('Hero')
+	hero.animation_player.play('Idle')
 	hero.teleport_in()
 	if current_level % 2 == 0:
 		for enemy in $Enemies.get_children():
 			if enemy is Enemy:
 				enemy.switch_state(enemy.PURSUIT)
 
-func _process(_delta):
+func _on_portal():
 	if (_all_gems_collected() and _enemy_wave_cleared() and not _change_scene):
 		_change_scene = true
 		_next_level()
 	#if Input.is_action_just_pressed("ui_page_down"):
 		#_next_level()
-
 
 func create_lava_aoe(pos, scaling):
 	var aoe = lava_aoe_scene.instantiate()
