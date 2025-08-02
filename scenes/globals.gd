@@ -25,9 +25,9 @@ func add_screenshake(amount: float):
 	screenshake.emit(amount)
 
 func collectable_collected(type: String) -> void:
-	collected.emit(type)
 	if type == "crystal":
 		crystals_collected += 1
+	collected.emit(type)
 
 func place_acid_aoe(position: Vector2, scaling: float) -> void:
 	acid_aoe.emit(position, scaling)

@@ -2,23 +2,36 @@ extends Node2D
 class_name Level
 
 const TARGET_ROUND_B = preload("res://PlaceholderAssets/target_round_b.svg")
-const MAX_LEVELS = 3
+#const MAX_LEVELS = 3
 
 var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 const ACID_AOE = preload("res://scenes/aoes/acid_aoe.tscn")
 const CRYSTAL = preload("res://scenes/collectables/crystal.tscn")
 const SPAWNER = preload("res://scenes/enemies/spawner.tscn")
+const ARMOR_PACK = preload("res://scenes/collectables/armor_pack.tscn")
+const ACID_SLUG = preload("res://scenes/enemies/acid_slug.tscn")
+const ICE_BEETLE = preload("res://scenes/enemies/ice_beetle.tscn")
+const LAVA_ANT = preload("res://scenes/enemies/lava_ant.tscn")
 const LEVEL_1: CompressedTexture2D = preload("res://assets/levels/level1.png")
 const LEVEL_2: CompressedTexture2D = preload("res://assets/levels/level2.png")
 const LEVEL_3: CompressedTexture2D = preload("res://assets/levels/level3.png")
+const LEVEL_4: CompressedTexture2D = preload("res://assets/levels/level4.png")
+const LEVEL_5: CompressedTexture2D = preload("res://assets/levels/level5.png")
+const LEVEL_6: CompressedTexture2D = preload("res://assets/levels/level6.png")
 
 const LEVELS = [
 	"res://scenes/levels/level1.tscn",
 	"res://scenes/levels/level2.tscn",
-	"res://scenes/levels/level3.tscn"
+	"res://scenes/levels/level3.tscn",
+	"res://scenes/levels/level4.tscn",
+	"res://scenes/levels/level5.tscn",
+	"res://scenes/levels/level6.tscn",
+	"res://scenes/levels/level7.tscn",
+	"res://scenes/levels/level8.tscn",
+	"res://scenes/levels/level9.tscn",	
 ]
 
-@export var current_level := 0
+@export var current_level := 1
 @export var jungle_ground := false
 @export var jungle_wall := false
 
@@ -27,6 +40,12 @@ var level_images = {
 	"Level1" : LEVEL_1,
 	"Level2" : LEVEL_2,
 	"Level3" : LEVEL_3,
+	"Level4" : LEVEL_4,
+	"Level5" : LEVEL_5,
+	"Level6" : LEVEL_6,
+	"Level7" : LEVEL_4,
+	"Level8" : LEVEL_5,
+	"Level9" : LEVEL_6,
 }
 
 var hero: Hero
@@ -46,10 +65,10 @@ func _ready() -> void:
 			if enemy is LavaAnt:
 				enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 	trigger_spawners()
-	Globals.player_health = 100
+	#Globals.player_health = 100
 	Globals.player_max_health = 100
-	Globals.player_armor = 0
-	Globals.player_max_armor = 100
+	#Globals.player_armor = 0
+	Globals.player_max_armor = 25
 	Globals.acid_aoe.connect(_on_acid_aoe)
 	if jungle_ground:
 		$TileMapLayers/JGroundLayerDual.show()
@@ -57,9 +76,13 @@ func _ready() -> void:
 	if jungle_wall:
 		$TileMapLayers/JRockWallsDual.show()
 		$TileMapLayers/RockWallsDual.hide()
-	load_level_from_image()
+	load_level_from_image(current_level)
 	hero = get_node('Hero')
 	hero.teleport_in()
+	if current_level % 2 == 0:
+		for enemy in $Enemies.get_children():
+			if enemy is Enemy:
+				enemy.switch_state(enemy.PURSUIT)
 
 func _process(_delta):
 	if (_enemy_wave_cleared() and not _change_scene):
@@ -72,7 +95,7 @@ func _process(_delta):
 func create_lava_aoe(pos, scaling):
 	var aoe = lava_aoe_scene.instantiate()
 	aoe.position = pos
-	aoe.scale = Vector2(scaling, scaling)
+	aoe.scale = Vector2(scaling, scaling) * 1.5
 	aoe.add_to_group("FireArea")
 	#$AOEs/LavaRegion.add_child(aoe)
 	$AOEs.add_child(aoe)
@@ -104,7 +127,7 @@ func _next_level():
 	current_level += 1
 	var scene_path
 	if current_level > LEVELS.size():
-		scene_path = 'res://scenes/utility/title.tscn'
+		scene_path = 'res://scenes/utility/end_screen.tscn'
 	else:
 		scene_path = LEVELS[current_level - 1]
 	get_tree().change_scene_to_file(scene_path)
@@ -112,9 +135,9 @@ func _next_level():
 func _on_intro_text_timer_timeout():
 	$CanvasLayer/TextOverlay.visible = false
 
-func load_level_from_image() -> void:
+func load_level_from_image(load_level: int) -> void:
 	
-	var level_name = "Level" + str(current_level)
+	var level_name = "Level" + str(load_level)
 	if level_images.has(level_name):
 		num_enemies_spawned = 0
 		var image_file: CompressedTexture2D = level_images[level_name]
@@ -156,23 +179,41 @@ func load_level_from_image() -> void:
 						crystal.position = Vector2(x * 150, y * 150)
 						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.RED:
-						var spawner:= SPAWNER.instantiate()
-						spawner.spawn_scene = spawner.LAVA_ANT
-						add_child(spawner)
-						spawner.position = Vector2(x * 150, y * 150)
+						if current_level <= 4:
+							var lava_ant = LAVA_ANT.instantiate()
+							spawn_enemy(lava_ant, Vector2(x * 150, y * 150))
+						else:
+							var spawner:= SPAWNER.instantiate()
+							spawner.spawn_scene = spawner.LAVA_ANT
+							add_child(spawner)
+							spawner.position = Vector2(x * 150, y * 150)
 						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.MAGENTA:
-						var spawner:= SPAWNER.instantiate()
-						spawner.spawn_scene = spawner.ACID_SLUG
-						add_child(spawner)
-						spawner.position = Vector2(x * 150, y * 150)
+						if current_level <= 4:
+							var acid_slug := ACID_SLUG.instantiate()
+							spawn_enemy(acid_slug, Vector2(x * 150, y * 150))
+						else:
+							var spawner:= SPAWNER.instantiate()
+							spawner.spawn_scene = spawner.ACID_SLUG
+							add_child(spawner)
+							spawner.position = Vector2(x * 150, y * 150)
 						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.CYAN:
-						var spawner:= SPAWNER.instantiate()
-						spawner.spawn_scene = spawner.ICE_BEETLE
-						add_child(spawner)
-						spawner.position = Vector2(x * 150, y * 150)
+						if current_level <= 4:
+							var ice_beetle := ICE_BEETLE.instantiate()
+							spawn_enemy(ice_beetle, Vector2(x * 150, y * 150))
+						else:
+							var spawner:= SPAWNER.instantiate()
+							spawner.spawn_scene = spawner.ICE_BEETLE
+							add_child(spawner)
+							spawner.position = Vector2(x * 150, y * 150)
 						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
+					Color.YELLOW:
+						var armor_pack := ARMOR_PACK.instantiate()
+						add_child(armor_pack)
+						armor_pack.position = Vector2(x * 150, y * 150)
+						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
+						
 					Color.BLACK:
 						aoe_tilemap_image.set_pixel(x, y, Color.WHITE)
 					_ :
@@ -238,6 +279,15 @@ func trigger_spawners():
 					enemy.connect("lava_aoe", _on_lava_ant_lava_aoe)
 				$Enemies.add_child(enemy)
 				num_enemies_spawned += 1
+				
+func spawn_enemy(instance, position) -> void:
+	instance.position = position
+	instance.target = $Hero
+	instance.collision_tilemap = $TileMapLayers/CollisionWallLayer
+	if instance is LavaAnt:
+		instance.connect("lava_aoe", _on_lava_ant_lava_aoe)
+	$Enemies.add_child(instance)
+	num_enemies_spawned += 1
 				
 func _on_enemy_died(type: String, pos: Vector2, scaling: float) -> void:
 	print(type)
