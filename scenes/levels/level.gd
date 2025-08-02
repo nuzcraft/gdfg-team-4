@@ -50,6 +50,8 @@ var level_images = {
 
 var hero: Hero
 var _change_scene:bool = false
+var gems_collected:int = 0
+var total_gems:int = 0
 
 func _ready() -> void:
 	Globals.enemy_died.connect(_on_enemy_died)
@@ -85,7 +87,7 @@ func _ready() -> void:
 				enemy.switch_state(enemy.PURSUIT)
 
 func _process(_delta):
-	if (_enemy_wave_cleared() and not _change_scene):
+	if (_all_gems_collected() and _enemy_wave_cleared() and not _change_scene):
 		_change_scene = true
 		_next_level()
 	#if Input.is_action_just_pressed("ui_page_down"):
@@ -120,6 +122,9 @@ func _enemy_wave_cleared() -> bool:
 		return true
 	else:
 		return false
+
+func _all_gems_collected() -> bool:
+	return gems_collected == total_gems
 
 func _next_level():
 	hero.teleport_out()
@@ -178,6 +183,7 @@ func load_level_from_image(load_level: int) -> void:
 						add_child(crystal)
 						crystal.position = Vector2(x * 150, y * 150)
 						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
+						total_gems += 1
 					Color.RED:
 						if current_level <= 4:
 							var lava_ant = LAVA_ANT.instantiate()

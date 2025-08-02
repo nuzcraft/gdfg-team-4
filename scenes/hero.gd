@@ -55,6 +55,8 @@ func _on_collectable_collected(type: String):
 	if type == "crystal":
 		#print("num collected: ", crystals_collected)
 		$Hud/HBoxContainer/CrystalLabel.text = str(Globals.crystals_collected)
+		get_parent().gems_collected += 1
+		
 	if type == "armor":
 		Globals.player_armor = Globals.player_max_armor
 
