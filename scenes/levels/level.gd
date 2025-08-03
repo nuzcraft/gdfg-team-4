@@ -2,7 +2,6 @@ extends Node2D
 class_name Level
 
 const TARGET_ROUND_B = preload("res://PlaceholderAssets/target_round_b.svg")
-#const MAX_LEVELS = 3
 
 var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 const ACID_AOE = preload("res://scenes/aoes/acid_aoe.tscn")
@@ -56,7 +55,12 @@ var total_gems:int = 0
 
 func _ready() -> void:
 	if current_level > 1:
+		get_tree().paused = true
 		$CanvasLayer/TextOverlay.hide()
+		$CanvasLayer/UpgradeMenu.show()
+		
+		
+		
 	Globals.enemy_died.connect(_on_enemy_died)
 	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
 	for enemy in $Enemies.get_children():
