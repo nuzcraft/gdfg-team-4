@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://c72eeckuhxi2r"]
+
+[ext_resource type="Script" uid="uid://ej0or8sdx4vr" path="res://scenes/levels/portal.gd" id="1_u5dg8"]
+[ext_resource type="PackedScene" uid="uid://dpvn1tunxid0d" path="res://scenes/collectables/directional_arrow.tscn" id="2_or51j"]
+[ext_resource type="Texture2D" uid="uid://cg5leb8wbyw78" path="res://assets/portal.png" id="2_u5dg8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d4qof"]
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5dg8"]
+radius = 56.0
+
+[node name="Portal" type="Node2D"]
+z_index = 1
+script = ExtResource("1_u5dg8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 0.560784)
+texture_filter = 1
+texture = ExtResource("2_u5dg8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+modulate = Color(0, 0.486962, 0.486961, 1)
+z_index = 1
+amount = 360
+lifetime = 0.73
+process_material = SubResource("ParticleProcessMaterial_d4qof")
+
+[node name="DirectionalArrow" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_or51j")]
+modulate = Color(0, 0, 1, 1)
+target = NodePath("..")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_u5dg8")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,227 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkkkh53hhdf2s"]
+
+[ext_resource type="Texture2D" uid="uid://dvtr35gknb0qh" path="res://assets/GreenTechPanel.png" id="1_lqne1"]
+[ext_resource type="Script" uid="uid://bdy1moqq6ppmt" path="res://scenes/utility/upgrade_menu.gd" id="1_u4sxa"]
+[ext_resource type="Texture2D" uid="uid://dkqmxrikedr38" path="res://PlaceholderAssets/scifiEnvironment_15.png" id="3_r2whk"]
+[ext_resource type="LabelSettings" uid="uid://bbdyaw8jp0amn" path="res://resources/text_overlay.tres" id="5_fioxf"]
+
+[node name="UpgradeMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4sxa")
+
+[node name="TextPopUp" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 721.0
+grow_horizontal = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TextPopUp"]
+layout_mode = 2
+texture = ExtResource("1_lqne1")
+region_rect = Rect2(0, 0, 600, 600)
+patch_margin_left = 50
+patch_margin_top = 100
+patch_margin_right = 50
+patch_margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextPopUp"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Info" type="HBoxContainer" parent="TextPopUp/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="CrystalsCount" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Info/CrystalsCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Crystals:"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Value" type="Label" parent="TextPopUp/VBoxContainer/Info/CrystalsCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="CurrentLevel" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Info"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Info/CurrentLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Current Level:"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Value" type="Label" parent="TextPopUp/VBoxContainer/Info/CurrentLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="Upgrades" type="VBoxContainer" parent="TextPopUp/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+
+[node name="UpgradeFireRate" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Upgrades"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeFireRate"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Upgrade Fire Rate"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Buy" type="Button" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeFireRate"]
+process_mode = 2
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy"
+
+[node name="CostText" type="Label" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeFireRate"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = " 1 X"
+label_settings = ExtResource("5_fioxf")
+
+[node name="ScifiEnvironment16" type="Sprite2D" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeFireRate"]
+position = Vector2(271, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r2whk")
+
+[node name="MaxFireRate" type="Label" parent="TextPopUp/VBoxContainer/Upgrades"]
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = ExtResource("5_fioxf")
+horizontal_alignment = 2
+
+[node name="UpgradeDamage" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Upgrades"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Upgrade Weapon Damage"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Buy" type="Button" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeDamage"]
+process_mode = 2
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy"
+
+[node name="CostText" type="Label" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2 X"
+label_settings = ExtResource("5_fioxf")
+
+[node name="ScifiEnvironment17" type="Sprite2D" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeDamage"]
+position = Vector2(330, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r2whk")
+
+[node name="MaxDamage" type="Label" parent="TextPopUp/VBoxContainer/Upgrades"]
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = ExtResource("5_fioxf")
+horizontal_alignment = 2
+
+[node name="Weapons" type="VBoxContainer" parent="TextPopUp/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="BuyShotgun" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Weapons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Weapons/BuyShotgun"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Shotgun"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Buy" type="Button" parent="TextPopUp/VBoxContainer/Weapons/BuyShotgun"]
+process_mode = 2
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy"
+
+[node name="CostText" type="Label" parent="TextPopUp/VBoxContainer/Weapons/BuyShotgun"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3 X"
+label_settings = ExtResource("5_fioxf")
+
+[node name="ScifiEnvironment15" type="Sprite2D" parent="TextPopUp/VBoxContainer/Weapons/BuyShotgun"]
+position = Vector2(264, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r2whk")
+
+[node name="ShotgunDesc" type="Label" parent="TextPopUp/VBoxContainer/Weapons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "(Burst fire, high damage, short range)"
+label_settings = ExtResource("5_fioxf")
+
+[node name="BuyMachineGun" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Weapons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Weapons/BuyMachineGun"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Machine Gun"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Buy" type="Button" parent="TextPopUp/VBoxContainer/Weapons/BuyMachineGun"]
+process_mode = 2
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy"
+
+[node name="CostText" type="Label" parent="TextPopUp/VBoxContainer/Weapons/BuyMachineGun"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3 X"
+label_settings = ExtResource("5_fioxf")
+
+[node name="ScifiEnvironment16" type="Sprite2D" parent="TextPopUp/VBoxContainer/Weapons/BuyMachineGun"]
+position = Vector2(260, 14)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r2whk")
+
+[node name="MachineGunDesc" type="Label" parent="TextPopUp/VBoxContainer/Weapons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "(Fully auto, lower damage, high fire rate)"
+label_settings = ExtResource("5_fioxf")
+horizontal_alignment = 2
+
+[node name="ContinueButton" type="Button" parent="TextPopUp/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+size_flags_vertical = 6
+text = "Continue"
+
+[connection signal="pressed" from="TextPopUp/VBoxContainer/Upgrades/UpgradeFireRate/Buy" to="." method="_on_buy_firerate_pressed"]
+[connection signal="pressed" from="TextPopUp/VBoxContainer/Upgrades/UpgradeDamage/Buy" to="." method="_on_buy_damage_pressed"]
+[connection signal="pressed" from="TextPopUp/VBoxContainer/Weapons/BuyShotgun/Buy" to="." method="_on_buy_shotgun_pressed"]
+[connection signal="pressed" from="TextPopUp/VBoxContainer/Weapons/BuyMachineGun/Buy" to="." method="_on_buy_machinegun_pressed"]
+[connection signal="pressed" from="TextPopUp/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

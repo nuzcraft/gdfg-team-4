@@ -2,11 +2,11 @@ extends Node2D
 class_name Level
 
 const TARGET_ROUND_B = preload("res://PlaceholderAssets/target_round_b.svg")
-#const MAX_LEVELS = 3
 
 var lava_aoe_scene = preload("res://scenes/aoes/lava_aoe.tscn")
 const ACID_AOE = preload("res://scenes/aoes/acid_aoe.tscn")
 const CRYSTAL = preload("res://scenes/collectables/crystal.tscn")
+const PORTAL = preload("res://scenes/levels/portal.tscn")
 const SPAWNER = preload("res://scenes/enemies/spawner.tscn")
 const ARMOR_PACK = preload("res://scenes/collectables/armor_pack.tscn")
 const ACID_SLUG = preload("res://scenes/enemies/acid_slug.tscn")
@@ -54,6 +54,13 @@ var gems_collected:int = 0
 var total_gems:int = 0
 
 func _ready() -> void:
+	if current_level > 1:
+		get_tree().paused = true
+		$CanvasLayer/TextOverlay.hide()
+		$CanvasLayer/UpgradeMenu.show()
+		
+		
+		
 	Globals.enemy_died.connect(_on_enemy_died)
 	Input.set_custom_mouse_cursor(TARGET_ROUND_B, 0, Vector2(30, 30))
 	for enemy in $Enemies.get_children():
@@ -79,20 +86,21 @@ func _ready() -> void:
 		$TileMapLayers/JRockWallsDual.show()
 		$TileMapLayers/RockWallsDual.hide()
 	load_level_from_image(current_level)
+	get_node('Portal').connect('portal', _on_portal)
 	hero = get_node('Hero')
+	hero.animation_player.play('Idle')
 	hero.teleport_in()
 	if current_level % 2 == 0:
 		for enemy in $Enemies.get_children():
 			if enemy is Enemy:
 				enemy.switch_state(enemy.PURSUIT)
 
-func _process(_delta):
+func _on_portal():
 	if (_all_gems_collected() and _enemy_wave_cleared() and not _change_scene):
 		_change_scene = true
 		_next_level()
 	#if Input.is_action_just_pressed("ui_page_down"):
 		#_next_level()
-
 
 func create_lava_aoe(pos, scaling):
 	var aoe = lava_aoe_scene.instantiate()
@@ -133,8 +141,10 @@ func _next_level():
 	var scene_path
 	if current_level > LEVELS.size():
 		scene_path = 'res://scenes/utility/end_screen.tscn'
+		Globals.current_level = current_level - 1
 	else:
 		scene_path = LEVELS[current_level - 1]
+		Globals.current_level = current_level
 	get_tree().change_scene_to_file(scene_path)
 
 func _on_intro_text_timer_timeout():
@@ -205,14 +215,17 @@ func load_level_from_image(load_level: int) -> void:
 							spawner.position = Vector2(x * 150, y * 150)
 						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.CYAN:
-						if current_level <= 4:
-							var ice_beetle := ICE_BEETLE.instantiate()
-							spawn_enemy(ice_beetle, Vector2(x * 150, y * 150))
-						else:
-							var spawner:= SPAWNER.instantiate()
-							spawner.spawn_scene = spawner.ICE_BEETLE
-							add_child(spawner)
-							spawner.position = Vector2(x * 150, y * 150)
+						var portal := PORTAL.instantiate()
+						portal.position = Vector2(x * 150, y * 150)
+						add_child(portal)
+						# if current_level <= 4:
+						# 	var ice_beetle := ICE_BEETLE.instantiate()
+						# 	spawn_enemy(ice_beetle, Vector2(x * 150, y * 150))
+						# else:
+						# 	var spawner:= SPAWNER.instantiate()
+						# 	spawner.spawn_scene = spawner.ICE_BEETLE
+						# 	add_child(spawner)
+						# 	spawner.position = Vector2(x * 150, y * 150)
 						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.YELLOW:
 						var armor_pack := ARMOR_PACK.instantiate()
@@ -296,7 +309,7 @@ func spawn_enemy(instance, position) -> void:
 	num_enemies_spawned += 1
 				
 func _on_enemy_died(type: String, pos: Vector2, scaling: float) -> void:
-	print(type)
+	Globals.enemies_killed += 1
 	match type:
 		"lava ant":
 			const LAVA_ANT_CORPSE = preload("res://scenes/enemies/lava_ant_corpse.tscn")

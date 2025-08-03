@@ -4,12 +4,25 @@ class_name Weapon
 @export var speed_curve : Curve
 @export var speed := 1000.0
 @export var total_ttl := 1.0
-@export var cooldown := 0.5
-@export var damage:= 10
+@export var cooldown := 1.0
+@export var damage := 10
 @export var from_enemy := false
+
+var starting_damage: int
+var starting_cooldown: float
 
 var in_cooldown := false
 const projectile_scene := preload("res://scenes/weapons/projectile.tscn")
+
+func _ready():
+	connect('weapon_upgrade', _upgrade_weapons)
+	starting_damage = damage
+	starting_cooldown = cooldown
+	_upgrade_weapons()
+
+func _upgrade_weapons():
+	damage = starting_damage + Globals.damage_upgrades * 2
+	cooldown = starting_cooldown - Globals.firerate_upgrades - 0.1
 
 func aim_at(direction):
 	var angle = rad_to_deg(direction.angle())

@@ -35,3 +35,5 @@ func _on_body_entered(body):
 	if body.has_method("hit"):
 		body.hit(weapon.damage)
 		queue_free()
+	else:
+		queue_free()

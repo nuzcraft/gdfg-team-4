@@ -14,12 +14,42 @@ var speed: int = max_speed
 
 @export var primary_weapon: Weapon
 
+@onready var PlasmaRifle = $PlasmaRifle
+@onready var Shotgun = $Shotgun
+@onready var MachineGun = $MachineGun
+
+var _weapons_array: Array[Weapon]
+
 var facing = 1.0
 
 func _ready():
+	_weapons_array = [
+		PlasmaRifle,
+		Shotgun,
+		MachineGun
+	]
+	PlasmaRifle.hide()
+	Shotgun.hide()
+	MachineGun.hide()
+	primary_weapon = _weapons_array[Globals.primary_weapon]
+	primary_weapon.show()
 	Globals.screenshake.connect(_on_screenshake)
 	Globals.collected.connect(_on_collectable_collected)
 	$Hud/HBoxContainer/CrystalLabel.text = str(Globals.crystals_collected)
+
+func _input(event):
+	if event.is_action_pressed('plasmaRifle'):
+		var weapon_index = Globals.WeaponEnum.PLASMA_RIFLE
+		if Globals.inventory[weapon_index]:
+			switch_weapon(weapon_index)
+	if event.is_action_pressed('shotgun'):
+		var weapon_index = Globals.WeaponEnum.SHOTGUN
+		if Globals.inventory[weapon_index]:
+			switch_weapon(weapon_index)
+	if event.is_action_pressed('machineGun'):
+		var weapon_index = Globals.WeaponEnum.MACHINE_GUN
+		if Globals.inventory[weapon_index]:
+			switch_weapon(weapon_index)
 
 func _process(_delta):
 	# Player faces the same direction as the weapon
@@ -38,12 +68,9 @@ func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
 	Globals.player_pos = global_position
-	
-	var mouse_direction = (get_global_mouse_position() - position).normalized()
-	#Range attack input
-	if Input.is_action_just_pressed("primaryAction") and can_shoot:
+	if Input.is_action_just_pressed('primaryAction') and can_shoot:
+		var mouse_direction = (get_global_mouse_position() - position).normalized()
 		primary_weapon.fire(mouse_direction)
-	
 	#Melee attack input
 	#if Input.is_action_pressed("secondaryAction") and can_melee:
 	#	pass
@@ -79,10 +106,11 @@ func hit(damage: int):
 func teleport_in():
 	teleporting = true
 	_on_teleport('in')
+	primary_weapon.show()
 
 func teleport_out():
+	primary_weapon.hide()
 	teleporting = true
-	$PlasmaRifle.hide()
 	$Label.hide()
 	_on_teleport('out')
 
@@ -106,6 +134,14 @@ func _on_teleport(type):
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	teleporting = false
 
+## Weapons ##
+func switch_weapon(weapon_index: Globals.WeaponEnum):
+	primary_weapon.hide()
+	primary_weapon = _weapons_array[weapon_index]
+	Globals.primary_weapon = weapon_index
+	primary_weapon.show()
+
+## AOE damages ##
 var is_in_lava: bool = false
 var is_in_acid: bool = false
 var is_burning_after: bool = false

@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://crhw4gookqko8"]
+[gd_scene load_steps=3 format=3 uid="uid://crhw4gookqko8"]
 
 [ext_resource type="PackedScene" uid="uid://drmiw8rcswdmk" path="res://scenes/levels/level.tscn" id="1_8rpwu"]
+[ext_resource type="PackedScene" uid="uid://dkkkh53hhdf2s" path="res://scenes/utility/upgrade_menu.tscn" id="2_eh8f3"]
 
 [node name="Level4" instance=ExtResource("1_8rpwu")]
 current_level = 4
 jungle_wall = true
+
+[node name="UpgradeMenu" parent="CanvasLayer" index="1" instance=ExtResource("2_eh8f3")]
+visible = false
