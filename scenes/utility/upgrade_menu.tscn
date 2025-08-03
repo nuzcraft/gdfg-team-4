@@ -1,0 +1,196 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkkkh53hhdf2s"]
+
+[ext_resource type="Texture2D" uid="uid://dvtr35gknb0qh" path="res://assets/GreenTechPanel.png" id="1_lqne1"]
+[ext_resource type="Texture2D" uid="uid://dkqmxrikedr38" path="res://PlaceholderAssets/scifiEnvironment_15.png" id="3_r2whk"]
+[ext_resource type="LabelSettings" uid="uid://bbdyaw8jp0amn" path="res://resources/text_overlay.tres" id="5_fioxf"]
+
+[node name="TextOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextPopUp" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 721.0
+grow_horizontal = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TextPopUp"]
+modulate = Color(1, 1, 1, 0.298039)
+layout_mode = 2
+texture = ExtResource("1_lqne1")
+region_rect = Rect2(0, 0, 600, 600)
+patch_margin_left = 50
+patch_margin_top = 100
+patch_margin_right = 50
+patch_margin_bottom = 100
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 424.0
+offset_top = 575.0
+offset_right = 837.0
+offset_bottom = 606.0
+size_flags_vertical = 3
+text = "Continue"
+
+[node name="GemsCount" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 666.0
+offset_top = 131.0
+offset_right = 735.0
+offset_bottom = 166.0
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="GemsCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gems:"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Value" type="Label" parent="GemsCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="CurrentLevel" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 475.0
+offset_top = 132.0
+offset_right = 616.0
+offset_bottom = 167.0
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="CurrentLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Current Level:"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Value" type="Label" parent="CurrentLevel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="UpgradeFireRate" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 549.0
+offset_top = 212.0
+offset_right = 690.0
+offset_bottom = 247.0
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="UpgradeFireRate"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Upgrade Fire Rate"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Buy" type="Button" parent="UpgradeFireRate"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy"
+
+[node name="Text2" type="Label" parent="UpgradeFireRate"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1 X"
+label_settings = ExtResource("5_fioxf")
+
+[node name="ScifiEnvironment16" type="Sprite2D" parent="UpgradeFireRate"]
+position = Vector2(256, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r2whk")
+
+[node name="UpgradeDamage" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 548.0
+offset_top = 252.0
+offset_right = 853.0
+offset_bottom = 287.0
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="UpgradeDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Upgrade Weapon Damage"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Buy" type="Button" parent="UpgradeDamage"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy"
+
+[node name="Text1" type="Label" parent="UpgradeDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2 X"
+label_settings = ExtResource("5_fioxf")
+
+[node name="ScifiEnvironment17" type="Sprite2D" parent="UpgradeDamage"]
+position = Vector2(330, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r2whk")
+
+[node name="UpgradeFireRate2" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 551.0
+offset_top = 367.0
+offset_right = 706.0
+offset_bottom = 402.0
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="UpgradeFireRate2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Shotgun"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Buy" type="Button" parent="UpgradeFireRate2"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy"
+
+[node name="Text2" type="Label" parent="UpgradeFireRate2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3 X"
+label_settings = ExtResource("5_fioxf")
+
+[node name="ScifiEnvironment15" type="Sprite2D" parent="UpgradeFireRate2"]
+position = Vector2(211, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r2whk")
+
+[node name="UpgradeFireRate3" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 551.0
+offset_top = 414.0
+offset_right = 757.0
+offset_bottom = 449.0
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="UpgradeFireRate3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy Machine Gun"
+label_settings = ExtResource("5_fioxf")
+
+[node name="Buy" type="Button" parent="UpgradeFireRate3"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy"
+
+[node name="Text2" type="Label" parent="UpgradeFireRate3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3 X"
+label_settings = ExtResource("5_fioxf")
+
+[node name="ScifiEnvironment16" type="Sprite2D" parent="UpgradeFireRate3"]
+position = Vector2(250, 14)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r2whk")
