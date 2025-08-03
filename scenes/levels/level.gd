@@ -137,8 +137,10 @@ func _next_level():
 	var scene_path
 	if current_level > LEVELS.size():
 		scene_path = 'res://scenes/utility/end_screen.tscn'
+		Globals.current_level = current_level - 1
 	else:
 		scene_path = LEVELS[current_level - 1]
+		Globals.current_level = current_level
 	get_tree().change_scene_to_file(scene_path)
 
 func _on_intro_text_timer_timeout():
@@ -303,7 +305,7 @@ func spawn_enemy(instance, position) -> void:
 	num_enemies_spawned += 1
 				
 func _on_enemy_died(type: String, pos: Vector2, scaling: float) -> void:
-	print(type)
+	Globals.enemies_killed += 1
 	match type:
 		"lava ant":
 			const LAVA_ANT_CORPSE = preload("res://scenes/enemies/lava_ant_corpse.tscn")

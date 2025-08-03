@@ -22,7 +22,9 @@ var player_max_health: int = 100
 var player_armor: int = 0
 var player_max_armor: int = 100
 var crystals_collected: int = 0
+var crystals_spent: int = 0
 var enemies_killed: int = 0
+var current_level: int = 1
 
 func player_invulnerable_timer():
 	await get_tree().create_timer(0.5).timeout

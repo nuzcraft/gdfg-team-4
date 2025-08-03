@@ -4,7 +4,8 @@ extends Control
 @onready var Level := $TextPopUp/VBoxContainer/Info/CurrentLevel/Value
 
 func _ready():
-	Crystals.text = str(Globals.crystals_collected)
+	Crystals.text = str(Globals.crystals_collected - Globals.crystals_spent)
+	@onready var Level.text = 
 
 
 
