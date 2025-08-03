@@ -10,7 +10,6 @@ func fire(direction):
 	
 	projectile.weapon = _create_weapon_data()
 	get_tree().get_root().add_child(projectile)
-	Globals.add_screenshake(0.1)
 	
 	in_cooldown = true
 	await get_tree().create_timer(cooldown).timeout

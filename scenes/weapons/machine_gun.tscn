@@ -16,8 +16,8 @@ size = Vector2(27, 10)
 script = ExtResource("1_v1lm7")
 speed_curve = SubResource("Curve_v1lm7")
 total_ttl = 0.75
-cooldown = 0.25
-damage = 5
+cooldown = 0.6
+damage = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_smnka")
