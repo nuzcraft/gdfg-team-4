@@ -8,14 +8,11 @@ func _ready():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Hero:
-		print('start')
 		$Timer.start()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Hero:
-		print('stop')
 		$Timer.stop()
 
 func _on_timer_timeout() -> void:
-	print('timeout')
 	emit_signal('portal')
