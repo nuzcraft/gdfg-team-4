@@ -19,6 +19,7 @@ func _on_attack_area_2d_body_entered(body):
 func explode():
 	animation_player.play("RESET")
 	animated_sprite_2d.play("explode")
+	$ExplosionAudio.play()
 	Globals.add_screenshake(0.3)
 	for body in $AttackArea2D.get_overlapping_bodies():
 		if body is Enemy:

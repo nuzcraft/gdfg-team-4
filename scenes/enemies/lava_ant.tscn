@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1mr1jwoop6vc"]
+[gd_scene load_steps=18 format=3 uid="uid://d1mr1jwoop6vc"]
 
 [ext_resource type="Script" uid="uid://d13keqcgktvc4" path="res://scenes/enemies/lava_ant.gd" id="1_1ih35"]
 [ext_resource type="Material" uid="uid://cgls8su2rfgsh" path="res://shaders/flash_shader_material.tres" id="2_ey3sv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d2qnxcrcwusfv" path="res://PlaceholderAssets/Explosion/explosion02.png" id="5_ba1pi"]
 [ext_resource type="Texture2D" uid="uid://c7v66xxgb11qx" path="res://PlaceholderAssets/Explosion/explosion03.png" id="6_ckxfm"]
 [ext_resource type="Texture2D" uid="uid://clmfdiep65s2d" path="res://assets/circle.png" id="9_ckxfm"]
+[ext_resource type="AudioStream" uid="uid://p7cwke4uo0oc" path="res://assets/music/SoundFX/boom04.wav" id="10_bm7qs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ey3sv"]
 radius = 50.0
@@ -183,6 +184,10 @@ texture = ExtResource("9_ckxfm")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 rotation = 1.5708
+
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bm7qs")
+volume_db = -5.0
 
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]

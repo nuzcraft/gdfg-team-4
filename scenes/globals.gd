@@ -12,6 +12,9 @@ enum WeaponEnum {
 	SHOTGUN,
 	MACHINE_GUN
 }
+
+const PICKUP_AUDIO = preload("res://assets/music/SoundFX/pickup01.wav")
+
 var inventory = [true,false,false]
 var damage_upgrades: int = 0
 var firerate_upgrades: int = 0
