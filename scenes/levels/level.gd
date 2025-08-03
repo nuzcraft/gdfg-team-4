@@ -218,14 +218,14 @@ func load_level_from_image(load_level: int) -> void:
 						var portal := PORTAL.instantiate()
 						portal.position = Vector2(x * 150, y * 150)
 						add_child(portal)
-						if current_level <= 4:
-							var ice_beetle := ICE_BEETLE.instantiate()
-							spawn_enemy(ice_beetle, Vector2(x * 150, y * 150))
-						else:
-							var spawner:= SPAWNER.instantiate()
-							spawner.spawn_scene = spawner.ICE_BEETLE
-							add_child(spawner)
-							spawner.position = Vector2(x * 150, y * 150)
+						# if current_level <= 4:
+						# 	var ice_beetle := ICE_BEETLE.instantiate()
+						# 	spawn_enemy(ice_beetle, Vector2(x * 150, y * 150))
+						# else:
+						# 	var spawner:= SPAWNER.instantiate()
+						# 	spawner.spawn_scene = spawner.ICE_BEETLE
+						# 	add_child(spawner)
+						# 	spawner.position = Vector2(x * 150, y * 150)
 						aoe_tilemap_image.set_pixel(x, y, Color.BLACK)
 					Color.YELLOW:
 						var armor_pack := ARMOR_PACK.instantiate()
