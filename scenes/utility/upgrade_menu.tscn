@@ -29,168 +29,161 @@ patch_margin_top = 100
 patch_margin_right = 50
 patch_margin_bottom = 100
 
-[node name="ContinueButton" type="Button" parent="."]
-offset_left = 424.0
-offset_top = 575.0
-offset_right = 837.0
-offset_bottom = 606.0
-size_flags_vertical = 3
-text = "Continue"
-
-[node name="GemsCount" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextPopUp"]
 layout_mode = 2
-offset_left = 666.0
-offset_top = 131.0
-offset_right = 735.0
-offset_bottom = 166.0
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Info" type="HBoxContainer" parent="TextPopUp/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="GemsCount" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Info"]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Text" type="Label" parent="GemsCount"]
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Info/GemsCount"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Gems:"
 label_settings = ExtResource("5_fioxf")
 
-[node name="Value" type="Label" parent="GemsCount"]
+[node name="Value" type="Label" parent="TextPopUp/VBoxContainer/Info/GemsCount"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
 
-[node name="CurrentLevel" type="HBoxContainer" parent="."]
+[node name="CurrentLevel" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Info"]
 layout_mode = 2
-offset_left = 475.0
-offset_top = 132.0
-offset_right = 616.0
-offset_bottom = 167.0
+size_flags_horizontal = 10
 size_flags_vertical = 3
 
-[node name="Text" type="Label" parent="CurrentLevel"]
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Info/CurrentLevel"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Current Level:"
 label_settings = ExtResource("5_fioxf")
 
-[node name="Value" type="Label" parent="CurrentLevel"]
+[node name="Value" type="Label" parent="TextPopUp/VBoxContainer/Info/CurrentLevel"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
 
-[node name="UpgradeFireRate" type="HBoxContainer" parent="."]
+[node name="Upgrades" type="VBoxContainer" parent="TextPopUp/VBoxContainer"]
 layout_mode = 2
-offset_left = 549.0
-offset_top = 212.0
-offset_right = 690.0
-offset_bottom = 247.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="UpgradeFireRate" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Upgrades"]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Text" type="Label" parent="UpgradeFireRate"]
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeFireRate"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Upgrade Fire Rate"
 label_settings = ExtResource("5_fioxf")
 
-[node name="Buy" type="Button" parent="UpgradeFireRate"]
+[node name="Buy" type="Button" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeFireRate"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Buy"
 
-[node name="Text2" type="Label" parent="UpgradeFireRate"]
+[node name="Text2" type="Label" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeFireRate"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "1 X"
 label_settings = ExtResource("5_fioxf")
 
-[node name="ScifiEnvironment16" type="Sprite2D" parent="UpgradeFireRate"]
+[node name="ScifiEnvironment16" type="Sprite2D" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeFireRate"]
 position = Vector2(256, 16)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_r2whk")
 
-[node name="UpgradeDamage" type="HBoxContainer" parent="."]
+[node name="UpgradeDamage" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Upgrades"]
 layout_mode = 2
-offset_left = 548.0
-offset_top = 252.0
-offset_right = 853.0
-offset_bottom = 287.0
 size_flags_vertical = 3
 
-[node name="Text" type="Label" parent="UpgradeDamage"]
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeDamage"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Upgrade Weapon Damage"
 label_settings = ExtResource("5_fioxf")
 
-[node name="Buy" type="Button" parent="UpgradeDamage"]
+[node name="Buy" type="Button" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeDamage"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Buy"
 
-[node name="Text1" type="Label" parent="UpgradeDamage"]
+[node name="Text1" type="Label" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeDamage"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "2 X"
 label_settings = ExtResource("5_fioxf")
 
-[node name="ScifiEnvironment17" type="Sprite2D" parent="UpgradeDamage"]
+[node name="ScifiEnvironment17" type="Sprite2D" parent="TextPopUp/VBoxContainer/Upgrades/UpgradeDamage"]
 position = Vector2(330, 16)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_r2whk")
 
-[node name="UpgradeFireRate2" type="HBoxContainer" parent="."]
+[node name="Weapons" type="VBoxContainer" parent="TextPopUp/VBoxContainer"]
 layout_mode = 2
-offset_left = 551.0
-offset_top = 367.0
-offset_right = 706.0
-offset_bottom = 402.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="BuyShotgun" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Weapons"]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Text" type="Label" parent="UpgradeFireRate2"]
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Weapons/BuyShotgun"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Shotgun"
 label_settings = ExtResource("5_fioxf")
 
-[node name="Buy" type="Button" parent="UpgradeFireRate2"]
+[node name="Buy" type="Button" parent="TextPopUp/VBoxContainer/Weapons/BuyShotgun"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Buy"
 
-[node name="Text2" type="Label" parent="UpgradeFireRate2"]
+[node name="Text2" type="Label" parent="TextPopUp/VBoxContainer/Weapons/BuyShotgun"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "3 X"
 label_settings = ExtResource("5_fioxf")
 
-[node name="ScifiEnvironment15" type="Sprite2D" parent="UpgradeFireRate2"]
+[node name="ScifiEnvironment15" type="Sprite2D" parent="TextPopUp/VBoxContainer/Weapons/BuyShotgun"]
 position = Vector2(211, 16)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_r2whk")
 
-[node name="UpgradeFireRate3" type="HBoxContainer" parent="."]
+[node name="BuyMachineGun" type="HBoxContainer" parent="TextPopUp/VBoxContainer/Weapons"]
 layout_mode = 2
-offset_left = 551.0
-offset_top = 414.0
-offset_right = 757.0
-offset_bottom = 449.0
 size_flags_vertical = 3
 
-[node name="Text" type="Label" parent="UpgradeFireRate3"]
+[node name="Text" type="Label" parent="TextPopUp/VBoxContainer/Weapons/BuyMachineGun"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Buy Machine Gun"
 label_settings = ExtResource("5_fioxf")
 
-[node name="Buy" type="Button" parent="UpgradeFireRate3"]
+[node name="Buy" type="Button" parent="TextPopUp/VBoxContainer/Weapons/BuyMachineGun"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Buy"
 
-[node name="Text2" type="Label" parent="UpgradeFireRate3"]
+[node name="Text2" type="Label" parent="TextPopUp/VBoxContainer/Weapons/BuyMachineGun"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "3 X"
 label_settings = ExtResource("5_fioxf")
 
-[node name="ScifiEnvironment16" type="Sprite2D" parent="UpgradeFireRate3"]
+[node name="ScifiEnvironment16" type="Sprite2D" parent="TextPopUp/VBoxContainer/Weapons/BuyMachineGun"]
 position = Vector2(250, 14)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_r2whk")
+
+[node name="ContinueButton" type="Button" parent="TextPopUp/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Continue"
