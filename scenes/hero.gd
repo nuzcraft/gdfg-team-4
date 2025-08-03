@@ -115,6 +115,7 @@ func teleport_out():
 	_on_teleport('out')
 
 func _on_teleport(type):
+	$TeleportAudio.play()
 	var start : float
 	var end : float
 	$Sprite2D.material.set_shader_parameter("flash_color", Color.WHITE)

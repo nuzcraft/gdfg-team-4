@@ -14,6 +14,7 @@ func _ready():
 	ttl = weapon.total_ttl
 	$Sprite.texture = weapon.projectile_texture
 	$CollisionShape.shape = weapon.projectile_shape
+	$AudioStreamPlayer2D.play()
 	
 func _physics_process(delta):
 	if !is_inside_tree():

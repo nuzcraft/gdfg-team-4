@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qxbajo21gg4j"]
+[gd_scene load_steps=20 format=3 uid="uid://qxbajo21gg4j"]
 
 [ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/hero.gd" id="1_w7pyx"]
 [ext_resource type="Texture2D" uid="uid://hck1dqeicbyn" path="res://PlaceholderAssets/hero.png" id="2_mv13s"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://c8kkdp01b836k" path="res://resources/swarmed_theme.tres" id="6_mo806"]
 [ext_resource type="PackedScene" uid="uid://dpav2ennn0x4p" path="res://scenes/weapons/shotgun.tscn" id="9_n5qna"]
 [ext_resource type="PackedScene" uid="uid://c3anhwxelnmxv" path="res://scenes/weapons/machine_gun.tscn" id="10_d6xj2"]
+[ext_resource type="AudioStream" uid="uid://d0dcuwp2v33lv" path="res://assets/music/SoundFX/teleport02.wav" id="11_d6xj2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mo806"]
 shader = ExtResource("2_n40cg")
@@ -211,3 +212,7 @@ cooldown = 0.25
 [node name="Shotgun" parent="." instance=ExtResource("9_n5qna")]
 
 [node name="MachineGun" parent="." instance=ExtResource("10_d6xj2")]
+
+[node name="TeleportAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_d6xj2")
+volume_db = -5.0
