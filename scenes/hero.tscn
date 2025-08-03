@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://qxbajo21gg4j"]
+[gd_scene load_steps=23 format=3 uid="uid://qxbajo21gg4j"]
 
 [ext_resource type="Script" uid="uid://bplv08s5b0u13" path="res://scenes/hero.gd" id="1_w7pyx"]
+[ext_resource type="Texture2D" uid="uid://i6ry58a42opo" path="res://assets/SmokeEffect.png" id="2_6mqrs"]
 [ext_resource type="Texture2D" uid="uid://hck1dqeicbyn" path="res://PlaceholderAssets/hero.png" id="2_mv13s"]
 [ext_resource type="Shader" uid="uid://b5amdpamwydut" path="res://shaders/teleport.gdshader" id="2_n40cg"]
 [ext_resource type="PackedScene" uid="uid://c4jn5ceehyndd" path="res://scenes/weapons/plasma_rifle.tscn" id="3_06baw"]
@@ -11,6 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://dpav2ennn0x4p" path="res://scenes/weapons/shotgun.tscn" id="9_n5qna"]
 [ext_resource type="PackedScene" uid="uid://c3anhwxelnmxv" path="res://scenes/weapons/machine_gun.tscn" id="10_d6xj2"]
 [ext_resource type="AudioStream" uid="uid://d0dcuwp2v33lv" path="res://assets/music/SoundFX/teleport02.wav" id="11_d6xj2"]
+[ext_resource type="AudioStream" uid="uid://d4a7c1qsd5knu" path="res://assets/music/SoundFX/pickup01.wav" id="12_sryfu"]
+
+[sub_resource type="Gradient" id="Gradient_k8rms"]
+offsets = PackedFloat32Array(0, 0.627404, 0.995192, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.113725, 1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mo806"]
 shader = ExtResource("2_n40cg")
@@ -157,6 +163,19 @@ script = ExtResource("1_w7pyx")
 
 [node name="MeleeAttackTimer" type="Timer" parent="."]
 
+[node name="CPUParticles2DSmoke" type="CPUParticles2D" parent="."]
+position = Vector2(-1, 37)
+emitting = false
+texture = ExtResource("2_6mqrs")
+lifetime = 1.5
+gravity = Vector2(0, -200)
+initial_velocity_max = 100.0
+scale_amount_max = 2.0
+color = Color(1, 1, 1, 0.890196)
+color_ramp = SubResource("Gradient_k8rms")
+hue_variation_min = -0.22
+hue_variation_max = 0.24
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_mo806")
 texture = ExtResource("2_mv13s")
@@ -216,3 +235,6 @@ cooldown = 0.25
 [node name="TeleportAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_d6xj2")
 volume_db = -5.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_sryfu")

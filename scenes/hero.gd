@@ -79,6 +79,7 @@ func _on_screenshake(amount: float) -> void:
 	$Camera2D.add_shake(amount)
 	
 func _on_collectable_collected(type: String):
+	$AudioStreamPlayer2D.play()
 	if type == "crystal":
 		#print("num collected: ", crystals_collected)
 		$Hud/HBoxContainer/CrystalLabel.text = str(Globals.crystals_collected)
@@ -158,6 +159,7 @@ func burn(input:call_state):
 		call_state.Start:
 			if not is_in_lava:
 				$Label.text = "Burning"
+				$CPUParticles2DSmoke.emitting = true
 				is_in_lava=true
 				burn(call_state.Hold)
 		call_state.Hold:
@@ -176,12 +178,14 @@ func burn(input:call_state):
 				is_burning_after = true
 				await damage_over_time(2, 5, 2.0, 'Burning')
 			$Label.text = "Player"
+			$CPUParticles2DSmoke.emitting = false
 
 func acidify(input: call_state):
 	match input:
 		call_state.Start:
 			if not is_in_acid:
 				$Label.text = "Acidic"
+				$CPUParticles2DSmoke.emitting = false
 				is_in_acid=true
 				acidify(call_state.Hold)
 		call_state.Hold:
@@ -197,6 +201,7 @@ func acidify(input: call_state):
 		call_state.End:
 			is_in_acid = false
 			$Label.text = "Player"
+			$CPUParticles2DSmoke.emitting = false
 #
 func damage_over_time(damage: int, num_hits: int, wait_time: float, effect: String):
 	$Label.text = effect
@@ -213,3 +218,4 @@ func damage_over_time(damage: int, num_hits: int, wait_time: float, effect: Stri
 			if effect == "Burning":
 				is_burning_after = false
 	$Label.text = "Player"
+	$CPUParticles2DSmoke.emitting = false
