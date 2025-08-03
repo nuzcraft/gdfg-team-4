@@ -27,7 +27,7 @@ texture = ExtResource("2_u5dg8")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
 modulate = Color(0, 0.486962, 0.486961, 1)
 z_index = 1
-amount = 100
+amount = 360
 lifetime = 0.73
 process_material = SubResource("ParticleProcessMaterial_d4qof")
 
