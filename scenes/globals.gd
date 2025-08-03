@@ -13,8 +13,10 @@ enum WeaponEnum {
 	MACHINE_GUN
 }
 var inventory = [true,false,false]
+var damage_upgrades: int = 0
+var firerate_upgrades: int = 0
 
-var primary_weapon: WeaponEnum = WeaponEnum.MACHINE_GUN
+var primary_weapon: WeaponEnum = WeaponEnum.PLASMA_RIFLE
 var player_pos: Vector2
 var player_vulnerable: bool = true
 var player_health: int = 100
@@ -49,3 +51,20 @@ func place_ice_aoe(position: Vector2, scaling: float) -> void:
 	
 func signal_enemy_died(type: String, position: Vector2, scaling: float) -> void:
 	enemy_died.emit(type, position, scaling)
+
+func reset_globals():
+	inventory = [true,false,false]
+	damage_upgrades = 0
+	firerate_upgrades = 0
+
+	primary_weapon = WeaponEnum.PLASMA_RIFLE
+	player_pos
+	player_vulnerable = true
+	player_health = 100
+	player_max_health = 100
+	player_armor = 0
+	player_max_armor = 100
+	crystals_collected = 0
+	crystals_spent = 0
+	enemies_killed = 0
+	current_level = 1

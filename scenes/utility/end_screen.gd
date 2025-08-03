@@ -8,6 +8,7 @@ func _ready():
 	$MarginContainer/VBoxContainer/HBoxContainer/BugsKilledLabel.text = str(Globals.enemies_killed)
 	$MarginContainer/VBoxContainer/HBoxContainer2/CrystalsCollectedLabel.text = str(Globals.crystals_collected)
 	$MarginContainer/VBoxContainer/HBoxContainer3/LevelNumberLabel.text = str(Globals.current_level)
+	Globals.reset_globals()
 
 
 func _on_title_screen_button_pressed():
