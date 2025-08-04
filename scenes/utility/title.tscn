@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://308rtes7svwa"]
+[gd_scene load_steps=6 format=3 uid="uid://308rtes7svwa"]
 
 [ext_resource type="Script" uid="uid://clnos8pxbfevk" path="res://scenes/utility/title.gd" id="1_4ignj"]
+[ext_resource type="Texture2D" uid="uid://egbvhdbscae8" path="res://assets/Swarmed_Main_menu.png" id="2_afp2o"]
 [ext_resource type="Script" uid="uid://bitrr7u3puege" path="res://scenes/utility/parallax_background.gd" id="2_pyl7j"]
 [ext_resource type="Theme" uid="uid://c8kkdp01b836k" path="res://resources/swarmed_theme.tres" id="2_wosw1"]
 [ext_resource type="Texture2D" uid="uid://btldtrm2irmyd" path="res://assets/title-screen-stars-bg.png" id="3_b3w7a"]
@@ -14,7 +15,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4ignj")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_afp2o")
+expand_mode = 5
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 script = ExtResource("2_pyl7j")
 
 [node name="NearStars" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -76,14 +88,21 @@ alignment = 1
 [node name="Spacer2" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Spacer4" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
+use_top_left = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer"]
 layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_wosw1")
 theme_override_font_sizes/font_size = 48
@@ -92,7 +111,7 @@ horizontal_alignment = 1
 
 [node name="SubtitleLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 48
 text = "\"Space is Messy\""
 horizontal_alignment = 1
 
@@ -103,21 +122,25 @@ alignment = 1
 [node name="PlayButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_wosw1")
+theme_override_font_sizes/font_size = 32
 text = "Play"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_wosw1")
+theme_override_font_sizes/font_size = 32
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_wosw1")
+theme_override_font_sizes/font_size = 32
 text = "Exit"
 
 [node name="Spacer3" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 
 [node name="CreditsLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -134,6 +157,7 @@ horizontal_alignment = 1
 [node name="Spacer" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 
 [node name="GodotLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
