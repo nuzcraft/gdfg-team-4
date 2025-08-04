@@ -94,6 +94,14 @@ func _ready() -> void:
 		for enemy in $Enemies.get_children():
 			if enemy is Enemy:
 				enemy.switch_state(enemy.PURSUIT)
+	if SettingsStore.enable_music:
+		if Music.playing:
+			Music.stop()
+		match current_level:
+			1, 4, 7: Music.stream = preload("res://assets/music/swarmed--level-1.ogg")
+			2, 5, 8: Music.stream = preload("res://assets/music/swarmed--level-2.ogg")
+			3, 6, 9: Music.stream = preload("res://assets/music/swarmed--level-3.ogg")
+		Music.play()
 
 func _on_portal():
 	if (_all_gems_collected() and _enemy_wave_cleared() and not _change_scene):

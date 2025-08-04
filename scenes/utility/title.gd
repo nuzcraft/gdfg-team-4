@@ -15,7 +15,7 @@ func _ready() -> void:
 
 	# if music is enabled and not playing, play the title song
 	if SettingsStore.enable_music && !Music.playing:
-		Music.stream = preload("res://assets/music/title--fade-out--2025-07-07.ogg")
+		Music.stream = preload("res://assets/music/swarmed-intro--fade-out--2025-07-07.ogg")
 		Music.play()
 		
 	Input.set_custom_mouse_cursor(HAND_SMALL_POINT, 0, Vector2(10, 10))	
